@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::BudCollection#init_schema
+is_singleton: false
+name: init_schema
+params: (given_schema)
+visibility: public

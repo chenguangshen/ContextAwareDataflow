@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::BudCollection#each_raw
+is_singleton: false
+name: each_raw
+params: (&block)
+visibility: public

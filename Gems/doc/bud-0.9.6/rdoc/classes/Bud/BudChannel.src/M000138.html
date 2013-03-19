@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>payloads (Bud::BudChannel)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/collections.rb, line 1009</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">payloads</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">pro</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@is_loopback</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@payload_struct</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">payload_cols</span> = <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">dup</span>
+        <span class="ruby-identifier">payload_cols</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-ivar">@locspec_idx</span>)
+        <span class="ruby-ivar">@payload_struct</span> = <span class="ruby-constant">Struct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">payload_cols</span>)
+        <span class="ruby-ivar">@payload_colnums</span> = <span class="ruby-identifier">payload_cols</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cols</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">k</span>)}
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">retval</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">pro</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@payload_struct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">t</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@payload_colnums</span>))
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">retval</span> = <span class="ruby-identifier">retval</span>.<span class="ruby-identifier">pro</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">blk</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">retval</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Bud::PushNotIn</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Bud::PushNotIn</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/bud/executor/join_rb.html">
+                lib/bud/executor/join.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="PushStatefulElement.html">
+                PushStatefulElement
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Consider &quot;u &lt;= s.notin(t, s.a =&gt; t.b)&quot;. notin is a
+non-monotonic operator, where u depends positively on s, but negatively on
+t. Stratification ensures that t is fully computed in a lower stratum,
+which means that we can expect multiple iterators on s&#8216;s side only.
+If t&#8216;s scanner were to push its elements down first, every <a
+href="PushNotIn.html#M000264">insert</a> of s merely needs to be cross
+checked with the cached elements of &#8216;t&#8217;, and pushed down to the
+next element if s notin
+</p>
+<ol>
+<li type="a">However, if s&#8216;s scanner were to fire first, we have to wait until the
+
+</li>
+</ol>
+<p>
+first <a href="PushNotIn.html#M000266">flush</a>, at which point we are
+sure to have seen all the t-side tuples in this tick.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000265">do_insert</a>&nbsp;&nbsp;
+      <a href="#M000261">find_col</a>&nbsp;&nbsp;
+      <a href="#M000266">flush</a>&nbsp;&nbsp;
+      <a href="#M000262">get_key</a>&nbsp;&nbsp;
+      <a href="#M000264">insert</a>&nbsp;&nbsp;
+      <a href="#M000269">invalidate_cache</a>&nbsp;&nbsp;
+      <a href="#M000268">process_match</a>&nbsp;&nbsp;
+      <a href="#M000267">push_lhs</a>&nbsp;&nbsp;
+      <a href="#M000263">rescan_at_tick</a>&nbsp;&nbsp;
+      <a href="#M000260">setup_preds</a>&nbsp;&nbsp;
+      <a href="#M000270">stratum_end</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000265" class="method-detail">
+        <a name="M000265"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000265.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000265.html');return false;">
+          <span class="method-name">do_insert</span><span class="method-args">(item, offset)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000261" class="method-detail">
+        <a name="M000261"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000261.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000261.html');return false;">
+          <span class="method-name">find_col</span><span class="method-args">(colspec, rel)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000266" class="method-detail">
+        <a name="M000266"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000266.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000266.html');return false;">
+          <span class="method-name">flush</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000262" class="method-detail">
+        <a name="M000262"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000262.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000262.html');return false;">
+          <span class="method-name">get_key</span><span class="method-args">(item, offset)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000264" class="method-detail">
+        <a name="M000264"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000264.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000264.html');return false;">
+          <span class="method-name">insert</span><span class="method-args">(item, source)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000269" class="method-detail">
+        <a name="M000269"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000269.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000269.html');return false;">
+          <span class="method-name">invalidate_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000268" class="method-detail">
+        <a name="M000268"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000268.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000268.html');return false;">
+          <span class="method-name">process_match</span><span class="method-args">(lhs_item, rhs_values)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000267" class="method-detail">
+        <a name="M000267"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000267.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000267.html');return false;">
+          <span class="method-name">push_lhs</span><span class="method-args">(key, lhs_item)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000263" class="method-detail">
+        <a name="M000263"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000263.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000263.html');return false;">
+          <span class="method-name">rescan_at_tick</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000260" class="method-detail">
+        <a name="M000260"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000260.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000260.html');return false;">
+          <span class="method-name">setup_preds</span><span class="method-args">(preds)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000270" class="method-detail">
+        <a name="M000270"></a>
+
+        <div class="method-heading">
+          <a href="PushNotIn.src/M000270.html" target="Code" class="method-signature"
+            onclick="popupCode('PushNotIn.src/M000270.html');return false;">
+          <span class="method-name">stratum_end</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

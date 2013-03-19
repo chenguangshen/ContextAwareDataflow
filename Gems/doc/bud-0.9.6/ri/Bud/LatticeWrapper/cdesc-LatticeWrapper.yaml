@@ -1,0 +1,76 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: accumulate_tick_deltas
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: bud_instance
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: rescan_on_delta
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: tabname
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: wired_by
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bud::LatticeWrapper
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: <=
+- !ruby/object:RI::MethodSummary 
+  name: add_merge_target
+- !ruby/object:RI::MethodSummary 
+  name: add_rescan_invalidate
+- !ruby/object:RI::MethodSummary 
+  name: bootstrap
+- !ruby/object:RI::MethodSummary 
+  name: current_delta
+- !ruby/object:RI::MethodSummary 
+  name: current_new_delta
+- !ruby/object:RI::MethodSummary 
+  name: current_pending
+- !ruby/object:RI::MethodSummary 
+  name: current_value
+- !ruby/object:RI::MethodSummary 
+  name: do_merge
+- !ruby/object:RI::MethodSummary 
+  name: flush_deltas
+- !ruby/object:RI::MethodSummary 
+  name: insert
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: invalidate_at_tick
+- !ruby/object:RI::MethodSummary 
+  name: merge_to_storage
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: positive_predecessors
+- !ruby/object:RI::MethodSummary 
+  name: qualified_tabname
+- !ruby/object:RI::MethodSummary 
+  name: setup_wiring
+- !ruby/object:RI::MethodSummary 
+  name: tick
+- !ruby/object:RI::MethodSummary 
+  name: tick_deltas
+- !ruby/object:RI::MethodSummary 
+  name: to_push_elem
+name: LatticeWrapper
+superclass: Object

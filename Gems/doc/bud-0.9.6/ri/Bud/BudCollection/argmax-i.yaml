@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: for each distinct value of the grouping key columns, return the items in that group that have the maximum value of the attribute <tt>col</tt>. Note that multiple tuples might be returned.
+full_name: Bud::BudCollection#argmax
+is_singleton: false
+name: argmax
+params: (gbkey_cols, col, &blk)
+visibility: public

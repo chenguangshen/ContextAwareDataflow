@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: instantaneously merge items from collection <tt>o</tt> into <tt>buf</tt>
+full_name: Bud::BudCollection#<=
+is_singleton: false
+name: <=
+params: (collection)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Validate#labelof
+is_singleton: false
+name: labelof
+params: (op, nm)
+visibility: public

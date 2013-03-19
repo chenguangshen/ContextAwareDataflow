@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Construct a new instance of the current class that wraps &quot;new_v&quot;. We assume that new_v is already a legal input value for the class, so we can bypass the class's normal initializer -- this avoids redundant error checks.
+full_name: Bud::Lattice#wrap_unsafe
+is_singleton: false
+name: wrap_unsafe
+params: (new_v)
+visibility: public

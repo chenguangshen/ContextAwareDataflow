@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Bud::BudServer
+includes: []
+
+instance_methods: []
+
+name: BudServer
+superclass: EM::Connection

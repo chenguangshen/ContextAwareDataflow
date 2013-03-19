@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: given a * expression over 2 collections, form all combos of items that satisfy <tt>preds</tt>, and for any item from the 1st collection that has no matches in the 2nd, nil-pad it and include it in the output.
+full_name: Bud::PushSHJoin#outer
+is_singleton: false
+name: outer
+params: (*preds, &blk)
+visibility: public

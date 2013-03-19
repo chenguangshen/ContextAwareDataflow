@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Run Bud in the background (in a different thread). This means that the Bud interpreter will run asynchronously from the caller, so care must be used when interacting with it. For example, it is not safe to directly examine Bud collections from the caller's thread (see async_do and sync_do).
+- !ruby/struct:SM::Flow::P 
+  body: This instance of Bud will run until stop() is called.
+full_name: Bud#run_bg
+is_singleton: false
+name: run_bg
+params: ()
+visibility: public

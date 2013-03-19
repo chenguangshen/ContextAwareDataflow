@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::LatticePushElement#print_wiring
+is_singleton: false
+name: print_wiring
+params: (depth=0, accum="")
+visibility: public

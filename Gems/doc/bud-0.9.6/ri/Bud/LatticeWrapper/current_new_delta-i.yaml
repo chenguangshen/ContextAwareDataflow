@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::LatticeWrapper#current_new_delta
+is_singleton: false
+name: current_new_delta
+params: ()
+visibility: public

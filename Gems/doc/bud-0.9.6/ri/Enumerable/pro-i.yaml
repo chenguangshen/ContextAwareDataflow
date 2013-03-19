@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: We rewrite &quot;map&quot; calls in Bloom blocks to invoke the &quot;pro&quot; method instead. This is fine when applied to a BudCollection; when applied to a normal Enumerable, just treat pro as an alias for map.
+full_name: Enumerable#pro
+is_singleton: false
+name: pro
+params: (&blk)
+visibility: public

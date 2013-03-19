@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Register a callback that will be invoked when this instance of Bud is shutting down. XXX: The naming of this method (and cancel_shutdown_cb) is inconsistent with the naming of register_callback and friends."
+full_name: Bud#on_shutdown
+is_singleton: false
+name: on_shutdown
+params: (&blk)
+visibility: public

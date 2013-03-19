@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushReduce#reset_memo
+is_singleton: false
+name: reset_memo
+params: ()
+visibility: public

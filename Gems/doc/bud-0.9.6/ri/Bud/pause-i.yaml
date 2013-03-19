@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Pause an instance of Bud that is running asynchronously. That is, this method allows a Bud instance operating in run_bg or run_fg mode to be switched to &quot;single-stepped&quot; mode; timesteps can be manually invoked via tick(). To switch back to running Bud asynchronously, call run_bg().
+full_name: Bud#pause
+is_singleton: false
+name: pause
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: VizHelper#summarize
+is_singleton: false
+name: summarize
+params: (dir, schema)
+visibility: public

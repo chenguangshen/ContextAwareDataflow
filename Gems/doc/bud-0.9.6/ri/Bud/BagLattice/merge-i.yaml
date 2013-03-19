@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Note that for merge to be idempotent, we need to use the traditional definition of multiset union (per-element max of multiplicities, rather than sum of multiplicities).
+full_name: Bud::BagLattice#merge
+is_singleton: false
+name: merge
+params: (i)
+visibility: public

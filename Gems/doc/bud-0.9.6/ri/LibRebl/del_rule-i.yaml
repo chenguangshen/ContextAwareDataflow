@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Deactivates a rule at the current time; any tuples derived by the rule at a previous time are still available.
+full_name: LibRebl#del_rule
+is_singleton: false
+name: del_rule
+params: (rid)
+visibility: public

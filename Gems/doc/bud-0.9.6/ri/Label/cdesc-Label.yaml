@@ -1,0 +1,43 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: f
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Label
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Bud
+- !ruby/object:RI::IncludedModule 
+  name: MetaMods
+- !ruby/object:RI::IncludedModule 
+  name: MetaMods
+- !ruby/object:RI::IncludedModule 
+  name: Bud
+- !ruby/object:RI::IncludedModule 
+  name: MetaMods
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: disjunction
+- !ruby/object:RI::MethodSummary 
+  name: internal_tabs
+- !ruby/object:RI::MethodSummary 
+  name: new_class
+- !ruby/object:RI::MethodSummary 
+  name: new_class_from_class
+- !ruby/object:RI::MethodSummary 
+  name: output_report
+- !ruby/object:RI::MethodSummary 
+  name: path_report
+- !ruby/object:RI::MethodSummary 
+  name: validate
+- !ruby/object:RI::MethodSummary 
+  name: write_graph
+name: Label
+superclass: Object

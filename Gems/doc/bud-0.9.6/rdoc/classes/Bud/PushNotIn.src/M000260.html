@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup_preds (Bud::PushNotIn)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/join.rb, line 538</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_preds</span>(<span class="ruby-identifier">preds</span>)
+      <span class="ruby-comment cmt"># This is simpler than PushSHJoin's setup_preds, because notin is a binary</span>
+      <span class="ruby-comment cmt"># operator where both lhs and rhs are collections. preds is an array of</span>
+      <span class="ruby-comment cmt"># hash_pairs. For now assume that the attributes are in the same order as</span>
+      <span class="ruby-comment cmt"># the tables.</span>
+      <span class="ruby-ivar">@lhs_keycols</span>, <span class="ruby-ivar">@rhs_keycols</span> = <span class="ruby-identifier">preds</span>.<span class="ruby-identifier">reduce</span>([[], []]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+        <span class="ruby-comment cmt"># each item is a hash</span>
+        <span class="ruby-identifier">item</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span>, <span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">memo</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">find_col</span>(<span class="ruby-identifier">l</span>, <span class="ruby-ivar">@lhs</span>)
+          <span class="ruby-identifier">memo</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">find_col</span>(<span class="ruby-identifier">r</span>, <span class="ruby-ivar">@rhs</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">memo</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,52 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: ip
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: port
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: rebl_class_inst
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: rules
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: state
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Library of functions used by rebl. More generally, this can be viewed as a way to have a bud class that you can add and remove rules from, and that you can step through the execution of.
+constants: []
+
+full_name: LibRebl
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_collection
+- !ruby/object:RI::MethodSummary 
+  name: add_rule
+- !ruby/object:RI::MethodSummary 
+  name: del_rule
+- !ruby/object:RI::MethodSummary 
+  name: dump
+- !ruby/object:RI::MethodSummary 
+  name: mk_rebl_class
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: stop
+- !ruby/object:RI::MethodSummary 
+  name: tick
+name: LibRebl
+superclass: Object

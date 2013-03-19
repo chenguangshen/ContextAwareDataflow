@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>insert (Bud::PushGroup)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/group.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">source</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@elim_dups</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@input_cache</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">item</span>
+        <span class="ruby-ivar">@input_cache</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">key</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@keys</span>)
+      <span class="ruby-identifier">group_state</span> = <span class="ruby-ivar">@groups</span>[<span class="ruby-identifier">key</span>]
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">group_state</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@groups</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-ivar">@aggpairs</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ap</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ap</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">ap</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">init</span>(<span class="ruby-identifier">item</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">ap</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">init</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">item</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ap</span>[<span class="ruby-value">1</span>]))
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@aggpairs</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ap</span>, <span class="ruby-identifier">agg_ix</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">state_val</span> = <span class="ruby-identifier">group_state</span>[<span class="ruby-identifier">agg_ix</span>]
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ap</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">trans_rv</span> = <span class="ruby-identifier">ap</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">trans</span>(<span class="ruby-identifier">state_val</span>, <span class="ruby-identifier">item</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">trans_rv</span> = <span class="ruby-identifier">ap</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">trans</span>(<span class="ruby-identifier">state_val</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">item</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ap</span>[<span class="ruby-value">1</span>]))
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">group_state</span>[<span class="ruby-identifier">agg_ix</span>] = <span class="ruby-identifier">trans_rv</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

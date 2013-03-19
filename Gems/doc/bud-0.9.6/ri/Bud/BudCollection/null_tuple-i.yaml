@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: generate a tuple with the schema of this collection and nil values in each attribute
+full_name: Bud::BudCollection#null_tuple
+is_singleton: false
+name: null_tuple
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: project the collection to its non-key attributes
+full_name: Bud::BudCollection#values
+is_singleton: false
+name: values
+params: ()
+visibility: public

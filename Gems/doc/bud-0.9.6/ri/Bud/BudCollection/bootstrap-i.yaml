@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::BudCollection#bootstrap
+is_singleton: false
+name: bootstrap
+params: ()
+visibility: public

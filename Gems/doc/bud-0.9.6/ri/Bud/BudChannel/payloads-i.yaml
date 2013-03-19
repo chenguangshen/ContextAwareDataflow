@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: project to the non-address fields
+full_name: Bud::BudChannel#payloads
+is_singleton: false
+name: payloads
+params: (&blk)
+visibility: public

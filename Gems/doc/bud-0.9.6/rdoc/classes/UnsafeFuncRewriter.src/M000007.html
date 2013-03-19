@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>process_call (UnsafeFuncRewriter)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/rewrite.rb, line 363</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_call</span>(<span class="ruby-identifier">exp</span>)
+    <span class="ruby-identifier">tag</span>, <span class="ruby-identifier">recv</span>, <span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> = <span class="ruby-identifier">exp</span>
+
+    <span class="ruby-comment cmt"># We assume that unsafe funcs have a nil receiver (Bud instance is implicit</span>
+    <span class="ruby-comment cmt"># receiver).</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">recv</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@elem_stack</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">is_safe_func</span>(<span class="ruby-identifier">op</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">is_lattice?</span>(<span class="ruby-identifier">op</span>)
+        <span class="ruby-ivar">@unsafe_func_called</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>(<span class="ruby-identifier">tag</span>, <span class="ruby-identifier">process</span>(<span class="ruby-identifier">recv</span>), <span class="ruby-identifier">op</span>, <span class="ruby-operator">*</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">a</span>)}))
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

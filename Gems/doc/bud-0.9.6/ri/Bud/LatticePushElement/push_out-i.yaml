@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::LatticePushElement#push_out
+is_singleton: false
+name: push_out
+params: (v)
+visibility: public

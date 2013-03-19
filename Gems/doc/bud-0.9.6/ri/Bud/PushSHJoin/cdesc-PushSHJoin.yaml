@@ -1,0 +1,59 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: all_rels_below
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: keys
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: localpreds
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: origpreds
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: relnames
+  rw: R
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Bud::PushSHJoin
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: combos
+- !ruby/object:RI::MethodSummary 
+  name: flatten
+- !ruby/object:RI::MethodSummary 
+  name: flush
+- !ruby/object:RI::MethodSummary 
+  name: insert
+- !ruby/object:RI::MethodSummary 
+  name: insert_item
+- !ruby/object:RI::MethodSummary 
+  name: invalidate_cache
+- !ruby/object:RI::MethodSummary 
+  name: join_offset
+- !ruby/object:RI::MethodSummary 
+  name: lefts
+- !ruby/object:RI::MethodSummary 
+  name: matches
+- !ruby/object:RI::MethodSummary 
+  name: outer
+- !ruby/object:RI::MethodSummary 
+  name: pairs
+- !ruby/object:RI::MethodSummary 
+  name: replay_join
+- !ruby/object:RI::MethodSummary 
+  name: rights
+name: PushSHJoin
+superclass: PushStatefulElement

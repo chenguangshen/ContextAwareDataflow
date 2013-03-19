@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BloomGraph#finish
+is_singleton: false
+name: finish
+params: (ignore, name, fmt=:pdf)
+visibility: public

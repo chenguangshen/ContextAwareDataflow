@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>reduce (Bud::PushElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 352</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reduce</span>(<span class="ruby-identifier">initial</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-identifier">retval</span> = <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">PushReduce</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;reduce#{Time.new.tv_usec}&quot;</span>,
+                                   <span class="ruby-ivar">@bud_instance</span>, <span class="ruby-ivar">@collection_name</span>,
+                                   <span class="ruby-identifier">schema</span>, <span class="ruby-identifier">initial</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-identifier">retval</span>)
+      <span class="ruby-identifier">retval</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

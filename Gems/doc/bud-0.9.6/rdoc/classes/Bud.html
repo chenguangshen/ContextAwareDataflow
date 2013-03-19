@@ -1,0 +1,1632 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Bud</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Bud</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/bud/aggs_rb.html">
+                lib/bud/aggs.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/collections_rb.html">
+                lib/bud/collections.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/errors_rb.html">
+                lib/bud/errors.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/executor/elements_rb.html">
+                lib/bud/executor/elements.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/executor/group_rb.html">
+                lib/bud/executor/group.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/executor/join_rb.html">
+                lib/bud/executor/join.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/state_rb.html">
+                lib/bud/state.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/storage/dbm_rb.html">
+                lib/bud/storage/dbm.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud/storage/zookeeper_rb.html">
+                lib/bud/storage/zookeeper.rb
+                </a>
+        <br />
+                <a href="../files/lib/bud_rb.html">
+                lib/bud.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The root <a href="Bud.html">Bud</a> module. To cause an instance of <a
+href="Bud.html">Bud</a> to begin executing, there are three main options:
+</p>
+<ol>
+<li>Synchronously. To do this, instantiate your program and then call <a
+href="Bud.html#M000126">tick</a>() one or more times; each call evaluates a
+single <a href="Bud.html">Bud</a> timestep. In this mode, any network
+messages or timer events that occur will be buffered until the next call to
+<a href="Bud.html#M000126">tick</a>(). This is mostly intended for
+&quot;one-shot&quot; programs that compute a single result and then
+terminate, or for interactively &quot;single-stepping&quot; through the
+execution of an event-driven system.
+
+</li>
+<li>In a separate thread in the foreground. To do this, instantiate your
+program and then call <a href="Bud.html#M000108">run_fg</a>(). The <a
+href="Bud.html">Bud</a> interpreter will then run, handling network events
+and evaluating <a href="Bud.html#M000097">new</a> timesteps as appropriate.
+The <a href="Bud.html#M000108">run_fg</a>() method will not return unless
+an error occurs.
+
+</li>
+<li>In a separate thread in the background. To do this, instantiate your
+program and then call <a href="Bud.html#M000105">run_bg</a>(). The <a
+href="Bud.html">Bud</a> interpreter will run asynchronously. To interact
+with <a href="Bud.html">Bud</a> (e.g., insert additional data or <a
+href="Bud.html#M000121">inspect</a> the state of a <a
+href="Bud.html">Bud</a> collection), use the <a
+href="Bud.html#M000114">sync_do</a> and <a
+href="Bud.html#M000115">async_do</a> methods.
+
+</li>
+</ol>
+<p>
+Most programs should use method 3. Note that in all three cases, the <a
+href="Bud.html#M000109">stop</a>() method should be used to shutdown a <a
+href="Bud.html">Bud</a> instance and release any resources it is using.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000081">accum</a>&nbsp;&nbsp;
+      <a href="#M000082">accum_pair</a>&nbsp;&nbsp;
+      <a href="#M000115">async_do</a>&nbsp;&nbsp;
+      <a href="#M000080">avg</a>&nbsp;&nbsp;
+      <a href="#M000074">bool_and</a>&nbsp;&nbsp;
+      <a href="#M000075">bool_or</a>&nbsp;&nbsp;
+      <a href="#M000129">bud_clock</a>&nbsp;&nbsp;
+      <a href="#M000103">budtime</a>&nbsp;&nbsp;
+      <a href="#M000112">cancel_shutdown_cb</a>&nbsp;&nbsp;
+      <a href="#M000091">channel</a>&nbsp;&nbsp;
+      <a href="#M000076">choose</a>&nbsp;&nbsp;
+      <a href="#M000077">choose_rand</a>&nbsp;&nbsp;
+      <a href="#M000085">coll_expr</a>&nbsp;&nbsp;
+      <a href="#M000130">collection_stratum</a>&nbsp;&nbsp;
+      <a href="#M000079">count</a>&nbsp;&nbsp;
+      <a href="#M000120">delta</a>&nbsp;&nbsp;
+      <a href="#M000127">do_bootstrap</a>&nbsp;&nbsp;
+      <a href="#M000117">do_register_callback</a>&nbsp;&nbsp;
+      <a href="#M000093">file_reader</a>&nbsp;&nbsp;
+      <a href="#M000102">import_instance</a>&nbsp;&nbsp;
+      <a href="#M000121">inspect</a>&nbsp;&nbsp;
+      <a href="#M000125">int_ip_port</a>&nbsp;&nbsp;
+      <a href="#M000083">interface</a>&nbsp;&nbsp;
+      <a href="#M000095">interfaces</a>&nbsp;&nbsp;
+      <a href="#M000123">ip</a>&nbsp;&nbsp;
+      <a href="#M000122">ip_port</a>&nbsp;&nbsp;
+      <a href="#M000096">load_lattice_defs</a>&nbsp;&nbsp;
+      <a href="#M000092">loopback</a>&nbsp;&nbsp;
+      <a href="#M000073">max</a>&nbsp;&nbsp;
+      <a href="#M000072">min</a>&nbsp;&nbsp;
+      <a href="#M000098">module_wrapper_class</a>&nbsp;&nbsp;
+      <a href="#M000097">new</a>&nbsp;&nbsp;
+      <a href="#M000111">on_shutdown</a>&nbsp;&nbsp;
+      <a href="#M000107">pause</a>&nbsp;&nbsp;
+      <a href="#M000094">periodic</a>&nbsp;&nbsp;
+      <a href="#M000124">port</a>&nbsp;&nbsp;
+      <a href="#M000113">post_shutdown</a>&nbsp;&nbsp;
+      <a href="#M000100">qualified_name</a>&nbsp;&nbsp;
+      <a href="#M000089">readonly</a>&nbsp;&nbsp;
+      <a href="#M000116">register_callback</a>&nbsp;&nbsp;
+      <a href="#M000105">run_bg</a>&nbsp;&nbsp;
+      <a href="#M000108">run_fg</a>&nbsp;&nbsp;
+      <a href="#M000088">scratch</a>&nbsp;&nbsp;
+      <a href="#M000106">start</a>&nbsp;&nbsp;
+      <a href="#M000109">stop</a>&nbsp;&nbsp;
+      <a href="#M000110">stop_bg</a>&nbsp;&nbsp;
+      <a href="#M000087">store</a>&nbsp;&nbsp;
+      <a href="#M000078">sum</a>&nbsp;&nbsp;
+      <a href="#M000086">sync</a>&nbsp;&nbsp;
+      <a href="#M000119">sync_callback</a>&nbsp;&nbsp;
+      <a href="#M000114">sync_do</a>&nbsp;&nbsp;
+      <a href="#M000084">table</a>&nbsp;&nbsp;
+      <a href="#M000090">temp</a>&nbsp;&nbsp;
+      <a href="#M000126">tick</a>&nbsp;&nbsp;
+      <a href="#M000128">tick_internal</a>&nbsp;&nbsp;
+      <a href="#M000099">toplevel</a>&nbsp;&nbsp;
+      <a href="#M000101">toplevel?</a>&nbsp;&nbsp;
+      <a href="#M000118">unregister_callback</a>&nbsp;&nbsp;
+      <a href="#M000104">wiring?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Bud/PushSHOuterJoin.html" class="link">Bud::PushSHOuterJoin</a><br />
+Class <a href="Bud/BagLattice.html" class="link">Bud::BagLattice</a><br />
+Class <a href="Bud/BoolLattice.html" class="link">Bud::BoolLattice</a><br />
+Class <a href="Bud/BudChannel.html" class="link">Bud::BudChannel</a><br />
+Class <a href="Bud/BudCollection.html" class="link">Bud::BudCollection</a><br />
+Class <a href="Bud/BudInputInterface.html" class="link">Bud::BudInputInterface</a><br />
+Class <a href="Bud/BudOutputInterface.html" class="link">Bud::BudOutputInterface</a><br />
+Class <a href="Bud/BudPersistentCollection.html" class="link">Bud::BudPersistentCollection</a><br />
+Class <a href="Bud/CompileError.html" class="link">Bud::CompileError</a><br />
+Class <a href="Bud/Error.html" class="link">Bud::Error</a><br />
+Class <a href="Bud/IllegalSourceError.html" class="link">Bud::IllegalSourceError</a><br />
+Class <a href="Bud/KeyConstraintError.html" class="link">Bud::KeyConstraintError</a><br />
+Class <a href="Bud/Lattice.html" class="link">Bud::Lattice</a><br />
+Class <a href="Bud/LatticePushElement.html" class="link">Bud::LatticePushElement</a><br />
+Class <a href="Bud/LatticeScanner.html" class="link">Bud::LatticeScanner</a><br />
+Class <a href="Bud/LatticeWrapper.html" class="link">Bud::LatticeWrapper</a><br />
+Class <a href="Bud/MapLattice.html" class="link">Bud::MapLattice</a><br />
+Class <a href="Bud/MaxLattice.html" class="link">Bud::MaxLattice</a><br />
+Class <a href="Bud/MinLattice.html" class="link">Bud::MinLattice</a><br />
+Class <a href="Bud/PositiveSetLattice.html" class="link">Bud::PositiveSetLattice</a><br />
+Class <a href="Bud/PushApplyMethod.html" class="link">Bud::PushApplyMethod</a><br />
+Class <a href="Bud/PushArgAgg.html" class="link">Bud::PushArgAgg</a><br />
+Class <a href="Bud/PushEachWithIndex.html" class="link">Bud::PushEachWithIndex</a><br />
+Class <a href="Bud/PushElement.html" class="link">Bud::PushElement</a><br />
+Class <a href="Bud/PushGroup.html" class="link">Bud::PushGroup</a><br />
+Class <a href="Bud/PushNotIn.html" class="link">Bud::PushNotIn</a><br />
+Class <a href="Bud/PushPredicate.html" class="link">Bud::PushPredicate</a><br />
+Class <a href="Bud/PushReduce.html" class="link">Bud::PushReduce</a><br />
+Class <a href="Bud/PushSHJoin.html" class="link">Bud::PushSHJoin</a><br />
+Class <a href="Bud/PushSort.html" class="link">Bud::PushSort</a><br />
+Class <a href="Bud/PushStatefulElement.html" class="link">Bud::PushStatefulElement</a><br />
+Class <a href="Bud/ScannerElement.html" class="link">Bud::ScannerElement</a><br />
+Class <a href="Bud/SetLattice.html" class="link">Bud::SetLattice</a><br />
+Class <a href="Bud/ShutdownWithCallbacksError.html" class="link">Bud::ShutdownWithCallbacksError</a><br />
+Class <a href="Bud/TypeError.html" class="link">Bud::TypeError</a><br />
+
+    </div>
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">app_tables</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">budtime</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">builtin_tables</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">channels</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">dbm_tables</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">done_bootstrap</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">dsock</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">inbound</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">lattices</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">merge_targets</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">meta_parser</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">metrics</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">periodics</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">push_elems</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">push_joins</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">push_sources</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">qualified_name</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">rtracer</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">rule_orig_src</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">running_async</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">scanners</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">stratified_rules</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">tables</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">this_rule</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">this_rule_context</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">this_stratum</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">viz</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">zk_tables</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000097.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000097.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+options to the <a href="Bud.html">Bud</a> runtime are passed in a hash,
+with the following keys
+</p>
+<ul>
+<li>network configuration
+
+<ul>
+<li><tt>:<a href="Bud.html#M000123">ip</a></tt> IP address string for this
+instance
+
+</li>
+<li><tt>:<a href="Bud.html#M000124">port</a></tt> <a
+href="Bud.html#M000124">port</a> number for this instance
+
+</li>
+<li><tt>:ext_ip</tt> IP address at which external nodes can contact this
+instance
+
+</li>
+<li><tt>:ext_port</tt> <a href="Bud.html#M000124">port</a> number to go with
+<tt>:ext_ip</tt>
+
+</li>
+</ul>
+</li>
+<li>operating system interaction
+
+<ul>
+<li><tt>:stdin</tt> if non-nil, reading from the <tt>stdio</tt> collection
+results in reading from this <tt>IO</tt> handle
+
+</li>
+<li><tt>:stdout</tt> writing to the <tt>stdio</tt> collection results in
+writing to this <tt>IO</tt> handle; defaults to <tt>$stdout</tt>
+
+</li>
+<li><tt>:signal_handling</tt> how to handle <tt>SIGINT</tt> and
+<tt>SIGTERM</tt>. If +:none+, these signals are ignored. Else shutdown all
+bud instances.
+
+</li>
+</ul>
+</li>
+<li>tracing and output
+
+<ul>
+<li><tt>:quiet</tt> if true, suppress certain messages
+
+</li>
+<li><tt>:trace</tt> if true, generate <tt>budvis</tt> outputs
+
+</li>
+<li><tt>:rtrace</tt> if true, generate <tt>budplot</tt> outputs
+
+</li>
+<li><tt>:dump_rewrite</tt> if true, dump results of internal rewriting of Bloom
+code to a file
+
+</li>
+<li><tt>:print_wiring</tt> if true, print the wiring diagram of the program to
+stdout
+
+</li>
+<li><tt>:metrics</tt> if true, dumps a hash of internal performance metrics
+
+</li>
+</ul>
+</li>
+<li>controlling execution
+
+<ul>
+<li><tt>:tag</tt> a name for this instance, suitable for display during tracing
+and visualization
+
+</li>
+<li><tt>:channel_filter</tt> a code block that can be used to filter the
+network messages delivered to this <a href="Bud.html">Bud</a> instance. At
+the <a href="Bud.html#M000106">start</a> of each <a
+href="Bud.html#M000126">tick</a>, the code block is invoked for every <a
+href="Bud.html#M000091">channel</a> with any incoming messages; the code
+block is passed the name of the <a href="Bud.html#M000091">channel</a> and
+an array containing the inbound messages. It should return a two-element
+array containing &quot;accepted&quot; and &quot;postponed&quot; messages,
+respectively. Accepted messages are delivered during this <a
+href="Bud.html#M000126">tick</a>, and postponed messages are buffered and
+passed to the filter in subsequent ticks. Any messages that aren&#8216;t in
+either array are dropped.
+
+</li>
+</ul>
+</li>
+<li>storage configuration
+
+<ul>
+<li><tt>:dbm_dir</tt> filesystem directory to hold DBM-backed collections
+
+</li>
+<li><tt>:dbm_truncate</tt> if true, DBM-backed collections are opened with
+<tt>OTRUNC</tt>
+
+</li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000081.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000081.html');return false;">
+          <span class="method-name">accum</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+accumulates all x inputs into a set.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000082.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000082.html');return false;">
+          <span class="method-name">accum_pair</span><span class="method-args">(x, y)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+accumulates x, y inputs into a set of pairs (two element arrays).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000115" class="method-detail">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000115.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000115.html');return false;">
+          <span class="method-name">async_do</span><span class="method-args">() {|if block_given?| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Like <a href="Bud.html#M000114">sync_do</a>, but does not block the
+caller&#8216;s thread: the given callback will be invoked at some future
+time. Note that calls to <a href="Bud.html#M000115">async_do</a> respect
+FIFO order.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000080.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000080.html');return false;">
+          <span class="method-name">avg</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+computes average of a multiset of x values
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000074.html');return false;">
+          <span class="method-name">bool_and</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000075.html');return false;">
+          <span class="method-name">bool_or</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000129" class="method-detail">
+        <a name="M000129"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000129.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000129.html');return false;">
+          <span class="method-name">bud_clock</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the wallclock time associated with the current <a
+href="Bud.html">Bud</a> <a href="Bud.html#M000126">tick</a>. That is, this
+value is guaranteed to remain the same for the duration of a single <a
+href="Bud.html#M000126">tick</a>, but will likely change between ticks.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000103.html');return false;">
+          <span class="method-name">budtime</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000112.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000112.html');return false;">
+          <span class="method-name">cancel_shutdown_cb</span><span class="method-args">(id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000091.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000091.html');return false;">
+          <span class="method-name">channel</span><span class="method-args">(name, schema=nil, loopback=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a transient network collection. default schema <tt>[:address, :val]
+=&gt; []</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000076.html');return false;">
+          <span class="method-name">choose</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+exemplary aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+arbitrarily but deterministically chooses among x entries being aggregated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000077.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000077.html');return false;">
+          <span class="method-name">choose_rand</span><span class="method-args">(x=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+exemplary aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+randomly chooses among x entries being aggregated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000085.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000085.html');return false;">
+          <span class="method-name">coll_expr</span><span class="method-args">(name, expr, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a collection-generating expression. default schema <tt>[:key] =&gt;
+[:val]</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000130" class="method-detail">
+        <a name="M000130"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000130.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000130.html');return false;">
+          <span class="method-name">collection_stratum</span><span class="method-args">(collection)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the stratum number of the given collection. NB: if a collection is
+not referenced by any rules, it is not currently assigned to a strata.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000079.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000079.html');return false;">
+          <span class="method-name">count</span><span class="method-args">(x=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>. counts
+number of entries aggregated. argument is ignored.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000120" class="method-detail">
+        <a name="M000120"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000120.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000120.html');return false;">
+          <span class="method-name">delta</span><span class="method-args">(out_tbl)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A common special case for <a href="Bud.html#M000119">sync_callback</a>:
+block on a <a href="Bud.html#M000120">delta</a> to a <a
+href="Bud.html#M000084">table</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000127" class="method-detail">
+        <a name="M000127"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000127.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000127.html');return false;">
+          <span class="method-name">do_bootstrap</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Evaluate all bootstrap blocks and <a href="Bud.html#M000126">tick</a>
+deltas
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000117" class="method-detail">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000117.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000117.html');return false;">
+          <span class="method-name">do_register_callback</span><span class="method-args">(tbl_name, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000093.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000093.html');return false;">
+          <span class="method-name">file_reader</span><span class="method-args">(name, filename, delimiter='\n')</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a collection to be read from <tt>filename</tt>. rhs of statements
+only
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000102.html');return false;">
+          <span class="method-name">import_instance</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000121" class="method-detail">
+        <a name="M000121"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000121.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000121.html');return false;">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+XXX make tag specific
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000125" class="method-detail">
+        <a name="M000125"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000125.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000125.html');return false;">
+          <span class="method-name">int_ip_port</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the internal IP and <a href="Bud.html#M000124">port</a>. See <a
+href="Bud.html#M000122">ip_port</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000083.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000083.html');return false;">
+          <span class="method-name">interface</span><span class="method-args">(mode, name, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a transient collection to be an input or output <a
+href="Bud.html#M000083">interface</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000095.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000095.html');return false;">
+          <span class="method-name">interfaces</span><span class="method-args">(direction, collections)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+an alternative approach to declaring <a
+href="Bud.html#M000095">interfaces</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000123" class="method-detail">
+        <a name="M000123"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000123.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000123.html');return false;">
+          <span class="method-name">ip</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000122" class="method-detail">
+        <a name="M000122"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000122.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000122.html');return false;">
+          <span class="method-name">ip_port</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the IP and <a href="Bud.html#M000124">port</a> of the <a
+href="Bud.html">Bud</a> instance as a string. In addition to the local IP
+and <a href="Bud.html#M000124">port</a>, the user may define an external IP
+and/or <a href="Bud.html#M000124">port</a>. The external version of each is
+returned if available. If not, the local version is returned. There are use
+cases for mixing and matching local and external. local_ip:external_port
+would be if you have local <a href="Bud.html#M000124">port</a> forwarding,
+and external_ip:local_port would be if you&#8216;re in a DMZ, for example.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000096" class="method-detail">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000096.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000096.html');return false;">
+          <span class="method-name">load_lattice_defs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define methods to implement the state declarations for every registered
+kind of lattice.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000092" class="method-detail">
+        <a name="M000092"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000092.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000092.html');return false;">
+          <span class="method-name">loopback</span><span class="method-args">(name, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a transient network collection that delivers facts back to the
+current <a href="Bud.html">Bud</a> instance. This is syntax sugar for a <a
+href="Bud.html#M000091">channel</a> that always delivers to the IP/<a
+href="Bud.html#M000124">port</a> of the current <a href="Bud.html">Bud</a>
+instance. Default schema <tt>[:key] =&gt; [:val]</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000073.html');return false;">
+          <span class="method-name">max</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+exemplary aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+computes maximum of x entries aggregated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000072.html');return false;">
+          <span class="method-name">min</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+exemplary aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+computes minimum of x entries aggregated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000098.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000098.html');return false;">
+          <span class="method-name">module_wrapper_class</span><span class="method-args">(mod)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000111.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000111.html');return false;">
+          <span class="method-name">on_shutdown</span><span class="method-args">(&amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register a callback that will be invoked when this instance of <a
+href="Bud.html">Bud</a> is shutting down. XXX: The naming of this method
+(and <a href="Bud.html#M000112">cancel_shutdown_cb</a>) is inconsistent
+with the naming of <a href="Bud.html#M000116">register_callback</a> and
+friends.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000107.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000107.html');return false;">
+          <span class="method-name">pause</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Pause an instance of <a href="Bud.html">Bud</a> that is running
+asynchronously. That is, this method allows a <a href="Bud.html">Bud</a>
+instance operating in <a href="Bud.html#M000105">run_bg</a> or <a
+href="Bud.html#M000108">run_fg</a> mode to be switched to
+&quot;single-stepped&quot; mode; timesteps can be manually invoked via <a
+href="Bud.html#M000126">tick</a>(). To switch back to running <a
+href="Bud.html">Bud</a> asynchronously, call <a
+href="Bud.html#M000105">run_bg</a>().
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000094" class="method-detail">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000094.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000094.html');return false;">
+          <span class="method-name">periodic</span><span class="method-args">(name, period=1)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a collection to be auto-populated every <tt>period</tt> seconds.
+schema <tt>[:key] =&gt; [:val]</tt>. rhs of statements only.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000124" class="method-detail">
+        <a name="M000124"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000124.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000124.html');return false;">
+          <span class="method-name">port</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000113.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000113.html');return false;">
+          <span class="method-name">post_shutdown</span><span class="method-args">(&amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register a callback that will be invoked when <b>after</b> this instance of
+<a href="Bud.html">Bud</a> has been shutdown.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000100.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000100.html');return false;">
+          <span class="method-name">qualified_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000089.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000089.html');return false;">
+          <span class="method-name">readonly</span><span class="method-args">(name, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000116" class="method-detail">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000116.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000116.html');return false;">
+          <span class="method-name">register_callback</span><span class="method-args">(tbl_name, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register a <a href="Bud.html#M000097">new</a> callback. Given the name of a
+<a href="Bud.html">Bud</a> collection, this method arranges for the given
+block to be invoked at the end of any <a href="Bud.html#M000126">tick</a>
+in which any tuples have been inserted into the specified collection. The
+code block is passed the collection as an argument; this provides a
+convenient way to examine the tuples inserted during that fixpoint. (Note
+that because the <a href="Bud.html">Bud</a> runtime is blocked while the
+callback is invoked, it can also examine any other <a
+href="Bud.html">Bud</a> state freely.)
+</p>
+<p>
+Note that registering callbacks on persistent collections (e.g., tables,
+syncs and stores) is probably not wise: as long as any tuples are stored in
+the collection, the callback will be invoked at the end of every <a
+href="Bud.html#M000126">tick</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000105.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000105.html');return false;">
+          <span class="method-name">run_bg</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Run <a href="Bud.html">Bud</a> in the background (in a different thread).
+This means that the <a href="Bud.html">Bud</a> interpreter will run
+asynchronously from the caller, so care must be used when interacting with
+it. For example, it is not safe to directly examine <a
+href="Bud.html">Bud</a> collections from the caller&#8216;s thread (see <a
+href="Bud.html#M000115">async_do</a> and <a
+href="Bud.html#M000114">sync_do</a>).
+</p>
+<p>
+This instance of <a href="Bud.html">Bud</a> will run until <a
+href="Bud.html#M000109">stop</a>() is called.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000108.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000108.html');return false;">
+          <span class="method-name">run_fg</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Run <a href="Bud.html">Bud</a> in the &quot;foreground&quot; &#8212; the
+caller&#8216;s thread will be used to run the <a href="Bud.html">Bud</a>
+interpreter. This means this method won&#8216;t return unless an error
+occurs or <a href="Bud.html">Bud</a> is halted. It is often more useful to
+run <a href="Bud.html">Bud</a> in a different thread: see <a
+href="Bud.html#M000105">run_bg</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000088.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000088.html');return false;">
+          <span class="method-name">scratch</span><span class="method-args">(name, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a transient collection. default schema <tt>[:key] =&gt; [:val]</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000106.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000106.html');return false;">
+          <span class="method-name">start</span><span class="method-args">(do_tick=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Startup a <a href="Bud.html">Bud</a> instance if it is not currently
+started. This starts EventMachine (if needed) and binds to a UDP server
+socket. If do_tick is true, we also execute a single Bloom timestep.
+Regardless, calling this method does NOT cause <a href="Bud.html">Bud</a>
+to begin running asynchronously (see <a
+href="Bud.html#M000105">run_bg</a>).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000109.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000109.html');return false;">
+          <span class="method-name">stop</span><span class="method-args">(stop_em=false, do_shutdown_cb=true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Shutdown a <a href="Bud.html">Bud</a> instance and release any resources
+that it was using. This method blocks until <a href="Bud.html">Bud</a> has
+been shutdown. If <tt>stop_em</tt> is true, the EventMachine event loop is
+also shutdown; this will interfere with the execution of any other <a
+href="Bud.html">Bud</a> instances in the same process (as well as anything
+else that happens to use EventMachine).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <span class="method-name">stop_bg</span><span class="method-args">(stop_em=false, do_shutdown_cb=true)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Bud.html#M000109">stop</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000087.html');return false;">
+          <span class="method-name">store</span><span class="method-args">(name, storage, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000078.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000078.html');return false;">
+          <span class="method-name">sum</span><span class="method-args">(x)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+aggregate method to be used in <a
+href="Bud/BudCollection.html#M000316">Bud::BudCollection.group</a>.
+computes <a href="Bud.html#M000078">sum</a> of x entries aggregated.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000086.html');return false;">
+          <span class="method-name">sync</span><span class="method-args">(name, storage, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a syncronously-flushed persistent collection. default schema
+<tt>[:key] =&gt; [:val]</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000119" class="method-detail">
+        <a name="M000119"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000119.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000119.html');return false;">
+          <span class="method-name">sync_callback</span><span class="method-args">(in_tbl, tupleset, out_tbl)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Bud.html#M000119">sync_callback</a> supports synchronous
+interaction with <a href="Bud.html">Bud</a> modules. The caller supplies
+the name of an input collection, a set of tuples to insert, and an output
+collection on which to &#8216;listen.&#8217; The call blocks until tuples
+are inserted into the output collection: these are returned to the caller.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000114.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000114.html');return false;">
+          <span class="method-name">sync_do</span><span class="method-args">() {|if block_given?| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Given a block, evaluate that block inside the background Ruby thread at
+some time in the future, and then perform a Bloom <a
+href="Bud.html#M000126">tick</a>. Because the block is evaluate inside the
+background Ruby thread, the block can safely examine <a
+href="Bud.html">Bud</a> state. Note that calling <a
+href="Bud.html#M000114">sync_do</a> blocks the caller until the block has
+been evaluated; for a non-blocking version, see <a
+href="Bud.html#M000115">async_do</a>.
+</p>
+<p>
+Note that the block is invoked after one <a href="Bud.html">Bud</a>
+timestep has ended but before the next timestep begins. Hence, synchronous
+accumulation (&lt;=) into a <a href="Bud.html">Bud</a> <a
+href="Bud.html#M000088">scratch</a> collection in a callback is typically
+not a useful thing to do: when the next <a href="Bud.html#M000126">tick</a>
+begins, the content of any <a href="Bud.html#M000088">scratch</a>
+collections will be emptied, which includes anything inserted by a <a
+href="Bud.html#M000114">sync_do</a> block using &lt;=. To avoid this
+behavior, insert into scratches using &lt;+.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000084.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000084.html');return false;">
+          <span class="method-name">table</span><span class="method-args">(name, schema=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare an in-memory, non-transient collection. default schema <tt>[:key]
+=&gt; [:val]</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000090.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000090.html');return false;">
+          <span class="method-name">temp</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+declare a <a href="Bud.html#M000088">scratch</a> in a bloom statement lhs.
+schema inferred from rhs.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000126" class="method-detail">
+        <a name="M000126"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000126.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000126.html');return false;">
+          <span class="method-name">tick</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+From client code, manually trigger a timestep of Bloom execution.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000128" class="method-detail">
+        <a name="M000128"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000128.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000128.html');return false;">
+          <span class="method-name">tick_internal</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+One timestep of Bloom execution. This MUST be invoked from the EventMachine
+thread; it is not intended to be called directly by client code.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000099" class="method-detail">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000099.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000099.html');return false;">
+          <span class="method-name">toplevel</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000101.html');return false;">
+          <span class="method-name">toplevel?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000118" class="method-detail">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000118.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000118.html');return false;">
+          <span class="method-name">unregister_callback</span><span class="method-args">(id)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Unregister the callback that has the given ID.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="Bud.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('Bud.src/M000104.html');return false;">
+          <span class="method-name">wiring?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Are we currently in the process of wiring together the dataflow?
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

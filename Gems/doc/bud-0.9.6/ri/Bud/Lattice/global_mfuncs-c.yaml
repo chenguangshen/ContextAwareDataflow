@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::Lattice::global_mfuncs
+is_singleton: true
+name: global_mfuncs
+params: ()
+visibility: public

@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Raised when a primary key constraint is violated.
+constants: []
+
+full_name: Bud::KeyConstraintError
+includes: []
+
+instance_methods: []
+
+name: KeyConstraintError
+superclass: Error

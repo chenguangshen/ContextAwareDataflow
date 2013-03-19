@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: bloom statements to be registered with Bud runtime. optional <tt>block_name</tt> allows for multiple bloom blocks per module and method overriding
+full_name: Module#bloom
+is_singleton: false
+name: bloom
+params: (block_name=nil, &block)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Define methods to implement the state declarations for every registered kind of lattice.
+full_name: Bud#load_lattice_defs
+is_singleton: false
+name: load_lattice_defs
+params: ()
+visibility: public

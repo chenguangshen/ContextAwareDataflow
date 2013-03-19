@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>flush (Bud::PushReduce)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 532</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flush</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@memo</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Enumerable</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;output of reduce must be Enumerable: #{@memo.inspect}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@memo</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">push_out</span>(<span class="ruby-identifier">t</span>, <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

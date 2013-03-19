@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushEachWithIndex#stratum_end
+is_singleton: false
+name: stratum_end
+params: ()
+visibility: public

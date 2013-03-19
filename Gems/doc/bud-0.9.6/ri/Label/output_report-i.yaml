@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Label#output_report
+is_singleton: false
+name: output_report
+params: ()
+visibility: public

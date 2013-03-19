@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Validate
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: collapse
+- !ruby/object:RI::MethodSummary 
+  name: do_collapse
+- !ruby/object:RI::MethodSummary 
+  name: labelof
+- !ruby/object:RI::MethodSummary 
+  name: validate
+name: Validate
+superclass: 

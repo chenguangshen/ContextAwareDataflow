@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::BudCollection#notin
+is_singleton: false
+name: notin
+params: (collection, *preds, &blk)
+visibility: public

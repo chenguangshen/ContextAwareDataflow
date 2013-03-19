@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Raised when the input program fails to compile (e.g., due to illegal syntax).
+constants: []
+
+full_name: Bud::CompileError
+includes: []
+
+instance_methods: []
+
+name: CompileError
+superclass: Error

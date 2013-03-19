@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: stop_bg
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Shutdown a Bud instance and release any resources that it was using. This method blocks until Bud has been shutdown. If <tt>stop_em</tt> is true, the EventMachine event loop is also shutdown; this will interfere with the execution of any other Bud instances in the same process (as well as anything else that happens to use EventMachine).
+full_name: Bud#stop
+is_singleton: false
+name: stop
+params: (stop_em=false, do_shutdown_cb=true)
+visibility: public

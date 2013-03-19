@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>import (Module)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/monkeypatch.rb, line 80</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import</span>(<span class="ruby-identifier">spec</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">CompileError</span> <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Hash</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">mod</span>, <span class="ruby-identifier">local_name</span> = <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">CompileError</span> <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">mod</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Module</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">local_name</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Symbol</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Class</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">CompileError</span>, <span class="ruby-value str">&quot;import must be used with a Module, not a Class&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># A statement like this:</span>
+    <span class="ruby-comment cmt">#   import MyModule =&gt; :m</span>
+    <span class="ruby-comment cmt"># is translated as follows. First, module MyModule is made instantiable by wrapping it in a class</span>
+    <span class="ruby-comment cmt">#   class MyModule__wrap__</span>
+    <span class="ruby-comment cmt">#     include Bud</span>
+    <span class="ruby-comment cmt">#     include MyModule</span>
+    <span class="ruby-comment cmt">#   end</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Then introduce a method &quot;m&quot;, the import binding name, in the calling module/class</span>
+    <span class="ruby-comment cmt"># (the one with the import statement). This returns an instance of the wrapped class.</span>
+    <span class="ruby-comment cmt">#   inst = MyModule__wrap__.new</span>
+    <span class="ruby-comment cmt">#   def m</span>
+    <span class="ruby-comment cmt">#      inst</span>
+    <span class="ruby-comment cmt">#   end</span>
+
+    <span class="ruby-identifier">mod</span>, <span class="ruby-identifier">local_name</span> = <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">first</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">method_defined?</span> <span class="ruby-identifier">local_name</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">CompileError</span>, <span class="ruby-node">&quot;#{local_name} is already taken&quot;</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">src</span> = <span class="ruby-node">%Q{
+        def #{local_name}
+          @#{local_name}
+        end
+        def #{local_name}=(val)
+          raise Bud::Error, &quot;type error: expecting an instance of #{mod}&quot; unless val.kind_of? #{mod}
+          @#{local_name} = val
+        end
+      }</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-identifier">src</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">import_tbl</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">bud_import_table</span>
+    <span class="ruby-identifier">import_tbl</span>[<span class="ruby-identifier">local_name</span>] = <span class="ruby-identifier">mod</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

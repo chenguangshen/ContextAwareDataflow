@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>invalidate_cache (Bud::PushSHJoin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/join.rb, line 132</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invalidate_cache</span>
+      <span class="ruby-ivar">@rels</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">source_elem</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source_elem</span>.<span class="ruby-identifier">rescan</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{tabname} rel:#{i}(#{source_elem.tabname}) invalidated&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$BUD_DEBUG</span>
+          <span class="ruby-ivar">@hash_tables</span>[<span class="ruby-identifier">i</span>] = {}
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+            <span class="ruby-comment cmt"># Only if i == 0 because outer joins in Bloom are left outer joins.</span>
+            <span class="ruby-comment cmt"># If i == 1, missing_keys will be corrected when items are populated</span>
+            <span class="ruby-comment cmt"># in the rhs fork.</span>
+            <span class="ruby-comment cmt"># XXX This is not modular. We are doing invalidation work for outer</span>
+            <span class="ruby-comment cmt"># joins, which is part of a separate module PushSHOuterJoin.</span>
+            <span class="ruby-ivar">@missing_keys</span>.<span class="ruby-identifier">clear</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

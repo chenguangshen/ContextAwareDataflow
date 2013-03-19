@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_rescan_invalidate (Bud::ScannerElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 475</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_rescan_invalidate</span>(<span class="ruby-identifier">rescan</span>, <span class="ruby-identifier">invalidate</span>)
+      <span class="ruby-comment cmt"># if the collection is to be invalidated, the scanner needs to be in</span>
+      <span class="ruby-comment cmt"># rescan mode</span>
+      <span class="ruby-identifier">rescan</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">invalidate</span>.<span class="ruby-identifier">member?</span> <span class="ruby-ivar">@collection</span>
+
+      <span class="ruby-comment cmt"># in addition, default PushElement rescan/invalidate logic applies</span>
+      <span class="ruby-keyword kw">super</span>
+
+      <span class="ruby-comment cmt"># Note also that this node can be nominated for rescan by a target node;</span>
+      <span class="ruby-comment cmt"># in other words, a scanner element can be set to rescan even if the</span>
+      <span class="ruby-comment cmt"># collection is not invalidated.</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

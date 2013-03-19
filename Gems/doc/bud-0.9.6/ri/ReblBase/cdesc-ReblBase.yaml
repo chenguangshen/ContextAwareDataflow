@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: ip
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: port
+  rw: RW
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The class to which rebl adds user-specified rules and declarations.
+constants: []
+
+full_name: ReblBase
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Bud
+instance_methods: []
+
+name: ReblBase
+superclass: Object

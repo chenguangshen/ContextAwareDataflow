@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Module::__bloom_asts__
+is_singleton: true
+name: __bloom_asts__
+params: ()
+visibility: public

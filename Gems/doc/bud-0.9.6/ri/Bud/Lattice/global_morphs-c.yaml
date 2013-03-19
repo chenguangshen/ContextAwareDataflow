@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::Lattice::global_morphs
+is_singleton: true
+name: global_morphs
+params: ()
+visibility: public
