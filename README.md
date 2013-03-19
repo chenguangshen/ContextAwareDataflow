@@ -43,17 +43,17 @@ default Ruby gem path (in Mac OS X, this is usually /Library/Ruby/Gems/1.8)
 in gempath. After the previous modification, put the .gemrc file under
 your home folder.
 
-cp .gemrc ~/
+	% cp .gemrc ~/
 
 Next, you need to also include GEM_HOME and GEM_PATH as environment
 variables (assume you are using bash). Remember to keep the original
 gem path in GEM_PATH so that you can still use other Ruby gems.
 
-% echo export GEM_HOME=/path/to/our/gems/Gems >> ~/.bashrc
+	% echo export GEM_HOME=/path/to/our/gems/Gems >> ~/.bashrc
 
-% echo export GEM_PATH=/path/to/our/gems/Gems:/path/to/your/original/gem/lib >> ~/.bashrc
+	% echo export GEM_PATH=/path/to/our/gems/Gems:/path/to/your/original/gem/lib >> ~/.bashrc
 
-% source ~/.bashrc
+	% source ~/.bashrc
 
 # Run Test Code
 
