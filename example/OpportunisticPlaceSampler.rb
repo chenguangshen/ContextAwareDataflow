@@ -3,8 +3,8 @@ require 'backports'
 require 'narray'
 require 'bud'
 
-require_relative 'movement_detector_periodic'
-require_relative 'place_sampler'
+require_relative '../opportunistic_sampling/movement_detector_periodic'
+require_relative '../opportunistic_sampling/place_sampler'
 
 
 # Simplified sampler, samples whenever there is movement
