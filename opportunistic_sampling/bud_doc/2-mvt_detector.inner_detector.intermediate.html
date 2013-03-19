@@ -1,0 +1,9 @@
+<html><meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<head><link rel="stylesheet" type="text/css" href="style.css" /></head><body>
+<h1>Rule 2</h1><br>
+<pre class="code" style='font-size:20px'>
+<span class="ident">intermediate</span> <span class="punct">&lt;=</span> <span class="punct">(</span><span class="ident">frame_requests</span><span class="punct">.</span><span class="ident">pro</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">req</span><span class="punct">|</span>
+  <span class="punct">[</span><span class="ident">req</span><span class="punct">.</span><span class="ident">key</span><span class="punct">,</span> <span class="ident">req</span><span class="punct">.</span><span class="ident">start</span><span class="punct">,</span> <span class="ident">sequence</span><span class="punct">.</span><span class="ident">pro</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">s</span><span class="punct">|</span>
+    <span class="ident">s</span> <span class="keyword">if</span> <span class="punct">(</span><span class="ident">req</span><span class="punct">.</span><span class="ident">start</span> <span class="punct">&lt;=</span> <span class="ident">s</span><span class="punct">.</span><span class="ident">timestamp</span><span class="punct">)</span> <span class="keyword">and</span> <span class="punct">(</span><span class="ident">s</span><span class="punct">.</span><span class="ident">timestamp</span> <span class="punct">&lt;</span> <span class="punct">(</span><span class="ident">req</span><span class="punct">.</span><span class="ident">start</span> <span class="punct">+</span> <span class="ident">req</span><span class="punct">.</span><span class="ident">size</span><span class="punct">))</span>
+  <span class="keyword">end</span><span class="punct">]</span>
+<span class="keyword">end</span><span class="punct">)</span></pre>

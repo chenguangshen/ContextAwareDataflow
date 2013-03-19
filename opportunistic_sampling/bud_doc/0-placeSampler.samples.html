@@ -1,0 +1,8 @@
+<html><meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<head><link rel="stylesheet" type="text/css" href="style.css" /></head><body>
+<h1>Rule 0</h1><br>
+<pre class="code" style='font-size:20px'>
+<span class="ident">samples</span> <span class="punct">&lt;</span> <span class="punct">(+</span><span class="ident">trigger</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">t</span><span class="punct">|</span>
+  <span class="ident">result</span> <span class="punct">=</span> <span class="ident">get_sample_buffer</span><span class="punct">(</span><span class="ident">t</span><span class="punct">.</span><span class="ident">timestamp</span><span class="punct">)</span>
+  <span class="punct">[</span><span class="ident">t</span><span class="punct">.</span><span class="ident">timestamp</span><span class="punct">,</span> <span class="ident">result</span><span class="punct">[&quot;</span><span class="string">rate</span><span class="punct">&quot;],</span> <span class="ident">result</span><span class="punct">[&quot;</span><span class="string">buffer</span><span class="punct">&quot;]]</span>
+<span class="keyword">end</span><span class="punct">)</span></pre>

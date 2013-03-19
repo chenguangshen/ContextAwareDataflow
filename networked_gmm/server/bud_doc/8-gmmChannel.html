@@ -1,0 +1,7 @@
+<html><meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<head><link rel="stylesheet" type="text/css" href="style.css" /></head><body>
+<h1>Rule 8</h1><br>
+<pre class="code" style='font-size:20px'>
+<span class="ident">gmmChannel</span> <span class="punct">&lt;</span> <span class="punct">((</span><span class="ident">mfccChannel</span> <span class="punct">*</span> <span class="ident">logSumExpMixtureProbs</span><span class="punct">).</span><span class="ident">combos</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">m</span><span class="punct">,</span> <span class="ident">res</span><span class="punct">|</span>
+  <span class="punct">[</span><span class="ident">m</span><span class="punct">.</span><span class="ident">replyTo</span><span class="punct">,</span> <span class="ident">m</span><span class="punct">.</span><span class="ident">ts</span><span class="punct">,</span> <span class="punct">[</span><span class="ident">res</span><span class="punct">.</span><span class="ident">gmm_id</span><span class="punct">,</span> <span class="ident">res</span><span class="punct">.</span><span class="ident">pr</span><span class="punct">]]</span>
+<span class="keyword">end</span><span class="punct">.~)</span></pre>

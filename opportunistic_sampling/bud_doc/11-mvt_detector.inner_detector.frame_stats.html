@@ -1,0 +1,15 @@
+<html><meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<head><link rel="stylesheet" type="text/css" href="style.css" /></head><body>
+<h1>Rule 11</h1><br>
+<pre class="code" style='font-size:20px'>
+<span class="ident">frame_stats</span> <span class="punct">&lt;=</span> <span class="punct">(</span><span class="ident">frames</span><span class="punct">.</span><span class="ident">pro</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">frame</span><span class="punct">|</span>
+  <span class="punct">[</span><span class="ident">frame</span><span class="punct">.</span><span class="ident">key</span><span class="punct">,</span> <span class="ident">frame</span><span class="punct">.</span><span class="ident">start</span><span class="punct">,</span> <span class="ident">frame</span><span class="punct">.</span><span class="ident">vals</span><span class="punct">.</span><span class="ident">reduce</span><span class="punct">({})</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">memo</span><span class="punct">,</span> <span class="ident">v</span><span class="punct">|</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">sum</span><span class="punct">&quot;]</span> <span class="punct">||=</span> <span class="number">0</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">sum2</span><span class="punct">&quot;]</span> <span class="punct">||=</span> <span class="number">0</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">size</span><span class="punct">&quot;]</span> <span class="punct">||=</span> <span class="number">0</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">sum</span><span class="punct">&quot;]</span> <span class="punct">+=</span> <span class="ident">v</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">sum2</span><span class="punct">&quot;]</span> <span class="punct">+=</span> <span class="punct">(</span><span class="ident">v</span> <span class="punct">**</span> <span class="number">2</span><span class="punct">)</span>
+    <span class="ident">memo</span><span class="punct">[&quot;</span><span class="string">size</span><span class="punct">&quot;]</span> <span class="punct">+=</span> <span class="number">1.0</span>
+    <span class="ident">memo</span>
+  <span class="keyword">end</span><span class="punct">]</span>
+<span class="keyword">end</span><span class="punct">)</span></pre>

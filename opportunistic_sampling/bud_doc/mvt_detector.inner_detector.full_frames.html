@@ -1,0 +1,10 @@
+<html><meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<head><link rel="stylesheet" type="text/css" href="style.css" /></head><body>
+<pre class="code">
+
+<span class="comment"># RULE 5</span>
+ 
+<span class="ident">full_frames</span> <span class="punct">&lt;=</span> <span class="punct">((</span><span class="ident">frames</span> <span class="punct">*</span> <span class="ident">frame_requests</span><span class="punct">).</span><span class="ident">pairs</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">frame</span><span class="punct">,</span> <span class="ident">req</span><span class="punct">|</span>
+  <span class="ident">frame</span> <span class="keyword">if</span> <span class="punct">(</span><span class="ident">frame</span><span class="punct">.</span><span class="ident">vals</span><span class="punct">.</span><span class="ident">length</span> <span class="punct">==</span> <span class="ident">req</span><span class="punct">.</span><span class="ident">size</span><span class="punct">)</span>
+<span class="keyword">end</span><span class="punct">)</span></pre>
+</body></html>

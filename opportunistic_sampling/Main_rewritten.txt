@@ -1,0 +1,13 @@
+Declarations:
+=================================
+Stratum 0
+Main#2215868880 0
+	src:      sequence < (+-input_stream.flat_map do |x|
+  x[2].each_with_index.pro { |s, ii| [(x[0] + (x[1] * ii)), s] }
+end)
+	orig src: sequence < (+-input_stream.flat_map do |x|
+  x.buffer.each_with_index.pro { |s, ii| [(x.timestamp + (x.rate * ii)), s] }
+end)
+Main#2215868880 1
+	src:      stdio < (sequence.inspected.~)
+	orig src: stdio < (sequence.inspected.~)

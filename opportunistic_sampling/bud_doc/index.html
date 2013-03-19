@@ -1,0 +1,43 @@
+<html>
+<embed src="/Users/k/Dropbox/SharedFolders/cs239project/bloom/opportunistic_sampling/bud_doc/OpportunisticPlaceSampler_viz_collapsed.svg" width="100%" height="60%" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+<table border='1' valign='top' width = '100%'><tr valign='top'>
+<td valign='top'>
+<h2>Input Interfaces</h2>
+<table border='1'>
+<tr><td><b>mvt_detector.inner_detector.frame_requests</b></td>
+<td>key, start</td><td>size</td></tr>
+<tr><td><b>mvt_detector.inner_detector.input_stream</b></td>
+<td>timestamp</td><td>rate, buffer</td></tr>
+<tr><td><b>mvt_detector.inner_detector.pruneBelow</b></td>
+<td>key</td><td>timestamp</td></tr>
+<tr><td><b>mvt_detector.inner_detector.trigger</b></td>
+<td>key</td><td>timestamp</td></tr>
+<tr><td><b>placeSampler.trigger</b></td>
+<td>key</td><td>timestamp</td></tr>
+</table>
+</td><td>
+<h2>Output Interfaces</h2>
+<table border='1'>
+<tr><td><b>mvt_detector.inner_detector.frames</b></td>
+<td>key, start</td><td>vals</td></tr>
+<tr><td><b>mvt_detector.inner_detector.full_frames</b></td>
+<td>key, start</td><td>vals</td></tr>
+<tr><td><b>mvt_detector.inner_detector.movement</b></td>
+<td>start, movement</td><td></td></tr>
+<tr><td><b>mvt_detector.inner_detector.samples</b></td>
+<td>timestamp</td><td>rate, buffer</td></tr>
+<tr><td><b>mvt_detector.movement</b></td>
+<td>start, movement</td><td></td></tr>
+<tr><td><b>placeSampler.samples</b></td>
+<td>timestamp</td><td>rate, buffer</td></tr>
+</table>
+</td><td>
+<h2>Trace Analysis Results</h2>
+<h3>Data Complexity</h3>
+<table border='1'>
+</table>
+<h3>Coordination Complexity</h3>
+<table border='1'>
+</table>
+</tr></table>
+</html>
