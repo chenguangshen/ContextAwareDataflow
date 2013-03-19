@@ -1,2 +1,0 @@
-U:RDoc::Attr[i"pivots"$Matrix::LUPDecomposition#pivots"R:publico:RDoc::Markup::Document:
-@file0:@parts[o:RDoc::Markup::Paragraph;	["!Returns the pivoting indicesF";lib/backports/1.9.2/stdlib/matrix/lup_decomposition.rb
