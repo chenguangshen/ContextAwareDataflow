@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::ScannerElement#add_rescan_invalidate
+is_singleton: false
+name: add_rescan_invalidate
+params: (rescan, invalidate)
+visibility: public

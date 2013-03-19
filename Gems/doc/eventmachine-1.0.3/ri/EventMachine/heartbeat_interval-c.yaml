@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Retrieve the heartbeat interval. This is how often EventMachine will check for dead connections that have had an inactivity timeout set via {Connection#set_comm_inactivity_timeout}. Default is 2 seconds.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Integer] Heartbeat interval, in seconds"
+full_name: EventMachine::heartbeat_interval
+is_singleton: true
+name: heartbeat_interval
+params: ()
+visibility: public

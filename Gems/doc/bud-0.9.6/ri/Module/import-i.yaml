@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "import another module and assign to a qualifier symbol: <tt>import MyModule =&gt; :m</tt>"
+full_name: Module#import
+is_singleton: false
+name: import
+params: (spec)
+visibility: public

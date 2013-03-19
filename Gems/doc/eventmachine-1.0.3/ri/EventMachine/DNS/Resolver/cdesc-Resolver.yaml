@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: hosts
+- !ruby/object:RI::MethodSummary 
+  name: nameserver
+- !ruby/object:RI::MethodSummary 
+  name: nameservers
+- !ruby/object:RI::MethodSummary 
+  name: nameservers=
+- !ruby/object:RI::MethodSummary 
+  name: resolve
+- !ruby/object:RI::MethodSummary 
+  name: socket
+comment: 
+constants: []
+
+full_name: EventMachine::DNS::Resolver
+includes: []
+
+instance_methods: []
+
+name: Resolver
+superclass: Object

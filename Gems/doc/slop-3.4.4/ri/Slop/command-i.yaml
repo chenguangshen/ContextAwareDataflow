@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add a new command.
+- !ruby/struct:SM::Flow::P 
+  body: command - The Symbol or String used to identify this command. options - A Hash of configuration options (see Slop::new)
+- !ruby/struct:SM::Flow::P 
+  body: Returns a new instance of Slop mapped to this command.
+full_name: Slop#command
+is_singleton: false
+name: command
+params: (command, options = {}, &block)
+visibility: public

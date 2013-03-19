@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method is a no-op in the pure-Ruby implementation. We simply return Ruby's built-in per-process file-descriptor limit. @private
+full_name: EventMachine::set_rlimit_nofile
+is_singleton: true
+name: set_rlimit_nofile
+params: (n)
+visibility: public

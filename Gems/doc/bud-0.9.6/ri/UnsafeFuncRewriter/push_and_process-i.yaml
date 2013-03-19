@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: UnsafeFuncRewriter#push_and_process
+is_singleton: false
+name: push_and_process
+params: (exp)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Return the stratum number of the given collection. NB: if a collection is not referenced by any rules, it is not currently assigned to a strata."
+full_name: Bud#collection_stratum
+is_singleton: false
+name: collection_stratum
+params: (collection)
+visibility: public

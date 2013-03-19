@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes subscriber from the list.
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Integer] Subscriber identifier @see #subscribe"
+full_name: EventMachine::Channel#unsubscribe
+is_singleton: false
+name: unsubscribe
+params: (name)
+visibility: public

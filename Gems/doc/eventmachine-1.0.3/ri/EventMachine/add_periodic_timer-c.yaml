@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds a periodic timer to the event loop. It takes the same parameters as the one-shot timer method, {EventMachine.add_timer}. This method schedules execution of the given block repeatedly, at intervals of time *at least* as great as the number of seconds given in the first parameter to the call.
+- !ruby/struct:SM::Flow::P 
+  body: "@example Write a dollar-sign to stderr every five seconds, without blocking"
+- !ruby/struct:SM::Flow::VERB 
+  body: " EventMachine.run {\n   EventMachine.add_periodic_timer( 5 ) { $stderr.write &quot;$&quot; }\n }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Integer] delay Delay in seconds"
+- !ruby/struct:SM::Flow::P 
+  body: "@see EventMachine::PeriodicTimer @see EventMachine.add_timer"
+full_name: EventMachine::add_periodic_timer
+is_singleton: true
+name: add_periodic_timer
+params: (*args, &block)
+visibility: public

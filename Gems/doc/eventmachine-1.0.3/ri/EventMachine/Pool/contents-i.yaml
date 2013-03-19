@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a list for introspection purposes only. You should <b>NEVER</b> call modification or work oriented methods on objects in this list. A good example use case is periodic statistics collection against a set of connection resources.
+- !ruby/struct:SM::Flow::P 
+  body: "For example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "    pool.contents.inject(0) { |sum, connection| connection.num_bytes }\n"
+full_name: EventMachine::Pool#contents
+is_singleton: false
+name: contents
+params: ()
+visibility: public

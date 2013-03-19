@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup_wiring (Bud::LatticeWrapper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/lattice-core.rb, line 408</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_wiring</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">kind</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">LatticeWrapper</span>
+      <span class="ruby-identifier">input</span>.<span class="ruby-identifier">to_push_elem</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">kind</span>)
+    <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">input</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">LatticePushElement</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">PushElement</span>)
+      <span class="ruby-identifier">input</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">kind</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">BudCollection</span>
+      <span class="ruby-identifier">input</span>.<span class="ruby-identifier">pro</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">kind</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Proc</span>
+      <span class="ruby-identifier">tbl</span> = <span class="ruby-identifier">register_coll_expr</span>(<span class="ruby-identifier">input</span>)
+      <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">pro</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">kind</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;unrecognized wiring input: #{input}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">add_merge_target</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

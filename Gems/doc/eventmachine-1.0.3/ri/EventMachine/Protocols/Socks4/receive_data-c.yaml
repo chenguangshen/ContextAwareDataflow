@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: EventMachine::Protocols::Socks4::receive_data
+is_singleton: true
+name: receive_data
+params: (*a)
+visibility: public

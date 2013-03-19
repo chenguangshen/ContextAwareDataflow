@@ -1,0 +1,49 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: PROVISIONAL IMPLEMENTATION of an evented Postgres client. This implements version 3 of the Postgres wire protocol, which will work with any Postgres version from roughly 7.4 onward.
+- !ruby/struct:SM::Flow::P 
+  body: "Objective: we want to access Postgres databases without requiring threads. Until now this has been a problem because the Postgres client implementations have all made use of blocking I/O calls, which is incompatible with a thread-free evented model."
+- !ruby/struct:SM::Flow::P 
+  body: But rather than re-implement the Postgres Wire3 protocol, we're taking advantage of the existing postgres-pr library, which was originally written by Michael Neumann but (at this writing) appears to be no longer maintained. Still, it's in basically a production-ready state, and the wire protocol isn't that complicated anyway.
+- !ruby/struct:SM::Flow::P 
+  body: We're tucking in a bunch of require statements that may not be present in garden-variety EM installations. Until we find a good way to only require these if a program requires postgres, this file will need to be required explicitly.
+- !ruby/struct:SM::Flow::P 
+  body: "We need to monkeypatch StringIO because it lacks the #readbytes method needed by postgres-pr. The StringIO monkeypatch is lifted from the standard library readbytes.rb, which adds method #readbytes directly to class IO. But StringIO is not a subclass of IO. It is modified to raise an IOError instead of TruncatedDataException since the exception is unused."
+- !ruby/struct:SM::Flow::P 
+  body: We cloned the handling of postgres messages from lib/postgres-pr/connection.rb in the postgres-pr library, and modified it for event-handling.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: The password handling in dispatch_conn_message is totally incomplete."
+- !ruby/struct:SM::Flow::P 
+  body: "We return Deferrables from the user-level operations surfaced by this interface. Experimentally, we're using the pattern of always returning a boolean value as the first argument of a deferrable callback to indicate success or failure. This is instead of the traditional pattern of calling Deferrable#succeed or #fail, and requiring the user to define both a callback and an errback function."
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Usage
+- !ruby/struct:SM::Flow::VERB 
+  body: " EM.run {\n   db = EM.connect_unix_domain( &quot;/tmp/.s.PGSQL.5432&quot;, EM::P::Postgres3 )\n   db.connect( dbname, username, psw ).callback do |status|\n     if status\n       db.query( &quot;select * from some_table&quot; ).callback do |status, result, errors|\n         if status\n           result.rows.each do |row|\n             p row\n           end\n         end\n       end\n     end\n   end\n }\n"
+constants: []
+
+full_name: EventMachine::Protocols::Postgres3
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: PostgresPR
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_conn_message
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_query_message
+- !ruby/object:RI::MethodSummary 
+  name: query
+- !ruby/object:RI::MethodSummary 
+  name: receive_data
+- !ruby/object:RI::MethodSummary 
+  name: unbind
+name: Postgres3
+superclass: EventMachine::Connection

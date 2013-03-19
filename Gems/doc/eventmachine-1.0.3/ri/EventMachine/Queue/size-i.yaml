@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Integer] Queue size @note This is a peek, it's not thread safe, and may only tend toward accuracy."
+full_name: EventMachine::Queue#size
+is_singleton: false
+name: size
+params: ()
+visibility: public

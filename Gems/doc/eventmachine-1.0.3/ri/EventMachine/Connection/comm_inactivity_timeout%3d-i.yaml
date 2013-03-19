@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: set_comm_inactivity_timeout
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Allows you to set the inactivity-timeout property for a network connection or datagram socket. Specify a non-negative float value in seconds. If the value is greater than zero, the connection or socket will automatically be closed if no read or write activity takes place for at least that number of seconds. Specify a value of zero to indicate that no automatic timeout should take place. Zero is the default value.
+full_name: EventMachine::Connection#comm_inactivity_timeout=
+is_singleton: false
+name: comm_inactivity_timeout=
+params: (value)
+visibility: public

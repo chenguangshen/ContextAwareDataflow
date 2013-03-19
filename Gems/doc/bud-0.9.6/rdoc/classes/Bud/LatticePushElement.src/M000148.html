@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>push_out (Bud::LatticePushElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/lattice-core.rb, line 190</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push_out</span>(<span class="ruby-identifier">v</span>)
+    <span class="ruby-ivar">@outputs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment cmt"># If we're emitting outputs to a traditional Bloom collection, merge</span>
+      <span class="ruby-comment cmt"># operators (e.g., &lt;=, &lt;+) take a collection of tuples, so we need to</span>
+      <span class="ruby-comment cmt"># convert the lattice value into a collection of tuple-like values. For</span>
+      <span class="ruby-comment cmt"># now, we hardcode a single way to do this: we simply assume the value</span>
+      <span class="ruby-comment cmt"># embedded inside the lattice is Enumerable. We also allow lattice</span>
+      <span class="ruby-comment cmt"># morphisms to just produce Enumerable values directly, so we don't call</span>
+      <span class="ruby-comment cmt"># reveal in that case.</span>
+      <span class="ruby-comment cmt"># XXX: rethink this.</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">BudCollection</span>
+        <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;=</span> (<span class="ruby-identifier">v</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Lattice</span> <span class="ruby-value">? </span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">reveal</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">v</span>, <span class="ruby-keyword kw">self</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@pendings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">BudCollection</span>
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">pending_merge</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Lattice</span> <span class="ruby-value">? </span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">reveal</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

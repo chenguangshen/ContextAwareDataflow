@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sends a ruby object over the network
+full_name: EventMachine::Protocols::ObjectProtocol#send_object
+is_singleton: false
+name: send_object
+params: (obj)
+visibility: public

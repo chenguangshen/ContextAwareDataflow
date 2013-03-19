@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: each
+- !ruby/object:RI::AliasName 
+  name: on_exists?
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "and now, the Bloom-facing methods XXX: &quot;the_name&quot; parameter is unused"
+full_name: Bud::PushElement#pro
+is_singleton: false
+name: pro
+params: (the_name=elem_name, the_schema=schema, &blk)
+visibility: public

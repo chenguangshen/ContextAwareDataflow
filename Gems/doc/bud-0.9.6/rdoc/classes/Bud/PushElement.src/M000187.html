@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>group (Bud::PushElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 270</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">group</span>(<span class="ruby-identifier">keycols</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">aggpairs</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-comment cmt"># establish schema</span>
+      <span class="ruby-identifier">keycols</span> = [] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keycols</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">keycols</span> = <span class="ruby-identifier">keycols</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">canonicalize_col</span>(<span class="ruby-identifier">c</span>)}
+      <span class="ruby-identifier">keynames</span> = <span class="ruby-identifier">keycols</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span>[<span class="ruby-value">2</span>]}
+      <span class="ruby-identifier">aggcolsdups</span> = <span class="ruby-identifier">aggpairs</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ap</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ap</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;::&quot;</span>).<span class="ruby-identifier">last</span>}
+      <span class="ruby-identifier">aggcols</span> = []
+      <span class="ruby-identifier">aggcolsdups</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">aggcols</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{n.downcase}_#{i}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">aggcols</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">the_schema</span> = <span class="ruby-identifier">keynames</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">the_schema</span> = { <span class="ruby-identifier">keynames</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">aggcols</span> }
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">aggpairs</span> = <span class="ruby-identifier">prep_aggpairs</span>(<span class="ruby-identifier">aggpairs</span>)
+      <span class="ruby-identifier">toplevel</span> = <span class="ruby-ivar">@bud_instance</span>.<span class="ruby-identifier">toplevel</span>
+      <span class="ruby-identifier">g</span> = <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">PushGroup</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'grp'</span><span class="ruby-operator">+</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tv_usec</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">toplevel</span>.<span class="ruby-identifier">this_rule_context</span>,
+                             <span class="ruby-ivar">@collection_name</span>, <span class="ruby-identifier">keycols</span>, <span class="ruby-identifier">aggpairs</span>, <span class="ruby-identifier">the_schema</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-identifier">g</span>)
+      <span class="ruby-identifier">toplevel</span>.<span class="ruby-identifier">push_elems</span>[[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object_id</span>, <span class="ruby-identifier">:group</span>, <span class="ruby-identifier">keycols</span>, <span class="ruby-identifier">aggpairs</span>, <span class="ruby-identifier">blk</span>]] = <span class="ruby-identifier">g</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">g</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

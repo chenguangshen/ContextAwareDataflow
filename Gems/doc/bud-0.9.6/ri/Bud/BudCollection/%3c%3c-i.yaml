@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: instantaneously place an individual item from rhs into collection on lhs
+full_name: Bud::BudCollection#<<
+is_singleton: false
+name: "<<"
+params: (item)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: exemplary aggregate method to be used in Bud::BudCollection.group. computes minimum of x entries aggregated.
+full_name: Bud#min
+is_singleton: false
+name: min
+params: (x)
+visibility: public

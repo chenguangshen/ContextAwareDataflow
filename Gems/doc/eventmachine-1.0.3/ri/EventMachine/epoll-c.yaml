@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method is a harmless no-op in the pure-Ruby implementation. This is intended to ensure that user code behaves properly across different EM implementations. @private
+full_name: EventMachine::epoll
+is_singleton: true
+name: epoll
+params: ()
+visibility: public

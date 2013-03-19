@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: del
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Delete the value associated with a key
+- !ruby/struct:SM::Flow::VERB 
+  body: " cache.del :a\n cache.del(:b){ puts &quot;deleted the value!&quot; }\n"
+full_name: EventMachine::Protocols::Memcache#delete
+is_singleton: false
+name: delete
+params: (key, expires = 0, &cb)
+visibility: public

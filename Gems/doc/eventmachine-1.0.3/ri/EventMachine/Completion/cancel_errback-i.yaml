@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Remove an errback. N.B. Some errbacks cannot be deleted. Usage is NOT recommended, this is an anti-pattern.
+full_name: EventMachine::Completion#cancel_errback
+is_singleton: false
+name: cancel_errback
+params: (*a, &b)
+visibility: public

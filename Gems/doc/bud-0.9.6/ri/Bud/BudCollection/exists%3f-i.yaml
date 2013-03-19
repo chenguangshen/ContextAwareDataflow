@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: t
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: checks for an item for which <tt>block</tt> produces a match
+full_name: Bud::BudCollection#exists?
+is_singleton: false
+name: exists?
+params: (&block) {|t| ...}
+visibility: public

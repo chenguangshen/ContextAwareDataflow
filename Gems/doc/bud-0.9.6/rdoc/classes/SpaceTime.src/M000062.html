@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>process (SpaceTime)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/graphs.rb, line 282</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>
+    <span class="ruby-ivar">@edges</span> = {}
+    <span class="ruby-identifier">queues</span> = {}
+    <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">queues</span>[<span class="ruby-identifier">i</span>[<span class="ruby-value">1</span>]] <span class="ruby-operator">||=</span> []
+      <span class="ruby-identifier">queues</span>[<span class="ruby-identifier">i</span>[<span class="ruby-value">2</span>]] <span class="ruby-operator">||=</span> []
+      <span class="ruby-identifier">queues</span>[<span class="ruby-identifier">i</span>[<span class="ruby-value">1</span>]] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>[<span class="ruby-value">3</span>]
+      <span class="ruby-identifier">queues</span>[<span class="ruby-identifier">i</span>[<span class="ruby-value">2</span>]] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>[<span class="ruby-value">4</span>]
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">squeues</span> = {}
+    <span class="ruby-identifier">queues</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">squeues</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">sort</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_i</span>}
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># create the nodes and the timeline edges first.</span>
+    <span class="ruby-identifier">squeues</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">v</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">label</span> = <span class="ruby-node">&quot;#{k}-#{item}&quot;</span>
+        <span class="ruby-identifier">params</span> = {<span class="ruby-identifier">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.1</span>, <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.1</span>, <span class="ruby-identifier">:fontsize</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">k</span>}
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@links</span>
+          <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:URL</span>] = <span class="ruby-node">&quot;DBM_#{k}/tm_#{item}.svg&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">snd</span> = <span class="ruby-ivar">@subs</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">add_nodes</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">params</span>)
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@head</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">snd</span>.<span class="ruby-identifier">object_id</span>
+          <span class="ruby-ivar">@subs</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">add_edges</span>(<span class="ruby-ivar">@head</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">snd</span>, <span class="ruby-identifier">:weight</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>)
+          <span class="ruby-ivar">@head</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">snd</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt">#@input.sort{|a, b| a[3] &lt;=&gt; b[3]}.each do |i|</span>
+    <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">snd_loc</span> = <span class="ruby-identifier">i</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">rcv_loc</span> = <span class="ruby-identifier">i</span>[<span class="ruby-value">2</span>]
+      <span class="ruby-identifier">snd_label</span> = <span class="ruby-node">&quot;#{snd_loc}-#{i[3]}&quot;</span>
+      <span class="ruby-identifier">rcv_label</span> = <span class="ruby-node">&quot;#{rcv_loc}-#{i[4]}&quot;</span>
+      <span class="ruby-comment cmt">#@g.add_edge(snd_label, rcv_label, :color =&gt; &quot;red&quot;, :weight =&gt; 1, :label =&gt; i[5])</span>
+      <span class="ruby-identifier">msg_edge</span>(<span class="ruby-identifier">snd_label</span>, <span class="ruby-identifier">rcv_label</span>, <span class="ruby-identifier">i</span>[<span class="ruby-value">5</span>])
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

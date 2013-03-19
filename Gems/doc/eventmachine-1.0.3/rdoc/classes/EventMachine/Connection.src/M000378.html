@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (EventMachine::Connection)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/em/connection.rb, line 48</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">sig</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">allocate</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-comment cmt"># Store signature</span>
+        <span class="ruby-ivar">@signature</span> = <span class="ruby-identifier">sig</span>
+        <span class="ruby-comment cmt"># associate_callback_target sig</span>
+
+        <span class="ruby-comment cmt"># Call a superclass's #initialize if it has one</span>
+        <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+
+        <span class="ruby-comment cmt"># post initialize callback</span>
+        <span class="ruby-identifier">post_init</span>
+
+        <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

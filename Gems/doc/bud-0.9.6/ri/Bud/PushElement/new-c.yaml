@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushElement::new
+is_singleton: true
+name: new
+params: (name_in, bud_instance, collection_name=nil, given_schema=nil, defer_schema=false, &blk)
+visibility: public

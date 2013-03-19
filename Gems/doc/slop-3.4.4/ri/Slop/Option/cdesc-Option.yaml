@@ -1,0 +1,65 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: argument_in_value
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: config
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: count
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: description
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: long
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: short
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: types
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The default Hash of configuration options this class uses.
+  name: DEFAULT_OPTIONS
+  value: "{       :argument => false,       :optional_argument => false,       :tail => false,       :default => nil,       :callback => nil,       :delimiter => ',',       :limit => 0,       :match => nil,       :optional => true,       :required => false,       :as => String,       :autocreated => false"
+full_name: Slop::Option
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: accepts_optional_argument?
+- !ruby/object:RI::MethodSummary 
+  name: call
+- !ruby/object:RI::MethodSummary 
+  name: expects_argument?
+- !ruby/object:RI::MethodSummary 
+  name: help
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: key
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: value
+- !ruby/object:RI::MethodSummary 
+  name: value=
+name: Option
+superclass: Object

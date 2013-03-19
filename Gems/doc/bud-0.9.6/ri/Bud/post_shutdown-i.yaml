@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Register a callback that will be invoked when <b>after</b> this instance of Bud has been shutdown.
+full_name: Bud#post_shutdown
+is_singleton: false
+name: post_shutdown
+params: (&blk)
+visibility: public

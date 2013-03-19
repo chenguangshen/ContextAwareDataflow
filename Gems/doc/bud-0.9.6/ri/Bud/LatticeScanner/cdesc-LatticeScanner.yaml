@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: collection
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: invalidate_set
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: rescan_set
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A push-based dataflow element that scans a lattice wrapper
+constants: []
+
+full_name: Bud::LatticeScanner
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: scan
+name: LatticeScanner
+superclass: Bud::LatticePushElement

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::Lattice::lattice_kinds
+is_singleton: true
+name: lattice_kinds
+params: ()
+visibility: public

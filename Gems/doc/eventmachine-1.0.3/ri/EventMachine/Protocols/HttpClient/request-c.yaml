@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param args [Hash] The request arguments @option args [String] :host The host IP/DNS name @option args [Integer] :port The port to connect too @option args [String] :verb The request type [GET | POST | DELETE | PUT] @option args [String] :request The request path @option args [Hash] :basic_auth The basic auth credentials (:username and :password) @option args [String] :content The request content @option args [String] :contenttype The content type (e.g. text/plain) @option args [String] :query_string The query string @option args [String] :host_header The host header to set @option args [String] :cookie Cookies to set"
+full_name: EventMachine::Protocols::HttpClient::request
+is_singleton: true
+name: request
+params: ( args = {} )
+visibility: public

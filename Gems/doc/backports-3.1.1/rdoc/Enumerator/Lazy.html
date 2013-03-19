@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Enumerator::Lazy</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/backports/2_0_0/enumerable/lazy_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/backports/2.0.0/enumerable/lazy.rb">lib/backports/2.0.0/enumerable/lazy.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Enumerator.html">Enumerator</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-__set_inspect">#__set_inspect</a></li>
+          
+          <li><a href="#method-i-chunk">#chunk</a></li>
+          
+          <li><a href="#method-i-collect">#collect</a></li>
+          
+          <li><a href="#method-i-collect_concat">#collect_concat</a></li>
+          
+          <li><a href="#method-i-drop">#drop</a></li>
+          
+          <li><a href="#method-i-drop_while">#drop_while</a></li>
+          
+          <li><a href="#method-i-enum_for">#enum_for</a></li>
+          
+          <li><a href="#method-i-find_all">#find_all</a></li>
+          
+          <li><a href="#method-i-flat_map">#flat_map</a></li>
+          
+          <li><a href="#method-i-grep">#grep</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-lazy">#lazy</a></li>
+          
+          <li><a href="#method-i-map">#map</a></li>
+          
+          <li><a href="#method-i-reject">#reject</a></li>
+          
+          <li><a href="#method-i-select">#select</a></li>
+          
+          <li><a href="#method-i-take">#take</a></li>
+          
+          <li><a href="#method-i-take_while">#take_while</a></li>
+          
+          <li><a href="#method-i-to_enum">#to_enum</a></li>
+          
+          <li><a href="#method-i-zip">#zip</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Prime.html">Prime</a></li>
+        
+          <li><a href="../Prime/EratosthenesGenerator.html">Prime::EratosthenesGenerator</a></li>
+        
+          <li><a href="../Prime/EratosthenesSieve.html">Prime::EratosthenesSieve</a></li>
+        
+          <li><a href="../Prime/Generator23.html">Prime::Generator23</a></li>
+        
+          <li><a href="../Prime/OldCompatibility.html">Prime::OldCompatibility</a></li>
+        
+          <li><a href="../Prime/PseudoPrimeGenerator.html">Prime::PseudoPrimeGenerator</a></li>
+        
+          <li><a href="../Prime/TrialDivision.html">Prime::TrialDivision</a></li>
+        
+          <li><a href="../Prime/TrialDivisionGenerator.html">Prime::TrialDivisionGenerator</a></li>
+        
+          <li><a href="../Backports.html">Backports</a></li>
+        
+          <li><a href="../Backports/MOST_EXTREME_OBJECT_EVER.html">Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+        
+          <li><a href="../Backports/StdLib.html">Backports::StdLib</a></li>
+        
+          <li><a href="../Backports/StdLib/LoadedFeatures.html">Backports::StdLib::LoadedFeatures</a></li>
+        
+          <li><a href="../Enumerator.html">Enumerator</a></li>
+        
+          <li><a href="../Enumerator/GeneratorBP.html">Enumerator::GeneratorBP</a></li>
+        
+          <li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+        
+          <li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+        
+          <li><a href="../Matrix.html">Matrix</a></li>
+        
+          <li><a href="../Matrix/EigenvalueDecomposition.html">Matrix::EigenvalueDecomposition</a></li>
+        
+          <li><a href="../Matrix/LUPDecomposition.html">Matrix::LUPDecomposition</a></li>
+        
+          <li><a href="../Random.html">Random</a></li>
+        
+          <li><a href="../Random/Implementation.html">Random::Implementation</a></li>
+        
+          <li><a href="../Random/MT19937.html">Random::MT19937</a></li>
+        
+          <li><a href="../Enumerable.html">Enumerable</a></li>
+        
+          <li><a href="../Enumerable/Enumerator.html">Enumerable::Enumerator</a></li>
+        
+          <li><a href="../File.html">File</a></li>
+        
+          <li><a href="../File/Constants.html">File::Constants</a></li>
+        
+          <li><a href="../Vector.html">Vector</a></li>
+        
+          <li><a href="../Vector/ZeroVectorError.html">Vector::ZeroVectorError</a></li>
+        
+          <li><a href="../ARGF.html">ARGF</a></li>
+        
+          <li><a href="../Array.html">Array</a></li>
+        
+          <li><a href="../BasicObject.html">BasicObject</a></li>
+        
+          <li><a href="../Binding.html">Binding</a></li>
+        
+          <li><a href="../Complex.html">Complex</a></li>
+        
+          <li><a href="../Dir.html">Dir</a></li>
+        
+          <li><a href="../ENV.html">ENV</a></li>
+        
+          <li><a href="../Fixnum.html">Fixnum</a></li>
+        
+          <li><a href="../Float.html">Float</a></li>
+        
+          <li><a href="../GC.html">GC</a></li>
+        
+          <li><a href="../Hash.html">Hash</a></li>
+        
+          <li><a href="../IO.html">IO</a></li>
+        
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          <li><a href="../Kernel.html">Kernel</a></li>
+        
+          <li><a href="../Math.html">Math</a></li>
+        
+          <li><a href="../Method.html">Method</a></li>
+        
+          <li><a href="../Module.html">Module</a></li>
+        
+          <li><a href="../NilClass.html">NilClass</a></li>
+        
+          <li><a href="../Numeric.html">Numeric</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+        
+          <li><a href="../OpenStruct.html">OpenStruct</a></li>
+        
+          <li><a href="../Proc.html">Proc</a></li>
+        
+          <li><a href="../Process.html">Process</a></li>
+        
+          <li><a href="../Range.html">Range</a></li>
+        
+          <li><a href="../Regexp.html">Regexp</a></li>
+        
+          <li><a href="../Set.html">Set</a></li>
+        
+          <li><a href="../StopIteration.html">StopIteration</a></li>
+        
+          <li><a href="../String.html">String</a></li>
+        
+          <li><a href="../Struct.html">Struct</a></li>
+        
+          <li><a href="../Symbol.html">Symbol</a></li>
+        
+          <li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Enumerator::Lazy</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(obj)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">obj</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-identifier">@@lazy_with_no_block</span>)
+    <span class="ruby-ivar">@inspect_info</span> = <span class="ruby-identifier">obj</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">super</span>(<span class="ruby-ivar">@receiver</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">object</span>, <span class="ruby-ivar">@method</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">method</span> <span class="ruby-operator">||</span> <span class="ruby-value">:each</span>, * <span class="ruby-ivar">@args</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must supply a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-ivar">@receiver</span> = <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">super</span>() <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">catch</span> <span class="ruby-identifier">@@done</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">each</span>(*<span class="ruby-identifier">args</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span>*<span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">yield</span> <span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">x</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="chunk-method" class="method-detail ">
+          <a name="method-i-chunk"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chunk</span><span
+              class="method-args">(*)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="chunk-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chunk</span>(*)
+  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">lazy</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- chunk-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- chunk-method -->
+
+      
+        <div id="collect-method" class="method-detail method-alias">
+          <a name="method-i-collect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">collect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Lazy.html#method-i-map">map</a>
+          </div>
+          
+        </div><!-- collect-method -->
+
+      
+        <div id="collect_concat-method" class="method-detail method-alias">
+          <a name="method-i-collect_concat"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">collect_concat</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Lazy.html#method-i-flat_map">flat_map</a>
+          </div>
+          
+        </div><!-- collect_concat-method -->
+
+      
+        <div id="drop-method" class="method-detail ">
+          <a name="method-i-drop"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">drop</span><span
+              class="method-args">(n)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="drop-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">drop</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-identifier">n</span> = <span class="ruby-constant">Backports</span><span class="ruby-operator">::</span><span class="ruby-identifier">coerce_to_int</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">backports_memo</span> <span class="ruby-operator">||=</span> {<span class="ruby-value">:remain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">n</span>}
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">:remain</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">data</span>[<span class="ruby-value">:remain</span>] <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(*<span class="ruby-identifier">values</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:drop</span>, [<span class="ruby-identifier">n</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- drop-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- drop-method -->
+
+      
+        <div id="drop_while-method" class="method-detail ">
+          <a name="method-i-drop_while"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">drop_while</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="drop_while-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">drop_while</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy drop_while without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">backports_memo</span> <span class="ruby-operator">||=</span> {<span class="ruby-value">:dropping</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}
+    <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(*<span class="ruby-identifier">values</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">:dropping</span>] <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-keyword">yield</span>(*<span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:drop_while</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- drop_while-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- drop_while-method -->
+
+      
+        <div id="enum_for-method" class="method-detail method-alias">
+          <a name="method-i-enum_for"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">enum_for</span><span
+              class="method-args">(method = :each, *args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Lazy.html#method-i-to_enum">to_enum</a>
+          </div>
+          
+        </div><!-- enum_for-method -->
+
+      
+        <div id="find_all-method" class="method-detail method-alias">
+          <a name="method-i-find_all"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">find_all</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Lazy.html#method-i-select">select</a>
+          </div>
+          
+        </div><!-- find_all-method -->
+
+      
+        <div id="flat_map-method" class="method-detail ">
+          <a name="method-i-flat_map"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">flat_map</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="flat_map-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">flat_map</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy flat_map without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-keyword">yield</span>(*<span class="ruby-identifier">values</span>)
+    <span class="ruby-identifier">ary</span> = <span class="ruby-constant">Backports</span>.<span class="ruby-identifier">is_array?</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ary</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">result</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:each</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:force</span>))
+      (<span class="ruby-identifier">ary</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">result</span>).<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">x</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:flat_map</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- flat_map-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Lazy.html#method-i-collect_concat">collect_concat</a>
+          </div>
+          
+
+          
+        </div><!-- flat_map-method -->
+
+      
+        <div id="grep-method" class="method-detail ">
+          <a name="method-i-grep"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">grep</span><span
+              class="method-args">(pattern)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="grep-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grep</span>(<span class="ruby-identifier">pattern</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-comment"># Split for performance</span>
+    <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-keyword">yield</span>(<span class="ruby-identifier">values</span>)) <span class="ruby-keyword">if</span> <span class="ruby-identifier">pattern</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-identifier">values</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">pattern</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:grep</span>, [<span class="ruby-identifier">pattern</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- grep-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- grep-method -->
+
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-identifier">suff</span> = <span class="ruby-string">''</span>
+  <span class="ruby-identifier">suff</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;:#{@method}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@method</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@method</span> <span class="ruby-operator">==</span> <span class="ruby-value">:each</span>
+  <span class="ruby-identifier">suff</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;(#{@args.inspect[1...-1]})&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@args</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@args</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-node">&quot;#&lt;#{self.class}: #{@receiver.inspect}#{suff}&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+
+      
+        <div id="lazy-method" class="method-detail ">
+          <a name="method-i-lazy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">lazy</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="lazy-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lazy</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- lazy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- lazy-method -->
+
+      
+        <div id="map-method" class="method-detail ">
+          <a name="method-i-map"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">map</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="map-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">map</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy map without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">yield</span>(*<span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:map</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- map-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Lazy.html#method-i-collect">collect</a>
+          </div>
+          
+
+          
+        </div><!-- map-method -->
+
+      
+        <div id="reject-method" class="method-detail ">
+          <a name="method-i-reject"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">reject</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="reject-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reject</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy reject without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-identifier">values</span>) <span class="ruby-keyword">unless</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">values</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:reject</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- reject-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- reject-method -->
+
+      
+        <div id="select-method" class="method-detail ">
+          <a name="method-i-select"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">select</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="select-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">select</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy select without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span> <span class="ruby-identifier">values</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">values</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:select</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- select-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Lazy.html#method-i-find_all">find_all</a>
+          </div>
+          
+
+          
+        </div><!-- select-method -->
+
+      
+        <div id="take-method" class="method-detail ">
+          <a name="method-i-take"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">take</span><span
+              class="method-args">(n)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="take-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">take</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-identifier">n</span> = <span class="ruby-constant">Backports</span><span class="ruby-operator">::</span><span class="ruby-identifier">coerce_to_int</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'attempt to take negative size'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">n</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">backports_memo</span> <span class="ruby-operator">||=</span> {<span class="ruby-value">:remain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">n</span>}
+    <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(*<span class="ruby-identifier">values</span>)
+    <span class="ruby-identifier">throw</span> <span class="ruby-identifier">@@done</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">data</span>[<span class="ruby-value">:remain</span>] <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:take</span>, [<span class="ruby-identifier">n</span>], <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- take-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- take-method -->
+
+      
+        <div id="take_while-method" class="method-detail ">
+          <a name="method-i-take_while"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">take_while</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="take_while-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">take_while</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;tried to call lazy take_while without a block&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">throw</span> <span class="ruby-identifier">@@done</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">yield</span>(*<span class="ruby-identifier">values</span>)
+    <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">yield</span>(*<span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:take_while</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- take_while-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- take_while-method -->
+
+      
+        <div id="to_enum-method" class="method-detail ">
+          <a name="method-i-to_enum"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_enum</span><span
+              class="method-args">(method = :each, *args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="to_enum-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">method</span> = <span class="ruby-value">:each</span>, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@lazy_with_no_block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">method</span>, <span class="ruby-identifier">args</span>))
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_enum-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Lazy.html#method-i-enum_for">enum_for</a>
+          </div>
+          
+
+          
+        </div><!-- to_enum-method -->
+
+      
+        <div id="zip-method" class="method-detail ">
+          <a name="method-i-zip"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">zip</span><span
+              class="method-args">(*args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="zip-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zip</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">super</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">arys</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-constant">Backports</span>.<span class="ruby-identifier">is_array?</span>(<span class="ruby-identifier">arg</span>) }
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">arys</span>.<span class="ruby-identifier">all?</span>
+    <span class="ruby-comment"># Handle trivial case of multiple array arguments separately</span>
+    <span class="ruby-comment"># by avoiding Enumerator#next for efficiency &amp; compatibility</span>
+    <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">data</span> = <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">backports_memo</span> <span class="ruby-operator">||=</span> {<span class="ruby-value">:iter</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>}
+      <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">arys</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ary</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ary</span>[<span class="ruby-identifier">data</span>[<span class="ruby-value">:iter</span>]]}.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">values</span>)
+      <span class="ruby-identifier">data</span>[<span class="ruby-value">:iter</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;wrong argument type #{a.class} (must respond to :each)&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:each</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">Lazy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">yielder</span>, *<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">enums</span> = <span class="ruby-identifier">yielder</span>.<span class="ruby-identifier">backports_memo</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:to_enum</span>)
+      <span class="ruby-identifier">values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">others</span> = <span class="ruby-identifier">enums</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">begin</span>
+          <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">next</span>
+        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StopIteration</span>
+          <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">yielder</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">others</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">values</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">__set_inspect</span> <span class="ruby-value">:zip</span>, <span class="ruby-identifier">args</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- zip-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- zip-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+      <div id="protected-instance-method-details" class="method-section section">
+        <h3 class="section-header">Protected Instance Methods</h3>
+
+      
+        <div id="__set_inspect-method" class="method-detail ">
+          <a name="method-i-__set_inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">__set_inspect</span><span
+              class="method-args">(method, args = nil, receiver = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="__set_inspect-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/2.0.0/enumerable/lazy.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">__set_inspect</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">args</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">receiver</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@method</span> = <span class="ruby-identifier">method</span>
+  <span class="ruby-ivar">@args</span> = <span class="ruby-identifier">args</span>
+  <span class="ruby-ivar">@receiver</span> = <span class="ruby-identifier">receiver</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">receiver</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- __set_inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- __set_inspect-method -->
+
+      
+      </div><!-- protected-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

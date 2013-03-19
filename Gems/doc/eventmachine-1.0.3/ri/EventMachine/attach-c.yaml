@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Attaches an IO object or file descriptor to the eventloop as a regular connection. The file descriptor will be set as non-blocking, and EventMachine will process receive_data and send_data events on it as it would for any other connection.
+- !ruby/struct:SM::Flow::P 
+  body: To watch a fd instead, use {EventMachine.watch}, which will not alter the state of the socket and fire notify_readable and notify_writable events instead.
+full_name: EventMachine::attach
+is_singleton: true
+name: attach
+params: (io, handler=nil, *args, &blk)
+visibility: public

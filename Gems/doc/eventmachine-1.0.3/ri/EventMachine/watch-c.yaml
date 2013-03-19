@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "{EventMachine.watch} registers a given file descriptor or IO object with the eventloop. The file descriptor will not be modified (it will remain blocking or non-blocking)."
+- !ruby/struct:SM::Flow::P 
+  body: The eventloop can be used to process readable and writable events on the file descriptor, using {EventMachine::Connection#notify_readable=} and {EventMachine::Connection#notify_writable=}
+- !ruby/struct:SM::Flow::P 
+  body: "{EventMachine::Connection#notify_readable?} and {EventMachine::Connection#notify_writable?} can be used to check what events are enabled on the connection."
+- !ruby/struct:SM::Flow::P 
+  body: To detach the file descriptor, use {EventMachine::Connection#detach}
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: " module SimpleHttpClient\n   def notify_readable\n     header = @io.readline\n\n     if header == &quot;\\r\\n&quot;\n       # detach returns the file descriptor number (fd == @io.fileno)\n       fd = detach\n     end\n   rescue EOFError\n     detach\n   end\n\n   def unbind\n     EM.next_tick do\n       # socket is detached from the eventloop, but still open\n       data = @io.read\n     end\n   end\n end\n\n EventMachine.run {\n   sock = TCPSocket.new('site.com', 80)\n   sock.write(&quot;GET / HTTP/1.0\\r\\n\\r\\n&quot;)\n   conn = EventMachine.watch(sock, SimpleHttpClient)\n   conn.notify_readable = true\n }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@author Riham Aldakkak (eSpace Technologies)"
+full_name: EventMachine::watch
+is_singleton: true
+name: watch
+params: (io, handler=nil, *args, &blk)
+visibility: public

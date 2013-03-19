@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud#budtime
+is_singleton: false
+name: budtime
+params: ()
+visibility: public

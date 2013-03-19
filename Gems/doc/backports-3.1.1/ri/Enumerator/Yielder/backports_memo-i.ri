@@ -1,0 +1,3 @@
+U:RDoc::Attr[i"backports_memo"'Enumerator::Yielder#backports_memo"RW:publico:RDoc::Markup::Document:
+@file0:@parts[o:RDoc::Markup::Paragraph;	[
+"ACurrent API for Lazy Enumerator does not provide an easy way"Lto handle internal state. We "cheat" and use yielder to hold it for us."BA new yielder is created when generating or after a `rewind`."HThis way we avoid issues like http://bugs.ruby-lang.org/issues/7691"-or http://bugs.ruby-lang.org/issues/7696F"+lib/backports/2.0.0/enumerable/lazy.rb

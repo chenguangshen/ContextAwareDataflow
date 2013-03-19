@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security) is active on the connection, returns the remote [X509 certificate](http://en.wikipedia.org/wiki/X.509) as a string, in the popular [PEM format](http://en.wikipedia.org/wiki/Privacy_Enhanced_Mail). This can then be used for arbitrary validation of a peer's certificate in your code.
+- !ruby/struct:SM::Flow::P 
+  body: "This should be called in/after the {#ssl_handshake_completed} callback, which indicates that SSL/TLS is active. Using this callback is important, because the certificate may not be available until the time it is executed. Using #post_init or #connection_completed is not adequate, because the SSL handshake may still be taking place."
+- !ruby/struct:SM::Flow::P 
+  body: "This method will return `nil` if:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: EventMachine is not built with [OpenSSL](http://www.openssl.org) support
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "[TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security) is not active on the connection"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: TLS handshake is not yet complete
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Remote peer for any other reason has not presented a certificate
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: "@example Getting peer TLS certificate information in EventMachine"
+- !ruby/struct:SM::Flow::VERB 
+  body: " module Handler\n   def post_init\n     puts &quot;Starting TLS&quot;\n     start_tls\n   end\n\n   def ssl_handshake_completed\n     puts get_peer_cert\n     close_connection\n   end\n\n   def unbind\n     EventMachine::stop_event_loop\n   end\n end\n\n  EventMachine.run do\n    EventMachine.connect &quot;mail.google.com&quot;, 443, Handler\n end\n\n # Will output:\n # -----BEGIN CERTIFICATE-----\n # MIIDIjCCAougAwIBAgIQbldpChBPqv+BdPg4iwgN8TANBgkqhkiG9w0BAQUFADBM\n # MQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg\n # THRkLjEWMBQGA1UEAxMNVGhhd3RlIFNHQyBDQTAeFw0wODA1MDIxNjMyNTRaFw0w\n # OTA1MDIxNjMyNTRaMGkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlh\n # MRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRMwEQYDVQQKEwpHb29nbGUgSW5jMRgw\n # FgYDVQQDEw9tYWlsLmdvb2dsZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJ\n # AoGBALlkxdh2QXegdElukCSOV2+8PKiONIS+8Tu9K7MQsYpqtLNC860zwOPQ2NLI\n # 3Zp4jwuXVTrtzGuiqf5Jioh35Ig3CqDXtLyZoypjZUQcq4mlLzHlhIQ4EhSjDmA7\n # Ffw9y3ckSOQgdBQWNLbquHh9AbEUjmhkrYxIqKXeCnRKhv6nAgMBAAGjgecwgeQw\n # KAYDVR0lBCEwHwYIKwYBBQUHAwEGCCsGAQUFBwMCBglghkgBhvhCBAEwNgYDVR0f\n # BC8wLTAroCmgJ4YlaHR0cDovL2NybC50aGF3dGUuY29tL1RoYXd0ZVNHQ0NBLmNy\n # bDByBggrBgEFBQcBAQRmMGQwIgYIKwYBBQUHMAGGFmh0dHA6Ly9vY3NwLnRoYXd0\n # ZS5jb20wPgYIKwYBBQUHMAKGMmh0dHA6Ly93d3cudGhhd3RlLmNvbS9yZXBvc2l0\n # b3J5L1RoYXd0ZV9TR0NfQ0EuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQEF\n # BQADgYEAsRwpLg1dgCR1gYDK185MFGukXMeQFUvhGqF8eT/CjpdvezyKVuz84gSu\n # 6ccMXgcPQZGQN/F4Xug+Q01eccJjRSVfdvR5qwpqCj+6BFl5oiKDBsveSkrmL5dz\n # s2bn7TdTSYKcLeBkjXxDLHGBqLJ6TNCJ3c4/cbbG5JhGvoema94=\n # -----END CERTIFICATE-----\n"
+- !ruby/struct:SM::Flow::P 
+  body: You can do whatever you want with the certificate String, such as load it as a certificate object using the OpenSSL library, and check its fields.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [String] the remote [X509 certificate](http://en.wikipedia.org/wiki/X.509), in the popular [PEM format](http://en.wikipedia.org/wiki/Privacy_Enhanced_Mail),"
+- !ruby/struct:SM::Flow::VERB 
+  body: "                 if TLS is active on the connection\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@see Connection#start_tls @see Connection#ssl_handshake_completed"
+full_name: EventMachine::Connection#get_peer_cert
+is_singleton: false
+name: get_peer_cert
+params: ()
+visibility: public

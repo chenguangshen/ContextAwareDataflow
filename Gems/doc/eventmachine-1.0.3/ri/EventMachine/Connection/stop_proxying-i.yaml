@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A helper method for {EventMachine.disable_proxy}
+full_name: EventMachine::Connection#stop_proxying
+is_singleton: false
+name: stop_proxying
+params: ()
+visibility: public

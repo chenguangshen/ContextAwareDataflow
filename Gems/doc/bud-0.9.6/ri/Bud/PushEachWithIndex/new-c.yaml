@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushEachWithIndex::new
+is_singleton: true
+name: new
+params: (elem_name, bud_instance, collection_name)
+visibility: public

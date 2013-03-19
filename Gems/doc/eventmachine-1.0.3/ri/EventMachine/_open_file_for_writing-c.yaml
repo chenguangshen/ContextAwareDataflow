@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: c
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@private"
+full_name: EventMachine::_open_file_for_writing
+is_singleton: true
+name: _open_file_for_writing
+params: (filename, handler=nil) {|c| ...}
+visibility: public

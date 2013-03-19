@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: "<<"
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Push items onto the queue in the reactor thread. The items will not appear in the queue immediately, but will be scheduled for addition during the next reactor tick.
+full_name: EventMachine::Queue#push
+is_singleton: false
+name: push
+params: (*items)
+visibility: public

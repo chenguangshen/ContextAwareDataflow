@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Collect the results of an asynchronous iteration into an array.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  EM::Iterator.new(%w[ pwd uptime uname date ], 2).map(proc{ |cmd,iter|\n    EM.system(cmd){ |output,status|\n      iter.return(output)\n    }\n  }, proc{ |results|\n    p results\n  })\n"
+full_name: EventMachine::Iterator#map
+is_singleton: false
+name: map
+params: (foreach, after)
+visibility: public

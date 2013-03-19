@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushElement#sort
+is_singleton: false
+name: sort
+params: (name=nil, bud_instance=nil, the_schema=nil, &blk)
+visibility: public

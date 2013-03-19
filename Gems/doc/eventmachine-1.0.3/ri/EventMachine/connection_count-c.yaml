@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the total number of connections (file descriptors) currently held by the reactor. Note that a tick must pass after the 'initiation' of a connection for this number to increment. It's usually accurate, but don't rely on the exact precision of this number unless you really know EM internals.
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: " EventMachine.run {\n   EventMachine.connect(&quot;rubyeventmachine.com&quot;, 80)\n   # count will be 0 in this case, because connection is not\n   # established yet\n   count = EventMachine.connection_count\n }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: " EventMachine.run {\n   EventMachine.connect(&quot;rubyeventmachine.com&quot;, 80)\n\n   EventMachine.next_tick {\n     # In this example, count will be 1 since the connection has been established in\n     # the next loop of the reactor.\n     count = EventMachine.connection_count\n   }\n }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Integer] Number of connections currently held by the reactor."
+full_name: EventMachine::connection_count
+is_singleton: true
+name: connection_count
+params: ()
+visibility: public

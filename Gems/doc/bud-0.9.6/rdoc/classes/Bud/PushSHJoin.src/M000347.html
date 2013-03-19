@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>replay_join (Bud::PushSHJoin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/join.rb, line 307</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replay_join</span>
+      <span class="ruby-ivar">@rescan</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-ivar">@hash_tables</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">size</span>
+        <span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">items</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">the_matches</span> = <span class="ruby-identifier">b</span>[<span class="ruby-identifier">key</span>]
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">the_matches</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">process_matches</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">the_matches</span>, <span class="ruby-value">0</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">b</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">items</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">the_matches</span> = <span class="ruby-identifier">a</span>[<span class="ruby-identifier">key</span>]
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">the_matches</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">process_matches</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">the_matches</span>, <span class="ruby-value">1</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

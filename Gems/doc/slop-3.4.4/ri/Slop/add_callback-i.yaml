@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add a callback.
+- !ruby/struct:SM::Flow::P 
+  body: label - The Symbol identifier to attach this callback.
+- !ruby/struct:SM::Flow::P 
+  body: Returns nothing.
+full_name: Slop#add_callback
+is_singleton: false
+name: add_callback
+params: (label, &block)
+visibility: public

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: EventMachine::Protocols::Memcache</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">EventMachine::Protocols::Memcache</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/em/protocols/memcache_rb.html">
+                lib/em/protocols/memcache.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Implements the <a href="Memcache.html">Memcache</a> protocol (<a
+href="http://code.sixapart.com/svn/memcached/trunk/server/doc/protocol.txt">code.sixapart.com/svn/memcached/trunk/server/doc/protocol.txt</a>).
+Requires memcached &gt;= 1.2.4 w/ noreply support
+</p>
+<h2>Usage example</h2>
+<pre>
+  EM.run{
+    cache = EM::P::Memcache.connect 'localhost', 11211
+
+    cache.set :a, 'hello'
+    cache.set :b, 'hi'
+    cache.set :c, 'how are you?'
+    cache.set :d, ''
+
+    cache.get(:a){ |v| p v }
+    cache.get_hash(:a, :b, :c, :d){ |v| p v }
+    cache.get(:a,:b,:c,:d){ |a,b,c,d| p [a,b,c,d] }
+
+    cache.get(:a,:z,:b,:y,:d){ |a,z,b,y,d| p [a,z,b,y,d] }
+
+    cache.get(:missing){ |m| p [:missing=, m] }
+    cache.set(:missing, 'abc'){ p :stored }
+    cache.get(:missing){ |m| p [:missing=, m] }
+    cache.del(:missing){ p :deleted }
+    cache.get(:missing){ |m| p [:missing=, m] }
+  }
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000147">connect</a>&nbsp;&nbsp;
+      <a href="#M000149">connection_completed</a>&nbsp;&nbsp;
+      <a href="#M000146">del</a>&nbsp;&nbsp;
+      <a href="#M000145">delete</a>&nbsp;&nbsp;
+      <a href="#M000142">get</a>&nbsp;&nbsp;
+      <a href="#M000144">get_hash</a>&nbsp;&nbsp;
+      <a href="#M000148">new</a>&nbsp;&nbsp;
+      <a href="#M000151">process_cmd</a>&nbsp;&nbsp;
+      <a href="#M000150">receive_data</a>&nbsp;&nbsp;
+      <a href="#M000143">set</a>&nbsp;&nbsp;
+      <a href="#M000152">unbind</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">EM::Deferrable</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="Memcache/ParserError.html" class="link">EventMachine::Protocols::Memcache::ParserError</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cstored</td>
+          <td>=</td>
+          <td class="context-item-value">'STORED'.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cend</td>
+          <td>=</td>
+          <td class="context-item-value">'END'.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cdeleted</td>
+          <td>=</td>
+          <td class="context-item-value">'DELETED'.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cunknown</td>
+          <td>=</td>
+          <td class="context-item-value">'NOT_FOUND'.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cerror</td>
+          <td>=</td>
+          <td class="context-item-value">'ERROR'.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cempty</td>
+          <td>=</td>
+          <td class="context-item-value">''.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Cdelimiter</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;\r\n&quot;.freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000147.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000147.html');return false;">
+          <span class="method-name">connect</span><span class="method-args">(host = 'localhost', port = 11211)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Connect to a memcached server (must support NOREPLY, memcached &gt;= 1.2.4)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000148.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000148.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(host, port = 11211)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000149.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000149.html');return false;">
+          <span class="method-name">connection_completed</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000146" class="method-detail">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+          <span class="method-name">del</span><span class="method-args">(key, expires = 0, &amp;cb)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Memcache.html#M000145">delete</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000145" class="method-detail">
+        <a name="M000145"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000145.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000145.html');return false;">
+          <span class="method-name">delete</span><span class="method-args">(key, expires = 0, &amp;cb)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Delete the value associated with a key
+</p>
+<pre>
+ cache.del :a
+ cache.del(:b){ puts &quot;deleted the value!&quot; }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000142" class="method-detail">
+        <a name="M000142"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000142.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000142.html');return false;">
+          <span class="method-name">get</span><span class="method-args">(*keys) {|*keys.map{ |k| values[k]| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the value associated with one or multiple keys
+</p>
+<pre>
+ cache.get(:a){ |v| p v }
+ cache.get(:a,:b,:c,:d){ |a,b,c,d| p [a,b,c,d] }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000144" class="method-detail">
+        <a name="M000144"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000144.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000144.html');return false;">
+          <span class="method-name">get_hash</span><span class="method-args">(*keys) {|keys.inject({}){ |hash, k| hash.update k =&gt; values[keys.index(k)] }| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets multiple values as a hash
+</p>
+<pre>
+ cache.get_hash(:a, :b, :c, :d){ |h| puts h[:a] }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000151" class="method-detail">
+        <a name="M000151"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000151.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000151.html');return false;">
+          <span class="method-name">process_cmd</span><span class="method-args">(line)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000150" class="method-detail">
+        <a name="M000150"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000150.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000150.html');return false;">
+          <span class="method-name">receive_data</span><span class="method-args">(data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000143" class="method-detail">
+        <a name="M000143"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000143.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000143.html');return false;">
+          <span class="method-name">set</span><span class="method-args">(key, val, exptime = 0, &amp;cb)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the value for a given key
+</p>
+<pre>
+ cache.set :a, 'hello'
+ cache.set(:missing, 'abc'){ puts &quot;stored the value!&quot; }
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="Memcache.src/M000152.html" target="Code" class="method-signature"
+            onclick="popupCode('Memcache.src/M000152.html');return false;">
+          <span class="method-name">unbind</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

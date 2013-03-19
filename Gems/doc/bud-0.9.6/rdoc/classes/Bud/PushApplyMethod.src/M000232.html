@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Bud::PushApplyMethod)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/lattice-core.rb, line 274</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">bud_instance</span>, <span class="ruby-identifier">recv</span>, <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">blk</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">bud_instance</span>)
+    <span class="ruby-ivar">@recv</span> = <span class="ruby-identifier">recv</span>
+    <span class="ruby-ivar">@meth</span> = <span class="ruby-identifier">meth</span>
+    <span class="ruby-ivar">@blk</span> = <span class="ruby-identifier">blk</span>
+    <span class="ruby-ivar">@args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@is_morph</span> = <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Lattice</span>.<span class="ruby-identifier">global_morphs</span>.<span class="ruby-identifier">include?</span> <span class="ruby-ivar">@meth</span>
+    <span class="ruby-ivar">@recv_is_scanner</span> = <span class="ruby-ivar">@recv</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">LatticeScanner</span>
+
+    <span class="ruby-identifier">recv</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:output</span>)
+    <span class="ruby-identifier">bud_instance</span>.<span class="ruby-identifier">push_elems</span>[[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">object_id</span>, <span class="ruby-identifier">recv</span>, <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">blk</span>]] = <span class="ruby-keyword kw">self</span>
+
+    <span class="ruby-comment cmt"># Arguments that are normal Ruby values are assumed to remain invariant as</span>
+    <span class="ruby-comment cmt"># rule evaluation progresses; hence, we just pass along those values when</span>
+    <span class="ruby-comment cmt"># invoking the function. Arguments that are derived from lattices or</span>
+    <span class="ruby-comment cmt"># collections might change; hence, we need to wire up the push dataflow to</span>
+    <span class="ruby-comment cmt"># have the current values of the function's arguments passed to this node.</span>
+
+    <span class="ruby-comment cmt"># Map from input node to a list of indexes; the indexes identify the</span>
+    <span class="ruby-comment cmt"># positions in the args array that should be filled with the node's value</span>
+    <span class="ruby-ivar">@input_sources</span> = {}
+
+    <span class="ruby-comment cmt"># Similarly, map from input node to a cached value -- this is the last value</span>
+    <span class="ruby-comment cmt"># we've seen from this input. If the input gave us a delta, we merge</span>
+    <span class="ruby-comment cmt"># together all the deltas we've seen and cache the resulting value.  XXX: In</span>
+    <span class="ruby-comment cmt"># the common case that the input is a scanner over a lattice wrapper, this</span>
+    <span class="ruby-comment cmt"># means we do redundant work merging together deltas.</span>
+    <span class="ruby-ivar">@input_caches</span> = {}
+
+    <span class="ruby-comment cmt"># Inputs for which we haven't seen a value yet.</span>
+    <span class="ruby-ivar">@waiting_for_input</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@recv_cache</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@seen_recv</span> = <span class="ruby-keyword kw">false</span>
+
+    <span class="ruby-ivar">@args</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">SOURCE_TYPES</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-identifier">s</span>}
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">LatticeWrapper</span>
+          <span class="ruby-identifier">a</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_push_elem</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">a</span>.<span class="ruby-identifier">wire_to</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:output</span>)
+        <span class="ruby-ivar">@input_sources</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">||=</span> []
+        <span class="ruby-ivar">@input_sources</span>[<span class="ruby-identifier">a</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>
+        <span class="ruby-ivar">@waiting_for_input</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">a</span>
+        <span class="ruby-ivar">@args</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-keyword kw">nil</span>          <span class="ruby-comment cmt"># Substitute actual value before calling method</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-ivar">@seen_all_inputs</span> = <span class="ruby-ivar">@waiting_for_input</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Pause a connection so that {#send_data} and {#receive_data} events are not fired until {#resume} is called. @see #resume"
+full_name: EventMachine::Connection#pause
+is_singleton: false
+name: pause
+params: ()
+visibility: public

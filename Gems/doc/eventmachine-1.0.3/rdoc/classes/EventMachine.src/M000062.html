@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>attach_io (EventMachine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/eventmachine.rb, line 732</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">EventMachine</span><span class="ruby-operator">::</span><span class="ruby-identifier">attach_io</span> <span class="ruby-identifier">io</span>, <span class="ruby-identifier">watch_mode</span>, <span class="ruby-identifier">handler</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">klass_from_handler</span>(<span class="ruby-constant">Connection</span>, <span class="ruby-identifier">handler</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">watch_mode</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">public_instance_methods</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">:notify_readable</span>, <span class="ruby-identifier">:notify_writable</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_sym</span> }
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;notify_readable/writable with EM.attach is not supported. Use EM.watch(io){ |c| c.notify_readable = true }&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:fileno</span>)
+      <span class="ruby-identifier">fd</span> = <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">JRuby</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">JRuby</span>.<span class="ruby-identifier">runtime</span>.<span class="ruby-identifier">getDescriptorByFileno</span>(<span class="ruby-identifier">io</span>.<span class="ruby-identifier">fileno</span>).<span class="ruby-identifier">getChannel</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">fileno</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">fd</span> = <span class="ruby-identifier">io</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">attach_fd</span> <span class="ruby-identifier">fd</span>, <span class="ruby-identifier">watch_mode</span>
+    <span class="ruby-identifier">c</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">s</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@io</span>, <span class="ruby-identifier">io</span>)
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@watch_mode</span>, <span class="ruby-identifier">watch_mode</span>)
+    <span class="ruby-identifier">c</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@fd</span>, <span class="ruby-identifier">fd</span>)
+
+    <span class="ruby-ivar">@conns</span>[<span class="ruby-identifier">s</span>] = <span class="ruby-identifier">c</span>
+    <span class="ruby-identifier">block_given?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">c</span>
+    <span class="ruby-identifier">c</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

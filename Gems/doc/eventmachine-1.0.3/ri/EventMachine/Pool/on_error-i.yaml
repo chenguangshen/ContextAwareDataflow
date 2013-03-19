@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Define a default catch-all for when the deferrables returned by work blocks enter a failed state. By default all that happens is that the resource is returned to the pool. If on_error is defined, this block is responsible for re-adding the resource to the pool if it is still usable. In other words, it is generally assumed that on_error blocks explicitly handle the rest of the lifetime of the resource.
+full_name: EventMachine::Pool#on_error
+is_singleton: false
+name: on_error
+params: (*a, &b)
+visibility: public

@@ -1,0 +1,45 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Streams a file over a given connection. Streaming begins once the object is instantiated. Typically FileStreamer instances are not reused.
+- !ruby/struct:SM::Flow::P 
+  body: Streaming uses buffering for files larger than 16K and uses so-called fast file reader (a C++ extension) if available (it is part of eventmachine gem itself).
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: " module FileSender\n   def post_init\n     streamer = EventMachine::FileStreamer.new(self, '/tmp/bigfile.tar')\n     streamer.callback{\n       # file was sent successfully\n       close_connection_after_writing\n     }\n   end\n end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@author Francis Cianfrocca"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Use mapped streamer for files bigger than 16k
+  name: MappingThreshold
+  value: "16384"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Wait until next tick to send more data when 50k is still in the outgoing buffer
+  name: BackpressureLevel
+  value: "50000"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Send 16k chunks at a time
+  name: ChunkSize
+  value: "16384"
+full_name: EventMachine::FileStreamer
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Deferrable
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: stream_one_chunk
+name: FileStreamer
+superclass: Object

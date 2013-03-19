@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>insert (Bud::PushApplyMethod)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/lattice-core.rb, line 324</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">v</span>, <span class="ruby-identifier">source</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@recv</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@seen_recv</span>
+        <span class="ruby-comment cmt"># Update the cached value for the method receiver. Note that if we're</span>
+        <span class="ruby-comment cmt"># applying a method directly to a LatticeScanner (i.e., method applied</span>
+        <span class="ruby-comment cmt"># to lattice wrapper), we can avoid maintaining a separate cache and</span>
+        <span class="ruby-comment cmt"># instead use the wrapper's current value.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@recv_is_scanner</span>
+          <span class="ruby-ivar">@recv_cache</span> = <span class="ruby-ivar">@recv</span>.<span class="ruby-identifier">collection</span>.<span class="ruby-identifier">current_value</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@recv_cache</span> = <span class="ruby-ivar">@recv_cache</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">v</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@recv_cache</span> = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@seen_recv</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@seen_all_inputs</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@is_morph</span>
+          <span class="ruby-identifier">recv_val</span> = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">recv_val</span> = <span class="ruby-ivar">@recv_cache</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">res</span> = <span class="ruby-identifier">recv_val</span>.<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@meth</span>, <span class="ruby-operator">*</span><span class="ruby-ivar">@args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-ivar">@blk</span>)
+        <span class="ruby-identifier">push_out</span>(<span class="ruby-identifier">res</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">arg_indexes</span> = <span class="ruby-ivar">@input_sources</span>[<span class="ruby-identifier">source</span>]
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;unknown input #{source}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg_indexes</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">arg_val</span> = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@is_morph</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>]
+          <span class="ruby-identifier">arg_val</span> = <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">arg_val</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">arg_indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@args</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">arg_val</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@seen_all_inputs</span>
+        <span class="ruby-ivar">@waiting_for_input</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">source</span>)
+        <span class="ruby-ivar">@seen_all_inputs</span> = <span class="ruby-ivar">@waiting_for_input</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@seen_all_inputs</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@seen_recv</span>
+        <span class="ruby-identifier">res</span> = <span class="ruby-ivar">@recv_cache</span>.<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@meth</span>, <span class="ruby-operator">*</span><span class="ruby-ivar">@args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-ivar">@blk</span>)
+        <span class="ruby-identifier">push_out</span>(<span class="ruby-identifier">res</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@input_caches</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">source</span>
+        <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>] = <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">v</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>] = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">arg_indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@args</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-ivar">@input_caches</span>[<span class="ruby-identifier">source</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

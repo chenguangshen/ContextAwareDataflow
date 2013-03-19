@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::Lattice#reject_input
+is_singleton: false
+name: reject_input
+params: (i, meth="initialize")
+visibility: public

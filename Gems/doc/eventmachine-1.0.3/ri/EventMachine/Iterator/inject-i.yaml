@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Inject the results of an asynchronous iteration onto a given object.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  EM::Iterator.new(%w[ pwd uptime uname date ], 2).inject({}, proc{ |hash,cmd,iter|\n    EM.system(cmd){ |output,status|\n      hash[cmd] = status.exitstatus == 0 ? output.strip : nil\n      iter.return(hash)\n    }\n  }, proc{ |results|\n    p results\n  })\n"
+full_name: EventMachine::Iterator#inject
+is_singleton: false
+name: inject
+params: (obj, foreach, after)
+visibility: public

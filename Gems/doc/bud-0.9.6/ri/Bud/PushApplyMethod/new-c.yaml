@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushApplyMethod::new
+is_singleton: true
+name: new
+params: (bud_instance, recv, meth, args, blk)
+visibility: public

@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Random::MT19937</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/backports/extra/random/bits_and_bytes_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/backports/extra/random/bits_and_bytes.rb">lib/backports/extra/random/bits_and_bytes.rb</a></li>
+          
+            <li><a href="../lib/backports/extra/random/MT19937_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/backports/extra/random/MT19937.rb">lib/backports/extra/random/MT19937.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-5B-5D">::[]</a></li>
+          
+          <li><a href="#method-c-convert_seed">::convert_seed</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-left">#left</a></li>
+          
+          <li><a href="#method-i-marshal_dump">#marshal_dump</a></li>
+          
+          <li><a href="#method-i-marshal_load">#marshal_load</a></li>
+          
+          <li><a href="#method-i-next_state">#next_state</a></li>
+          
+          <li><a href="#method-i-random_32_bits">#random_32_bits</a></li>
+          
+          <li><a href="#method-i-random_bytes">#random_bytes</a></li>
+          
+          <li><a href="#method-i-random_float">#random_float</a></li>
+          
+          <li><a href="#method-i-random_integer">#random_integer</a></li>
+          
+          <li><a href="#method-i-seed-3D">#seed=</a></li>
+          
+          <li><a href="#method-i-state_as_bignum">#state_as_bignum</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Prime.html">Prime</a></li>
+        
+          <li><a href="../Prime/EratosthenesGenerator.html">Prime::EratosthenesGenerator</a></li>
+        
+          <li><a href="../Prime/EratosthenesSieve.html">Prime::EratosthenesSieve</a></li>
+        
+          <li><a href="../Prime/Generator23.html">Prime::Generator23</a></li>
+        
+          <li><a href="../Prime/OldCompatibility.html">Prime::OldCompatibility</a></li>
+        
+          <li><a href="../Prime/PseudoPrimeGenerator.html">Prime::PseudoPrimeGenerator</a></li>
+        
+          <li><a href="../Prime/TrialDivision.html">Prime::TrialDivision</a></li>
+        
+          <li><a href="../Prime/TrialDivisionGenerator.html">Prime::TrialDivisionGenerator</a></li>
+        
+          <li><a href="../Backports.html">Backports</a></li>
+        
+          <li><a href="../Backports/MOST_EXTREME_OBJECT_EVER.html">Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+        
+          <li><a href="../Backports/StdLib.html">Backports::StdLib</a></li>
+        
+          <li><a href="../Backports/StdLib/LoadedFeatures.html">Backports::StdLib::LoadedFeatures</a></li>
+        
+          <li><a href="../Enumerator.html">Enumerator</a></li>
+        
+          <li><a href="../Enumerator/GeneratorBP.html">Enumerator::GeneratorBP</a></li>
+        
+          <li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+        
+          <li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+        
+          <li><a href="../Matrix.html">Matrix</a></li>
+        
+          <li><a href="../Matrix/EigenvalueDecomposition.html">Matrix::EigenvalueDecomposition</a></li>
+        
+          <li><a href="../Matrix/LUPDecomposition.html">Matrix::LUPDecomposition</a></li>
+        
+          <li><a href="../Random.html">Random</a></li>
+        
+          <li><a href="../Random/Implementation.html">Random::Implementation</a></li>
+        
+          <li><a href="../Random/MT19937.html">Random::MT19937</a></li>
+        
+          <li><a href="../Enumerable.html">Enumerable</a></li>
+        
+          <li><a href="../Enumerable/Enumerator.html">Enumerable::Enumerator</a></li>
+        
+          <li><a href="../File.html">File</a></li>
+        
+          <li><a href="../File/Constants.html">File::Constants</a></li>
+        
+          <li><a href="../Vector.html">Vector</a></li>
+        
+          <li><a href="../Vector/ZeroVectorError.html">Vector::ZeroVectorError</a></li>
+        
+          <li><a href="../ARGF.html">ARGF</a></li>
+        
+          <li><a href="../Array.html">Array</a></li>
+        
+          <li><a href="../BasicObject.html">BasicObject</a></li>
+        
+          <li><a href="../Binding.html">Binding</a></li>
+        
+          <li><a href="../Complex.html">Complex</a></li>
+        
+          <li><a href="../Dir.html">Dir</a></li>
+        
+          <li><a href="../ENV.html">ENV</a></li>
+        
+          <li><a href="../Fixnum.html">Fixnum</a></li>
+        
+          <li><a href="../Float.html">Float</a></li>
+        
+          <li><a href="../GC.html">GC</a></li>
+        
+          <li><a href="../Hash.html">Hash</a></li>
+        
+          <li><a href="../IO.html">IO</a></li>
+        
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          <li><a href="../Kernel.html">Kernel</a></li>
+        
+          <li><a href="../Math.html">Math</a></li>
+        
+          <li><a href="../Method.html">Method</a></li>
+        
+          <li><a href="../Module.html">Module</a></li>
+        
+          <li><a href="../NilClass.html">NilClass</a></li>
+        
+          <li><a href="../Numeric.html">Numeric</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+        
+          <li><a href="../OpenStruct.html">OpenStruct</a></li>
+        
+          <li><a href="../Proc.html">Proc</a></li>
+        
+          <li><a href="../Process.html">Process</a></li>
+        
+          <li><a href="../Range.html">Range</a></li>
+        
+          <li><a href="../Regexp.html">Regexp</a></li>
+        
+          <li><a href="../Set.html">Set</a></li>
+        
+          <li><a href="../StopIteration.html">StopIteration</a></li>
+        
+          <li><a href="../String.html">String</a></li>
+        
+          <li><a href="../Struct.html">Struct</a></li>
+        
+          <li><a href="../Symbol.html">Symbol</a></li>
+        
+          <li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Random::MT19937</h1>
+
+    <div id="description" class="description">
+      
+<p>Supplement the <a href="MT19937.html">MT19937</a> class with methods to do
+conversions the same way as MRI. No argument checking is done here either.</p>
+<hr style="height: 1px">
+
+<p>An implementation of Mersenne Twister <a href="MT19937.html">MT19937</a> in
+Ruby</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="FLOAT_FACTOR">FLOAT_FACTOR</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="LAST_31_BITS">LAST_31_BITS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="LAST_STATE">LAST_STATE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="MASK_BY">MASK_BY</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="OFFSET">OFFSET</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="PAD_32_BITS">PAD_32_BITS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="STATE_SIZE">STATE_SIZE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="5B-5D-method" class="method-detail ">
+          <a name="method-c-5B-5D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]</span><span
+              class="method-args">(seed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="5B-5D-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-identifier">seed</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">convert_seed</span>(<span class="ruby-identifier">seed</span>))
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 5B-5D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-method -->
+
+      
+        <div id="convert_seed-method" class="method-detail ">
+          <a name="method-c-convert_seed"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">convert_seed</span><span
+              class="method-args">(seed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Convert an <a href="../Integer.html">Integer</a> seed of arbitrary size to
+either a single 32 bit integer, or an <a href="../Array.html">Array</a> of
+32 bit integers</p>
+            
+
+            
+            <div class="method-source-code" id="convert_seed-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">convert_seed</span>(<span class="ruby-identifier">seed</span>)
+  <span class="ruby-identifier">seed</span> = <span class="ruby-identifier">seed</span>.<span class="ruby-identifier">abs</span>
+  <span class="ruby-identifier">long_values</span> = []
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">long_values</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">seed</span> &amp; <span class="ruby-constant">PAD_32_BITS</span>)
+    <span class="ruby-identifier">seed</span> <span class="ruby-operator">&gt;&gt;=</span> <span class="ruby-value">32</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">seed</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">long_values</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">long_values</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">long_values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-comment"># Done to allow any kind of sequence of integers</span>
+
+  <span class="ruby-identifier">long_values</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">long_values</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">long_values</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- convert_seed-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- convert_seed-method -->
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(seed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>See seed=</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/MT19937.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">seed</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">seed</span> = <span class="ruby-identifier">seed</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="left-method" class="method-detail ">
+          <a name="method-i-left"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">left</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="left-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">left</span> <span class="ruby-comment"># It's actually the number of words left + 1, as per MRI...</span>
+  <span class="ruby-constant">MT19937</span><span class="ruby-operator">::</span><span class="ruby-constant">STATE_SIZE</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@last_read</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- left-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- left-method -->
+
+      
+        <div id="marshal_dump-method" class="method-detail ">
+          <a name="method-i-marshal_dump"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">marshal_dump</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="marshal_dump-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marshal_dump</span>
+  [<span class="ruby-identifier">state_as_bignum</span>, <span class="ruby-identifier">left</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- marshal_dump-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- marshal_dump-method -->
+
+      
+        <div id="marshal_load-method" class="method-detail ">
+          <a name="method-i-marshal_load"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">marshal_load</span><span
+              class="method-args">(ary)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="marshal_load-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">marshal_load</span>(<span class="ruby-identifier">ary</span>)
+  <span class="ruby-identifier">b</span>, <span class="ruby-identifier">left</span> = <span class="ruby-identifier">ary</span>
+  <span class="ruby-ivar">@last_read</span> = <span class="ruby-constant">MT19937</span><span class="ruby-operator">::</span><span class="ruby-constant">STATE_SIZE</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">left</span>
+  <span class="ruby-ivar">@state</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">STATE_SIZE</span>)
+  <span class="ruby-constant">STATE_SIZE</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">b</span> &amp; <span class="ruby-constant">PAD_32_BITS</span>
+    <span class="ruby-identifier">b</span> <span class="ruby-operator">&gt;&gt;=</span> <span class="ruby-value">32</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- marshal_load-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- marshal_load-method -->
+
+      
+        <div id="next_state-method" class="method-detail ">
+          <a name="method-i-next_state"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">next_state</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Generates a completely new state out of the previous one.</p>
+            
+
+            
+            <div class="method-source-code" id="next_state-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/MT19937.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">next_state</span>
+  <span class="ruby-constant">STATE_SIZE</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">mix</span> = <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] &amp; <span class="ruby-value">0x80000000</span> <span class="ruby-operator">|</span> <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span> <span class="ruby-operator">-</span> <span class="ruby-constant">STATE_SIZE</span>] &amp; <span class="ruby-value">0x7fffffff</span>
+    <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-constant">OFFSET</span> <span class="ruby-operator">-</span> <span class="ruby-constant">STATE_SIZE</span>] <span class="ruby-operator">^</span> (<span class="ruby-identifier">mix</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">1</span>)
+    <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">^=</span> <span class="ruby-value">0x9908b0df</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mix</span>.<span class="ruby-identifier">odd?</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@last_read</span> = <span class="ruby-value">-1</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- next_state-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- next_state-method -->
+
+      
+        <div id="random_32_bits-method" class="method-detail ">
+          <a name="method-i-random_32_bits"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">random_32_bits</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns a random <a href="../Integer.html">Integer</a> from the range 0 …
+(1 &lt;&lt; 32)</p>
+            
+
+            
+            <div class="method-source-code" id="random_32_bits-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/MT19937.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_32_bits</span>
+  <span class="ruby-identifier">next_state</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@last_read</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">LAST_STATE</span>
+  <span class="ruby-ivar">@last_read</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@state</span>[<span class="ruby-ivar">@last_read</span>]
+  <span class="ruby-comment"># Tempering</span>
+  <span class="ruby-identifier">y</span> <span class="ruby-operator">^=</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">11</span>)
+  <span class="ruby-identifier">y</span> <span class="ruby-operator">^=</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">7</span>) &amp; <span class="ruby-value">0x9d2c5680</span>
+  <span class="ruby-identifier">y</span> <span class="ruby-operator">^=</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">15</span>) &amp; <span class="ruby-value">0xefc60000</span>
+  <span class="ruby-identifier">y</span> <span class="ruby-operator">^=</span> (<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">18</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- random_32_bits-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- random_32_bits-method -->
+
+      
+        <div id="random_bytes-method" class="method-detail ">
+          <a name="method-i-random_bytes"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">random_bytes</span><span
+              class="method-args">(nb)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="random_bytes-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_bytes</span>(<span class="ruby-identifier">nb</span>)
+  <span class="ruby-identifier">nb_32_bits</span> = (<span class="ruby-identifier">nb</span> <span class="ruby-operator">+</span> <span class="ruby-value">3</span>) <span class="ruby-operator">/</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">random</span> = <span class="ruby-identifier">nb_32_bits</span>.<span class="ruby-identifier">times</span>.<span class="ruby-identifier">map</span> { <span class="ruby-identifier">random_32_bits</span> }
+  <span class="ruby-identifier">random</span>.<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;L&quot;</span> * <span class="ruby-identifier">nb_32_bits</span>)[<span class="ruby-value">0</span>, <span class="ruby-identifier">nb</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- random_bytes-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- random_bytes-method -->
+
+      
+        <div id="random_float-method" class="method-detail ">
+          <a name="method-i-random_float"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">random_float</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>generates a random number on [0,1) with 53-bit resolution</p>
+            
+
+            
+            <div class="method-source-code" id="random_float-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_float</span>
+  ((<span class="ruby-identifier">random_32_bits</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">5</span>) * <span class="ruby-value">67108864.0</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">random_32_bits</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">6</span>)) * <span class="ruby-constant">FLOAT_FACTOR</span>;
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- random_float-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- random_float-method -->
+
+      
+        <div id="random_integer-method" class="method-detail ">
+          <a name="method-i-random_integer"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">random_integer</span><span
+              class="method-args">(upto)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns an integer within 0…upto</p>
+            
+
+            
+            <div class="method-source-code" id="random_integer-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_integer</span>(<span class="ruby-identifier">upto</span>)
+  <span class="ruby-identifier">n</span> = <span class="ruby-identifier">upto</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">nb_full_32</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">PAD_32_BITS</span>
+    <span class="ruby-identifier">n</span> <span class="ruby-operator">&gt;&gt;=</span> <span class="ruby-value">32</span>
+    <span class="ruby-identifier">nb_full_32</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">mask</span> = <span class="ruby-identifier">mask_32_bits</span>(<span class="ruby-identifier">n</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">rand</span> = <span class="ruby-identifier">random_32_bits</span> &amp; <span class="ruby-identifier">mask</span>
+    <span class="ruby-identifier">nb_full_32</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">rand</span> <span class="ruby-operator">&lt;&lt;=</span> <span class="ruby-value">32</span>
+      <span class="ruby-identifier">rand</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">random_32_bits</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">rand</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">upto</span>
+  <span class="ruby-identifier">rand</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- random_integer-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- random_integer-method -->
+
+      
+        <div id="seed-3D-method" class="method-detail ">
+          <a name="method-i-seed-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">seed=</span><span
+              class="method-args">(seed)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Seed must be either an <a href="../Integer.html">Integer</a> (only the
+first 32 bits will be used) or an <a href="../Array.html">Array</a> of
+Integers (of which only the first 32 bits will be used)</p>
+
+<p>No conversion or type checking is done at this level</p>
+            
+
+            
+            <div class="method-source-code" id="seed-3D-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/MT19937.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">seed=</span>(<span class="ruby-identifier">seed</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">seed</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Integer</span>
+    <span class="ruby-ivar">@state</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">STATE_SIZE</span>)
+    <span class="ruby-ivar">@state</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">seed</span> &amp; <span class="ruby-constant">PAD_32_BITS</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-constant">LAST_STATE</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] = (<span class="ruby-value">1812433253</span> * (<span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]  <span class="ruby-operator">^</span> <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]<span class="ruby-operator">&gt;&gt;</span><span class="ruby-value">30</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>)&amp; <span class="ruby-constant">PAD_32_BITS</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@last_read</span> = <span class="ruby-constant">LAST_STATE</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">seed</span> = <span class="ruby-value">19650218</span>
+    <span class="ruby-identifier">i</span>=<span class="ruby-value">1</span>
+    <span class="ruby-identifier">j</span>=<span class="ruby-value">0</span>
+    [<span class="ruby-constant">STATE_SIZE</span>, <span class="ruby-identifier">seed</span>.<span class="ruby-identifier">size</span>].<span class="ruby-identifier">max</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] = (<span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">^</span> (<span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>] <span class="ruby-operator">^</span> <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]<span class="ruby-operator">&gt;&gt;</span><span class="ruby-value">30</span>) * <span class="ruby-value">1664525</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">seed</span>[<span class="ruby-identifier">j</span>] &amp; <span class="ruby-constant">PAD_32_BITS</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">STATE_SIZE</span>
+        <span class="ruby-ivar">@state</span>[<span class="ruby-value">0</span>] = <span class="ruby-ivar">@state</span>[<span class="ruby-value">-1</span>]
+        <span class="ruby-identifier">i</span> = <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">seed</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">end</span>
+    (<span class="ruby-constant">STATE_SIZE</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] = (<span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">^</span> (<span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>] <span class="ruby-operator">^</span> <span class="ruby-ivar">@state</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]<span class="ruby-operator">&gt;&gt;</span><span class="ruby-value">30</span>) * <span class="ruby-value">1566083941</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">i</span> &amp; <span class="ruby-constant">PAD_32_BITS</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">STATE_SIZE</span>
+        <span class="ruby-ivar">@state</span>[<span class="ruby-value">0</span>] = <span class="ruby-ivar">@state</span>[<span class="ruby-value">-1</span>]
+        <span class="ruby-identifier">i</span> = <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@state</span>[<span class="ruby-value">0</span>] = <span class="ruby-value">0x80000000</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Seed must be an Integer or an Array&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- seed-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- seed-3D-method -->
+
+      
+        <div id="state_as_bignum-method" class="method-detail ">
+          <a name="method-i-state_as_bignum"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">state_as_bignum</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="state_as_bignum-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/extra/random/bits_and_bytes.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">state_as_bignum</span>
+  <span class="ruby-identifier">b</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@state</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">b</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-value">32</span> * <span class="ruby-identifier">i</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- state_as_bignum-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- state_as_bignum-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: help
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Print a handy Slop help string.
+- !ruby/struct:SM::Flow::P 
+  body: Returns the banner followed by available option help strings.
+full_name: Slop#to_s
+is_singleton: false
+name: to_s
+params: ()
+visibility: public

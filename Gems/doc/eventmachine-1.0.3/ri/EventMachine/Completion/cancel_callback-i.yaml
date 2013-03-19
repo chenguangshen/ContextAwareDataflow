@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Remove a callback. N.B. Some callbacks cannot be deleted. Usage is NOT recommended, this is an anti-pattern.
+full_name: EventMachine::Completion#cancel_callback
+is_singleton: false
+name: cancel_callback
+params: (*a, &b)
+visibility: public

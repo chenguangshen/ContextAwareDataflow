@@ -1,0 +1,46 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Consider &quot;u &lt;= s.notin(t, s.a =&gt; t.b)&quot;. notin is a non-monotonic operator, where u depends positively on s, but negatively on t. Stratification ensures that t is fully computed in a lower stratum, which means that we can expect multiple iterators on s's side only. If t's scanner were to push its elements down first, every insert of s merely needs to be cross checked with the cached elements of 't', and pushed down to the next element if s notin
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: t.
+    body: However, if s's scanner were to fire first, we have to wait until the
+  type: :LOWERALPHA
+- !ruby/struct:SM::Flow::P 
+  body: first flush, at which point we are sure to have seen all the t-side tuples in this tick.
+constants: []
+
+full_name: Bud::PushNotIn
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: do_insert
+- !ruby/object:RI::MethodSummary 
+  name: find_col
+- !ruby/object:RI::MethodSummary 
+  name: flush
+- !ruby/object:RI::MethodSummary 
+  name: get_key
+- !ruby/object:RI::MethodSummary 
+  name: insert
+- !ruby/object:RI::MethodSummary 
+  name: invalidate_cache
+- !ruby/object:RI::MethodSummary 
+  name: process_match
+- !ruby/object:RI::MethodSummary 
+  name: push_lhs
+- !ruby/object:RI::MethodSummary 
+  name: rescan_at_tick
+- !ruby/object:RI::MethodSummary 
+  name: setup_preds
+- !ruby/object:RI::MethodSummary 
+  name: stratum_end
+name: PushNotIn
+superclass: PushStatefulElement

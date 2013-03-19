@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes just one argument, a {Connection} that has proxying enabled via {EventMachine.enable_proxy}. Calling this method will remove that functionality and your connection will begin receiving data via {Connection#receive_data} again.
+- !ruby/struct:SM::Flow::P 
+  body: "@param [EventMachine::Connection] from Source of data that is being proxied @see EventMachine.enable_proxy"
+full_name: EventMachine::disable_proxy
+is_singleton: true
+name: disable_proxy
+params: (from)
+visibility: public

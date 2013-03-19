@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>receive_data (EventMachine::Protocols::HttpClient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/em/protocols/httpclient.rb, line 177</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">receive_data</span> <span class="ruby-identifier">data</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-keyword kw">case</span> <span class="ruby-ivar">@read_state</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:base</span>
+            <span class="ruby-comment cmt"># Perform any per-request initialization here and don't consume any data.</span>
+            <span class="ruby-ivar">@data</span> = <span class="ruby-value str">&quot;&quot;</span>
+            <span class="ruby-ivar">@headers</span> = []
+            <span class="ruby-ivar">@content_length</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-comment cmt"># not zero</span>
+            <span class="ruby-ivar">@content</span> = <span class="ruby-value str">&quot;&quot;</span>
+            <span class="ruby-ivar">@status</span> = <span class="ruby-keyword kw">nil</span>
+            <span class="ruby-ivar">@read_state</span> = <span class="ruby-identifier">:header</span>
+            <span class="ruby-ivar">@connection_close</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:header</span>
+            <span class="ruby-identifier">ary</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">split</span>( <span class="ruby-regexp re">/\r?\n/</span><span class="ruby-identifier">m</span>, <span class="ruby-value">2</span> )
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+              <span class="ruby-identifier">data</span> = <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">last</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
+                <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@content_length</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@content_length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@connection_close</span>
+                  <span class="ruby-ivar">@read_state</span> = <span class="ruby-identifier">:content</span>
+                <span class="ruby-keyword kw">else</span>
+                  <span class="ruby-identifier">dispatch_response</span>
+                  <span class="ruby-ivar">@read_state</span> = <span class="ruby-identifier">:base</span>
+                <span class="ruby-keyword kw">end</span>
+              <span class="ruby-keyword kw">else</span>
+                <span class="ruby-ivar">@headers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">first</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@headers</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                  <span class="ruby-identifier">parse_response_line</span>
+                <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\Acontent-length:\s*/i</span>
+                  <span class="ruby-comment cmt"># Only take the FIRST content-length header that appears,</span>
+                  <span class="ruby-comment cmt"># which we can distinguish because @content_length is nil.</span>
+                  <span class="ruby-comment cmt"># TODO, it's actually a fatal error if there is more than one</span>
+                  <span class="ruby-comment cmt"># content-length header, because the caller is presumptively</span>
+                  <span class="ruby-comment cmt"># a bad guy. (There is an exploit that depends on multiple</span>
+                  <span class="ruby-comment cmt"># content-length headers.)</span>
+                  <span class="ruby-ivar">@content_length</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">$'</span>.<span class="ruby-identifier">to_i</span>
+                <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\Aconnection:\s*close/i</span>
+                  <span class="ruby-ivar">@connection_close</span> = <span class="ruby-keyword kw">true</span>
+                <span class="ruby-keyword kw">end</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-ivar">@data</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data</span>
+              <span class="ruby-identifier">data</span> = <span class="ruby-value str">&quot;&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:content</span>
+            <span class="ruby-comment cmt"># If there was no content-length header, we have to wait until the connection</span>
+            <span class="ruby-comment cmt"># closes. Everything we get until that point is content.</span>
+            <span class="ruby-comment cmt"># TODO: Must impose a content-size limit, and also must implement chunking.</span>
+            <span class="ruby-comment cmt"># Also, must support either temporary files for large content, or calling</span>
+            <span class="ruby-comment cmt"># a content-consumer block supplied by the user.</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@content_length</span>
+              <span class="ruby-identifier">bytes_needed</span> = <span class="ruby-ivar">@content_length</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@content</span>.<span class="ruby-identifier">length</span>
+              <span class="ruby-ivar">@content</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">0</span>, <span class="ruby-identifier">bytes_needed</span>]
+              <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>[<span class="ruby-identifier">bytes_needed</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;&quot;</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@content_length</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@content</span>.<span class="ruby-identifier">length</span>
+                <span class="ruby-identifier">dispatch_response</span>
+                <span class="ruby-ivar">@read_state</span> = <span class="ruby-identifier">:base</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-ivar">@content</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data</span>
+              <span class="ruby-identifier">data</span> = <span class="ruby-value str">&quot;&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

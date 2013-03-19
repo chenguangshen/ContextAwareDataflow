@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: EventMachine::DNS::Request#receive_answer
+is_singleton: false
+name: receive_answer
+params: (msg)
+visibility: public

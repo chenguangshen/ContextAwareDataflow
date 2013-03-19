@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [EventMachine::Connection] connection @param [String] filename File path"
+- !ruby/struct:SM::Flow::P 
+  body: "@option args [Boolean] :http_chunks (false) Use HTTP 1.1 style chunked-encoding semantics."
+full_name: EventMachine::FileStreamer::new
+is_singleton: true
+name: new
+params: (connection, filename, args = {})
+visibility: public

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (EventMachine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/eventmachine.rb, line 149</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span> <span class="ruby-identifier">blk</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">tail</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+    <span class="ruby-comment cmt"># Obsoleted the use_threads mechanism.</span>
+    <span class="ruby-comment cmt"># 25Nov06: Added the begin/ensure block. We need to be sure that release_machine</span>
+    <span class="ruby-comment cmt"># gets called even if an exception gets thrown within any of the user code</span>
+    <span class="ruby-comment cmt"># that the event loop runs. The best way to see this is to run a unit</span>
+    <span class="ruby-comment cmt"># test with two functions, each of which calls {EventMachine.run} and each of</span>
+    <span class="ruby-comment cmt"># which throws something inside of #run. Without the ensure, the second test</span>
+    <span class="ruby-comment cmt"># will start without release_machine being called and will immediately throw</span>
+
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">reactor_running?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@reactor_pid</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+      <span class="ruby-comment cmt"># Reactor was started in a different parent, meaning we have forked.</span>
+      <span class="ruby-comment cmt"># Clean up reactor state so a new reactor boots up in this child.</span>
+      <span class="ruby-identifier">stop_event_loop</span>
+      <span class="ruby-identifier">release_machine</span>
+      <span class="ruby-ivar">@reactor_running</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">tail</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@tails</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">tail</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">reactor_running?</span>
+      (<span class="ruby-identifier">b</span> = <span class="ruby-identifier">blk</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">call</span> <span class="ruby-comment cmt"># next_tick(b)</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-ivar">@conns</span> = {}
+      <span class="ruby-ivar">@acceptors</span> = {}
+      <span class="ruby-ivar">@timers</span> = {}
+      <span class="ruby-ivar">@wrapped_exception</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@next_tick_queue</span> <span class="ruby-operator">||=</span> []
+      <span class="ruby-ivar">@tails</span> <span class="ruby-operator">||=</span> []
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-ivar">@reactor_pid</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+        <span class="ruby-ivar">@reactor_running</span> = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-identifier">initialize_event_machine</span>
+        (<span class="ruby-identifier">b</span> = <span class="ruby-identifier">blk</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">add_timer</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">b</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@next_tick_queue</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@next_tick_queue</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">add_timer</span>(<span class="ruby-value">0</span>) { <span class="ruby-identifier">signal_loopbreak</span> }
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-ivar">@reactor_thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>
+        <span class="ruby-identifier">run_machine</span>
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-keyword kw">until</span> <span class="ruby-ivar">@tails</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-ivar">@tails</span>.<span class="ruby-identifier">pop</span>.<span class="ruby-identifier">call</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">release_machine</span>
+        <span class="ruby-keyword kw">ensure</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@threadpool</span>
+            <span class="ruby-ivar">@threadpool</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">exit</span> }
+            <span class="ruby-ivar">@threadpool</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+              <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">alive?</span>
+              <span class="ruby-keyword kw">begin</span>
+                <span class="ruby-comment cmt"># Thread#kill! does not exist on 1.9 or rbx, and raises</span>
+                <span class="ruby-comment cmt"># NotImplemented on jruby</span>
+                <span class="ruby-identifier">t</span>.<span class="ruby-identifier">kill!</span>
+              <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>, <span class="ruby-constant">NotImplementedError</span>
+                <span class="ruby-identifier">t</span>.<span class="ruby-identifier">kill</span>
+                <span class="ruby-comment cmt"># XXX t.join here?</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-ivar">@threadqueue</span> = <span class="ruby-keyword kw">nil</span>
+            <span class="ruby-ivar">@resultqueue</span> = <span class="ruby-keyword kw">nil</span>
+            <span class="ruby-ivar">@threadpool</span> = <span class="ruby-keyword kw">nil</span>
+            <span class="ruby-ivar">@all_threads_spawned</span> = <span class="ruby-keyword kw">false</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-ivar">@next_tick_queue</span> = []
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-ivar">@reactor_running</span> = <span class="ruby-keyword kw">false</span>
+        <span class="ruby-ivar">@reactor_thread</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">raise</span> <span class="ruby-ivar">@wrapped_exception</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@wrapped_exception</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

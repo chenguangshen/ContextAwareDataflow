@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Look for temp declarations and remove the &quot;temp&quot; keyword, yielding code that we can safely eval. We also record the set of &quot;temp&quot; collections we've seen, and provide a helper method that returns the AST of a state block that contains declarations for all those temp tables.
+constants: []
+
+full_name: TempExpander
+includes: []
+
+instance_methods: []
+
+name: TempExpander
+superclass: SexpProcessor

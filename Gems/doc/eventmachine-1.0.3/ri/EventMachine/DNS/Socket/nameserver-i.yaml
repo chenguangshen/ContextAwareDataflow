@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: EventMachine::DNS::Socket#nameserver
+is_singleton: false
+name: nameserver
+params: ()
+visibility: public

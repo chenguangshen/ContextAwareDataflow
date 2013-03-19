@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: MetaAlgebra
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_tag
+- !ruby/object:RI::MethodSummary 
+  name: in_prefix
+- !ruby/object:RI::MethodSummary 
+  name: max_of
+name: MetaAlgebra
+superclass: 

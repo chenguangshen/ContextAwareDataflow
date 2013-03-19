@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Bud::AccumPair
+includes: []
+
+instance_methods: []
+
+name: AccumPair
+superclass: Agg

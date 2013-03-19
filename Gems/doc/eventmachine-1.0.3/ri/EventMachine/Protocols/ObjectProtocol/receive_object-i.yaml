@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Invoked with ruby objects received over the network
+full_name: EventMachine::Protocols::ObjectProtocol#receive_object
+is_singleton: false
+name: receive_object
+params: (obj)
+visibility: public

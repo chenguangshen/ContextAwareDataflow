@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: create
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@private"
+constants: []
+
+full_name: EventMachine::EvmaUDPSocket
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: eventable_read
+- !ruby/object:RI::MethodSummary 
+  name: eventable_write
+- !ruby/object:RI::MethodSummary 
+  name: send_data
+name: EvmaUDPSocket
+superclass: DatagramObject

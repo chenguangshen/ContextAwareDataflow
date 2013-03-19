@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Integer] Waiting size @note This is a peek at the number of jobs that are currently waiting on the Queue"
+full_name: EventMachine::Queue#num_waiting
+is_singleton: false
+name: num_waiting
+params: ()
+visibility: public

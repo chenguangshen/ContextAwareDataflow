@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Connect to a memcached server (must support NOREPLY, memcached &gt;= 1.2.4)
+full_name: EventMachine::Protocols::Memcache::connect
+is_singleton: true
+name: connect
+params: (host = 'localhost', port = 11211)
+visibility: public

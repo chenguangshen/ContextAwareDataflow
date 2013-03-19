@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a simple thread-safe way to transfer data between (typically) long running tasks in {EventMachine.defer} and event loop thread.
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: " channel = EventMachine::Channel.new\n sid     = channel.subscribe { |msg| p [:got, msg] }\n\n channel.push('hello world')\n channel.unsubscribe(sid)\n"
+constants: []
+
+full_name: EventMachine::Channel
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "<<"
+- !ruby/object:RI::MethodSummary 
+  name: pop
+- !ruby/object:RI::MethodSummary 
+  name: push
+- !ruby/object:RI::MethodSummary 
+  name: subscribe
+- !ruby/object:RI::MethodSummary 
+  name: unsubscribe
+name: Channel
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Indicates that we've reached some kind of completion state, by default this is :succeeded or :failed. Due to these semantics, the :completed state is reserved for internal use.
+full_name: EventMachine::Completion#completed?
+is_singleton: false
+name: completed?
+params: ()
+visibility: public

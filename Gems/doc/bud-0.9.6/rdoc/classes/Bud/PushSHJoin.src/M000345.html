@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>insert (Bud::PushSHJoin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/join.rb, line 265</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">source</span>)
+      <span class="ruby-comment cmt"># If we need to reproduce the join's output, do that now before we process</span>
+      <span class="ruby-comment cmt"># the to-be-inserted tuple. This avoids needless duplicates: if the</span>
+      <span class="ruby-comment cmt"># to-be-inserted tuple produced any join output, we'd produce that output</span>
+      <span class="ruby-comment cmt"># again if we didn't rescan now.</span>
+      <span class="ruby-identifier">replay_join</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@rescan</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@selfjoins</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">elem_name</span>
+        <span class="ruby-identifier">offsets</span> = []
+        <span class="ruby-ivar">@relnames</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">r</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">offsets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">elem_name</span>}
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">offsets</span> = [<span class="ruby-ivar">@relnames</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">source</span>.<span class="ruby-identifier">elem_name</span>)]
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;item #{item.inspect} inserted into join from unknown source #{source.elem_name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">offsets</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$EMPTY</span>
+      <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">insert_item</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">offset</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

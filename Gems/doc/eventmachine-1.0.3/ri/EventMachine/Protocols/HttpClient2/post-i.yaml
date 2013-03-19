@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Post to a url
+- !ruby/struct:SM::Flow::VERB 
+  body: " req = conn.post('/data')\n req.callback{|response| puts response.content }\n"
+full_name: EventMachine::Protocols::HttpClient2#post
+is_singleton: false
+name: post
+params: (args)
+visibility: public

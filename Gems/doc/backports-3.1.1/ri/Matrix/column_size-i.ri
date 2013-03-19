@@ -1,0 +1,2 @@
+U:RDoc::Attr[i"column_size"Matrix#column_size"R:publico:RDoc::Markup::Document:
+@file0:@parts[o:RDoc::Markup::Paragraph;	["#Returns the number of columns.F")lib/backports/1.9.2/stdlib/matrix.rb

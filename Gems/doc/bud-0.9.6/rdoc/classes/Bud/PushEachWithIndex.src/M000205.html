@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_rescan_invalidate (Bud::PushEachWithIndex)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 548</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_rescan_invalidate</span>(<span class="ruby-identifier">rescan</span>, <span class="ruby-identifier">invalidate</span>)
+      <span class="ruby-keyword kw">super</span>
+
+      <span class="ruby-comment cmt"># This node has some state (@each_index), but not the tuples. If it is in</span>
+      <span class="ruby-comment cmt"># rescan mode, then it must ask its sources to rescan, and restart its</span>
+      <span class="ruby-comment cmt"># index.</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rescan</span>.<span class="ruby-identifier">member?</span> <span class="ruby-keyword kw">self</span>
+        <span class="ruby-identifier">invalidate</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>
+        <span class="ruby-identifier">srcs</span> = <span class="ruby-identifier">non_temporal_predecessors</span>
+        <span class="ruby-identifier">rescan</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">srcs</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

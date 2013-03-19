@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Prime::TrialDivision</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/backports/1_9_1/stdlib/prime_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/backports/1.9.1/stdlib/prime.rb">lib/backports/1.9.1/stdlib/prime.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-5B-5D">#[]</a></li>
+          
+          <li><a href="#method-i-cache">#cache</a></li>
+          
+          <li><a href="#method-i-primes">#primes</a></li>
+          
+          <li><a href="#method-i-primes_so_far">#primes_so_far</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Singleton</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Prime.html">Prime</a></li>
+        
+          <li><a href="../Prime/EratosthenesGenerator.html">Prime::EratosthenesGenerator</a></li>
+        
+          <li><a href="../Prime/EratosthenesSieve.html">Prime::EratosthenesSieve</a></li>
+        
+          <li><a href="../Prime/Generator23.html">Prime::Generator23</a></li>
+        
+          <li><a href="../Prime/OldCompatibility.html">Prime::OldCompatibility</a></li>
+        
+          <li><a href="../Prime/PseudoPrimeGenerator.html">Prime::PseudoPrimeGenerator</a></li>
+        
+          <li><a href="../Prime/TrialDivision.html">Prime::TrialDivision</a></li>
+        
+          <li><a href="../Prime/TrialDivisionGenerator.html">Prime::TrialDivisionGenerator</a></li>
+        
+          <li><a href="../Backports.html">Backports</a></li>
+        
+          <li><a href="../Backports/MOST_EXTREME_OBJECT_EVER.html">Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+        
+          <li><a href="../Backports/StdLib.html">Backports::StdLib</a></li>
+        
+          <li><a href="../Backports/StdLib/LoadedFeatures.html">Backports::StdLib::LoadedFeatures</a></li>
+        
+          <li><a href="../Enumerator.html">Enumerator</a></li>
+        
+          <li><a href="../Enumerator/GeneratorBP.html">Enumerator::GeneratorBP</a></li>
+        
+          <li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+        
+          <li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+        
+          <li><a href="../Matrix.html">Matrix</a></li>
+        
+          <li><a href="../Matrix/EigenvalueDecomposition.html">Matrix::EigenvalueDecomposition</a></li>
+        
+          <li><a href="../Matrix/LUPDecomposition.html">Matrix::LUPDecomposition</a></li>
+        
+          <li><a href="../Random.html">Random</a></li>
+        
+          <li><a href="../Random/Implementation.html">Random::Implementation</a></li>
+        
+          <li><a href="../Random/MT19937.html">Random::MT19937</a></li>
+        
+          <li><a href="../Enumerable.html">Enumerable</a></li>
+        
+          <li><a href="../Enumerable/Enumerator.html">Enumerable::Enumerator</a></li>
+        
+          <li><a href="../File.html">File</a></li>
+        
+          <li><a href="../File/Constants.html">File::Constants</a></li>
+        
+          <li><a href="../Vector.html">Vector</a></li>
+        
+          <li><a href="../Vector/ZeroVectorError.html">Vector::ZeroVectorError</a></li>
+        
+          <li><a href="../ARGF.html">ARGF</a></li>
+        
+          <li><a href="../Array.html">Array</a></li>
+        
+          <li><a href="../BasicObject.html">BasicObject</a></li>
+        
+          <li><a href="../Binding.html">Binding</a></li>
+        
+          <li><a href="../Complex.html">Complex</a></li>
+        
+          <li><a href="../Dir.html">Dir</a></li>
+        
+          <li><a href="../ENV.html">ENV</a></li>
+        
+          <li><a href="../Fixnum.html">Fixnum</a></li>
+        
+          <li><a href="../Float.html">Float</a></li>
+        
+          <li><a href="../GC.html">GC</a></li>
+        
+          <li><a href="../Hash.html">Hash</a></li>
+        
+          <li><a href="../IO.html">IO</a></li>
+        
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          <li><a href="../Kernel.html">Kernel</a></li>
+        
+          <li><a href="../Math.html">Math</a></li>
+        
+          <li><a href="../Method.html">Method</a></li>
+        
+          <li><a href="../Module.html">Module</a></li>
+        
+          <li><a href="../NilClass.html">NilClass</a></li>
+        
+          <li><a href="../Numeric.html">Numeric</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+        
+          <li><a href="../OpenStruct.html">OpenStruct</a></li>
+        
+          <li><a href="../Proc.html">Proc</a></li>
+        
+          <li><a href="../Process.html">Process</a></li>
+        
+          <li><a href="../Range.html">Range</a></li>
+        
+          <li><a href="../Regexp.html">Regexp</a></li>
+        
+          <li><a href="../Set.html">Set</a></li>
+        
+          <li><a href="../StopIteration.html">StopIteration</a></li>
+        
+          <li><a href="../String.html">String</a></li>
+        
+          <li><a href="../Struct.html">Struct</a></li>
+        
+          <li><a href="../Symbol.html">Symbol</a></li>
+        
+          <li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Prime::TrialDivision</h1>
+
+    <div id="description" class="description">
+      
+<p>Internal use. An implementation of prime table by trial division method.</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="5B-5D-method" class="method-detail ">
+          <a name="method-i-5B-5D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]</span><span
+              class="method-args">(index)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns the +index+th prime number.</p>
+
+<p><tt>index</tt> is a 0-based index.</p>
+            
+
+            
+            <div class="method-source-code" id="5B-5D-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/1.9.1/stdlib/prime.rb, line 387</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-comment"># Only check for prime factors up to the square root of the potential primes,</span>
+    <span class="ruby-comment">#   but without the performance hit of an actual square root calculation.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+</span> <span class="ruby-value">4</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@ulticheck_next_squared</span>
+      <span class="ruby-ivar">@ulticheck_index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@ulticheck_next_squared</span> = <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">at</span>(<span class="ruby-ivar">@ulticheck_index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">**</span> <span class="ruby-value">2</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># Only check numbers congruent to one and five, modulo six. All others</span>
+
+    <span class="ruby-comment">#   are divisible by two or three.  This also allows us to skip checking against</span>
+    <span class="ruby-comment">#   two and three.</span>
+    <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-ivar">@ulticheck_index</span>].<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">prime</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">prime</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> }.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+=</span> <span class="ruby-value">4</span>
+    <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-ivar">@ulticheck_index</span>].<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">prime</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">prime</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> }.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-identifier">index</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 5B-5D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-method -->
+
+      
+        <div id="cache-method" class="method-detail ">
+          <a name="method-i-cache"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cache</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns the cached prime numbers.</p>
+            
+
+            
+            <div class="method-source-code" id="cache-source">
+<pre>
+<span class="ruby-comment"># File lib/backports/1.9.1/stdlib/prime.rb, line 378</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cache</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@primes</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cache-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="TrialDivision.html#method-i-primes">primes</a>, <a href="TrialDivision.html#method-i-primes_so_far">primes_so_far</a>
+          </div>
+          
+
+          
+        </div><!-- cache-method -->
+
+      
+        <div id="primes-method" class="method-detail method-alias">
+          <a name="method-i-primes"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">primes</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="TrialDivision.html#method-i-cache">cache</a>
+          </div>
+          
+        </div><!-- primes-method -->
+
+      
+        <div id="primes_so_far-method" class="method-detail method-alias">
+          <a name="method-i-primes_so_far"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">primes_so_far</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="TrialDivision.html#method-i-cache">cache</a>
+          </div>
+          
+        </div><!-- primes_so_far-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

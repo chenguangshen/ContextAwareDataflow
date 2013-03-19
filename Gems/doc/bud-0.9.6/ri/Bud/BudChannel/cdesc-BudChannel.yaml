@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Channels are a different type of collection in that they represent two distinct collections, one each for incoming and outgoing. The incoming side makes use of @storage and @delta, whereas the outgoing side only deals with @pending. XXX Maybe we should be using aliases instead.
+constants: []
+
+full_name: Bud::BudChannel
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: <=
+- !ruby/object:RI::MethodSummary 
+  name: bootstrap
+- !ruby/object:RI::MethodSummary 
+  name: invalidate_cache
+- !ruby/object:RI::MethodSummary 
+  name: payloads
+name: BudChannel
+superclass: BudCollection

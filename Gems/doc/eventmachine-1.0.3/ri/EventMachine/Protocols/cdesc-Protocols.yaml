@@ -1,0 +1,51 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "This module contains various protocol implementations, including:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: HttpClient and HttpClient2
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Stomp
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Memcache
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: SmtpClient and SmtpServer
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: SASLauth and SASLauthclient
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: LineProtocol, LineAndTextProtocol and LineText2
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: HeaderAndContentProtocol
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: Postgres3
+  - !ruby/struct:SM::Flow::LI 
+    label: "-"
+    body: ObjectProtocol
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: The protocol implementations live in separate files in the protocols/ subdirectory, but are auto-loaded when they are first referenced in your application.
+- !ruby/struct:SM::Flow::P 
+  body: EventMachine::Protocols is also aliased to EM::P for easier usage.
+constants: []
+
+full_name: EventMachine::Protocols
+includes: []
+
+instance_methods: []
+
+name: Protocols
+superclass: 

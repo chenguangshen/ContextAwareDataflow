@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: option
+- !ruby/object:RI::AliasName 
+  name: opt
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add an Option.
+- !ruby/struct:SM::Flow::P 
+  body: objects - An Array with an optional Hash as the last element.
+- !ruby/struct:SM::Flow::P 
+  body: "Examples:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  on '-u', '--username=', 'Your username'\n  on :v, :verbose, 'Enable verbose mode'\n"
+- !ruby/struct:SM::Flow::P 
+  body: Returns the created instance of Slop::Option.
+full_name: Slop#on
+is_singleton: false
+name: "on"
+params: (*objects, &block)
+visibility: public

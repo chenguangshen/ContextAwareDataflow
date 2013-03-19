@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: form a collection containing all pairs of items in <tt>self</tt> and items in <tt>collection</tt>
+full_name: Bud::BudCollection#*
+is_singleton: false
+name: "*"
+params: (collection)
+visibility: public

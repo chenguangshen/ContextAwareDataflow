@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>connect (EventMachine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/eventmachine.rb, line 617</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">connect</span> <span class="ruby-identifier">server</span>, <span class="ruby-identifier">port</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">handler</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>
+    <span class="ruby-comment cmt"># EventMachine::connect initiates a TCP connection to a remote</span>
+    <span class="ruby-comment cmt"># server and sets up event-handling for the connection.</span>
+    <span class="ruby-comment cmt"># It internally creates an object that should not be handled</span>
+    <span class="ruby-comment cmt"># by the caller. HOWEVER, it's often convenient to get the</span>
+    <span class="ruby-comment cmt"># object to set up interfacing to other objects in the system.</span>
+    <span class="ruby-comment cmt"># We return the newly-created anonymous-class object to the caller.</span>
+    <span class="ruby-comment cmt"># It's expected that a considerable amount of code will depend</span>
+    <span class="ruby-comment cmt"># on this behavior, so don't change it.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># Ok, added support for a user-defined block, 13Apr06.</span>
+    <span class="ruby-comment cmt"># This leads us to an interesting choice because of the</span>
+    <span class="ruby-comment cmt"># presence of the post_init call, which happens in the</span>
+    <span class="ruby-comment cmt"># initialize method of the new object. We call the user's</span>
+    <span class="ruby-comment cmt"># block and pass the new object to it. This is a great</span>
+    <span class="ruby-comment cmt"># way to do protocol-specific initiation. It happens</span>
+    <span class="ruby-comment cmt"># AFTER post_init has been called on the object, which I</span>
+    <span class="ruby-comment cmt"># certainly hope is the right choice.</span>
+    <span class="ruby-comment cmt"># Don't change this lightly, because accepted connections</span>
+    <span class="ruby-comment cmt"># are different from connected ones and we don't want</span>
+    <span class="ruby-comment cmt"># to have them behave differently with respect to post_init</span>
+    <span class="ruby-comment cmt"># if at all possible.</span>
+
+    <span class="ruby-identifier">bind_connect</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">server</span>, <span class="ruby-identifier">port</span>, <span class="ruby-identifier">handler</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

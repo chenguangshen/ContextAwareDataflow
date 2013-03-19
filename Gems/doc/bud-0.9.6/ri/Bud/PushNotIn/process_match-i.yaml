@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushNotIn#process_match
+is_singleton: false
+name: process_match
+params: (lhs_item, rhs_values)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #fail"
+full_name: EventMachine::Completion#set_deferred_failure
+is_singleton: false
+name: set_deferred_failure
+params: (*args)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true if this option expects an argument.
+full_name: Slop::Option#expects_argument?
+is_singleton: false
+name: expects_argument?
+params: ()
+visibility: public

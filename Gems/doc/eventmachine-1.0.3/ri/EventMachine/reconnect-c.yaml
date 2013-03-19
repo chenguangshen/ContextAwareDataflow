@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: handler
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Connect to a given host/port and re-use the provided {EventMachine::Connection} instance. Consider also {EventMachine::Connection#reconnect}.
+- !ruby/struct:SM::Flow::P 
+  body: "@see EventMachine::Connection#reconnect"
+full_name: EventMachine::reconnect
+is_singleton: true
+name: reconnect
+params: (server, port, handler) {|handler| ...}
+visibility: public

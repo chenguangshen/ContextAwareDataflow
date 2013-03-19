@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds a one-shot timer to the event loop. Call it with one or two parameters. The first parameters is a delay-time expressed in <b>seconds</b> (not milliseconds). The second parameter, if present, must be an object that responds to :call. If 2nd parameter is not given, then you can also simply pass a block to the method call.
+- !ruby/struct:SM::Flow::P 
+  body: This method may be called from the block passed to {EventMachine.run} or from any callback method. It schedules execution of the proc or block passed to it, after the passage of an interval of time equal to *at least* the number of seconds specified in the first parameter to the call.
+- !ruby/struct:SM::Flow::P 
+  body: "{EventMachine.add_timer} is a non-blocking method. Callbacks can and will be called during the interval of time that the timer is in effect. There is no built-in limit to the number of timers that can be outstanding at any given time."
+- !ruby/struct:SM::Flow::P 
+  body: "@example Setting a one-shot timer with EventMachine"
+- !ruby/struct:SM::Flow::VERB 
+  body: " EventMachine.run {\n   puts &quot;Starting the run now: #{Time.now}&quot;\n   EventMachine.add_timer 5, proc { puts &quot;Executing timer event: #{Time.now}&quot; }\n   EventMachine.add_timer(10) { puts &quot;Executing timer event: #{Time.now}&quot; }\n }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Integer] delay Delay in seconds @see EventMachine::Timer @see EventMachine.add_periodic_timer"
+full_name: EventMachine::add_timer
+is_singleton: true
+name: add_timer
+params: (*args, &block)
+visibility: public

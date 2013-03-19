@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::BudCollection#to_push_elem
+is_singleton: false
+name: to_push_elem
+params: (the_name=tabname, the_schema=schema)
+visibility: public

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>join_offset (Bud::PushSHJoin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/join.rb, line 152</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">join_offset</span>(<span class="ruby-identifier">entry</span>)
+      <span class="ruby-identifier">name</span>, <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">entry</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">entry</span>[<span class="ruby-value">1</span>]
+
+      <span class="ruby-comment cmt"># determine which subtuple of the collection contains the table</span>
+      <span class="ruby-comment cmt"># referenced in entry.</span>
+      <span class="ruby-identifier">subtuple</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">all_rels_below</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">all_rels_below</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">tabname</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">entry</span>[<span class="ruby-value">0</span>]
+          <span class="ruby-identifier">subtuple</span> = <span class="ruby-identifier">i</span>
+          <span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">subtuple</span>, <span class="ruby-identifier">offset</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

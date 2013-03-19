@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Runs the bud instance (until a breakpoint, or stop() is called)
+full_name: LibRebl#run
+is_singleton: false
+name: run
+params: ()
+visibility: public

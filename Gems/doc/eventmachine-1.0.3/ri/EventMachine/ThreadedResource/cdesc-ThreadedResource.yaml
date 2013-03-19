@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: EventMachine::ThreadedResource
+- !ruby/struct:SM::Flow::P 
+  body: A threaded resource is a &quot;quick and dirty&quot; wrapper around the concept of wiring up synchronous code into a standard EM::Pool. This is useful to keep interfaces coherent and provide a simple approach at &quot;making an interface async-ish&quot;.
+- !ruby/struct:SM::Flow::P 
+  body: General usage is to wrap libraries that do not support EventMachine, or to have a specific number of dedicated high-cpu worker resources.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Basic Usage example
+- !ruby/struct:SM::Flow::P 
+  body: This example requires the cassandra gem. The cassandra gem contains an EventMachine interface, but it's sadly Fiber based and thus only works on 1.9. It also requires (potentially) complex stack switching logic to reach completion of nested operations. By contrast this approach provides a block in which normal synchronous code can occur, but makes no attempt to wire the IO into EventMachines C++ IO implementations, instead relying on the reactor pattern in rb_thread_select.
+- !ruby/struct:SM::Flow::VERB 
+  body: "   cassandra_dispatcher = ThreadedResource.new do\n     Cassandra.new('allthethings', '127.0.0.1:9160')\n   end\n\n   pool = EM::Pool.new\n\n   pool.add cassandra_dispatcher\n\n   # If we don't care about the result:\n   pool.perform do |dispatcher|\n     # The following block executes inside a dedicated thread, and should not\n     # access EventMachine things:\n     dispatcher.dispatch do |cassandra|\n       cassandra.insert(:Things, '10', 'stuff' =&gt; 'things')\n     end\n   end\n\n   # Example where we care about the result:\n   pool.perform do |dispatcher|\n     # The dispatch block is executed in the resources thread.\n     completion = dispatcher.dispatch do |cassandra|\n       cassandra.get(:Things, '10', 'stuff')\n     end\n\n     # This block will be yielded on the EM thread:\n     completion.callback do |result|\n       EM.do_something_with(result)\n     end\n\n     completion\n   end\n"
+constants: []
+
+full_name: EventMachine::ThreadedResource
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dispatch
+- !ruby/object:RI::MethodSummary 
+  name: shutdown
+name: ThreadedResource
+superclass: Object

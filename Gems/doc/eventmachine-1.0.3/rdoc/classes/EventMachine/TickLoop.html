@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: EventMachine::TickLoop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">EventMachine::TickLoop</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/em/tick_loop_rb.html">
+                lib/em/tick_loop.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A <a href="TickLoop.html">TickLoop</a> is useful when one needs to
+distribute amounts of work throughout ticks in order to maintain response
+times. It is also useful for simple repeated checks and metrics.
+</p>
+<pre>
+  # Here we run through an array one item per tick until it is empty,
+  # printing each element.
+  # When the array is empty, we return :stop from the callback, and the
+  # loop will terminate.
+  # When the loop terminates, the on_stop callbacks will be called.
+  EM.run do
+    array = (1..100).to_a
+
+    tickloop = EM.tick_loop do
+      if array.empty?
+        :stop
+      else
+        puts array.shift
+      end
+    end
+
+    tickloop.on_stop { EM.stop }
+  end
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000294">new</a>&nbsp;&nbsp;
+      <a href="#M000295">on_stop</a>&nbsp;&nbsp;
+      <a href="#M000298">start</a>&nbsp;&nbsp;
+      <a href="#M000296">stop</a>&nbsp;&nbsp;
+      <a href="#M000297">stopped?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000294" class="method-detail">
+        <a name="M000294"></a>
+
+        <div class="method-heading">
+          <a href="TickLoop.src/M000294.html" target="Code" class="method-signature"
+            onclick="popupCode('TickLoop.src/M000294.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(*a, &amp;b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Arguments: A callback (EM::Callback) to call each tick. If the call returns
++:<a href="TickLoop.html#M000296">stop</a>+ then the loop will be stopped.
+Any other value is ignored.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000295" class="method-detail">
+        <a name="M000295"></a>
+
+        <div class="method-heading">
+          <a href="TickLoop.src/M000295.html" target="Code" class="method-signature"
+            onclick="popupCode('TickLoop.src/M000295.html');return false;">
+          <span class="method-name">on_stop</span><span class="method-args">(*a, &amp;b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Arguments: A callback (EM::Callback) to call once on the next <a
+href="TickLoop.html#M000296">stop</a> (or immediately if already stopped).
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000298" class="method-detail">
+        <a name="M000298"></a>
+
+        <div class="method-heading">
+          <a href="TickLoop.src/M000298.html" target="Code" class="method-signature"
+            onclick="popupCode('TickLoop.src/M000298.html');return false;">
+          <span class="method-name">start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start the tick loop, will raise argument error if the loop is already
+running.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000296" class="method-detail">
+        <a name="M000296"></a>
+
+        <div class="method-heading">
+          <a href="TickLoop.src/M000296.html" target="Code" class="method-signature"
+            onclick="popupCode('TickLoop.src/M000296.html');return false;">
+          <span class="method-name">stop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Stop the tick loop immediately, and call it&#8216;s <a
+href="TickLoop.html#M000295">on_stop</a> callbacks.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000297" class="method-detail">
+        <a name="M000297"></a>
+
+        <div class="method-heading">
+          <a href="TickLoop.src/M000297.html" target="Code" class="method-signature"
+            onclick="popupCode('TickLoop.src/M000297.html');return false;">
+          <span class="method-name">stopped?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Query if the loop is stopped.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

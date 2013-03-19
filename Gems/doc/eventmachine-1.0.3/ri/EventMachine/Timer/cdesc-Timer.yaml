@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a one-time timer
+- !ruby/struct:SM::Flow::VERB 
+  body: " timer = EventMachine::Timer.new(5) do\n   # this will never fire because we cancel it\n end\n timer.cancel\n"
+constants: []
+
+full_name: EventMachine::Timer
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: cancel
+name: Timer
+superclass: Object

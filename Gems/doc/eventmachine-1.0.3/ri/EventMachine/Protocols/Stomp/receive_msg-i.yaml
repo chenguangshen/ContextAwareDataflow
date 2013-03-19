@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Invoked with an incoming Stomp::Message received from the STOMP server
+full_name: EventMachine::Protocols::Stomp#receive_msg
+is_singleton: false
+name: receive_msg
+params: (msg)
+visibility: public

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>summarize (VizHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/viz_util.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">summarize</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">schema</span>)
+    <span class="ruby-identifier">table_io</span> = {}
+    <span class="ruby-identifier">cardinalities</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sort</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>]}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">card</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">table_io</span>[<span class="ruby-node">&quot;#{card.table}_#{card.bud_time}&quot;</span>] = <span class="ruby-identifier">start_table</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">card</span>.<span class="ruby-identifier">table</span>, <span class="ruby-identifier">card</span>.<span class="ruby-identifier">bud_time</span>, <span class="ruby-identifier">schema</span>[<span class="ruby-identifier">card</span>.<span class="ruby-identifier">table</span>])
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">full_info</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">info</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">write_table_content</span>(<span class="ruby-identifier">table_io</span>[<span class="ruby-node">&quot;#{info.table}_#{info.bud_time}&quot;</span>], <span class="ruby-identifier">info</span>.<span class="ruby-identifier">row</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">table_io</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tab</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">end_table</span>(<span class="ruby-identifier">tab</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># fix: nested loops</span>
+    <span class="ruby-identifier">times</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">time</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">card_info</span> = {}
+      <span class="ruby-identifier">cardinalities</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">card</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">card</span>.<span class="ruby-identifier">bud_time</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">bud_time</span>
+          <span class="ruby-identifier">card_info</span>[<span class="ruby-identifier">card</span>.<span class="ruby-identifier">table</span>] = <span class="ruby-identifier">card</span>.<span class="ruby-identifier">cnt</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">d</span> = <span class="ruby-node">&quot;#{@dir}/tm_#{time.bud_time}&quot;</span>
+      <span class="ruby-identifier">write_graphs</span>(<span class="ruby-ivar">@t_tabinf</span>, <span class="ruby-identifier">builtin_tables</span>, <span class="ruby-ivar">@t_cycle</span>, <span class="ruby-ivar">@t_depends</span>, <span class="ruby-ivar">@t_rules</span>, <span class="ruby-identifier">d</span>,
+                   <span class="ruby-ivar">@dir</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">time</span>.<span class="ruby-identifier">bud_time</span>, <span class="ruby-identifier">card_info</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

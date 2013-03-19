@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes any arguments suitable for EM::Callback() and returns a subscriber id for use when unsubscribing.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Integer] Subscribe identifier @see #unsubscribe"
+full_name: EventMachine::Channel#subscribe
+is_singleton: false
+name: subscribe
+params: (*a, &b)
+visibility: public

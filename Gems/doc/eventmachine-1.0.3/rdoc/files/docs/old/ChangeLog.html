@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: ChangeLog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>ChangeLog</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>docs/old/ChangeLog
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Mar 17 16:30:03 -0700 2013</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+01Oct06: Replaced EventMachine#open_datagram_server with a version that can
+</p>
+<pre>
+  take a Class or a Module, instead of just a Module. Thanks to Tobias
+  Gustafsson for pointing out the missing case.
+</pre>
+<p>
+04Oct06: Supported subsecond timer resolutions, per request by Jason
+Roelofs. 05Oct06: Added <a
+href="../../../classes/EventMachine.html#M000066">EventMachine#set_quantum</a>,
+which sets the timer resolution. 15Nov06: Added
+Connection#set_comm_inactivity_timeout. 15Nov06: Checked in a Line-and-Text
+Protocol Handler. 18Nov06: Checked in a Header-and-Body Protocol Handler.
+22Nov06: Changed <a
+href="../../../classes/EventMachine.html#M000063">EventMachine#reconnect</a>:
+no longer excepts when called on an
+</p>
+<pre>
+         already-connected handler.
+</pre>
+<p>
+28Nov06: Supported a binary-unix gem. 19Dec06: Added <a
+href="../../../classes/EventMachine.html#M000075">EventMachine#set_effective_user</a>.
+05Jan07: Upped max outstanding timers to 1000. 15May07: Applied Solaris
+patches from Brett Eisenberg 22May07: Cleaned up the license text in all
+the source files. 22May07: Released version 0.7.2
+</p>
+<p>
+23May07: Per suggestion from Bill Kelly, fixed a bug with the
+initialization
+</p>
+<pre>
+        of the network libraries under Windows. The goal is to enable EM to
+        be used without Ruby.
+</pre>
+<p>
+28May07: Applied patch from Bill Kelly, refactors the declarations of
+</p>
+<pre>
+        event names to make EM easier to use from C programs without Ruby.
+</pre>
+<p>
+31May07: Added a preliminary implementation of <a
+href="../../../classes/EventMachine.html#M000077">EventMachine#popen</a>.
+01Jun07: Added EM, a &quot;pseudo-alias&quot; for <a
+href="../../../classes/EventMachine.html">EventMachine</a>. 01Jun07: Added
+EM#next_tick. 01Jun07: Added EM::Connection#get_outbound_data_size 05Jun07:
+Removed the code which loads a pure-Ruby EM library in case the
+</p>
+<pre>
+        compiled extension is unavailable. Suggested by Moshe Litvin.
+</pre>
+<p>
+06Jun07: Preliminary epoll implementation. 12Jun07: Added an evented popen
+implementation that, like Ruby&#8216;s, is
+</p>
+<pre>
+        full-duplex and makes the subprocess PID available to the caller.
+</pre>
+<p>
+06Jul07: Performance-tweaked the callback dispatcher in eventmachine.rb.
+10Jul07: Released version 0.8.0. 12Jul07: Applied patches from Tim Pease to
+fix Solaris build problems. 15Jul07: Created a new provisional source
+branch, experiments/jruby-1.
+</p>
+<pre>
+        This is a preliminary implementation of the EM reactor in Java,
+        suitable for use with JRuby.
+</pre>
+<p>
+17Jul07: Added <a
+href="../../../classes/EventMachine.html#M000056">EventMachine#stop_server</a>,
+per request from Kirk Haines,
+</p>
+<pre>
+        and associated unit tests.
+</pre>
+<p>
+22Jul07: Added EventMachine#stream_file_data. This is a very fast and
+scalable
+</p>
+<pre>
+        way of sending data from static files over network connections. It
+        has separate implementations for small files and large file, and
+        has tunings to minimize memory consumption.
+</pre>
+<p>
+26Jul07: Added some patches by Kirk Haines to improve the behavior of
+</p>
+<pre>
+        EM::Connection#send_file_data_to_connection.
+</pre>
+<p>
+26Jul07: Added a C++ module for directly integrating EM into C++ programs
+</p>
+<pre>
+        with no Ruby dependencies. Needs example code.
+</pre>
+<p>
+29Jul07: Added <a
+href="../../../classes/EventMachine/Protocols/LineText2.html">EventMachine::Protocols::LineText2</a>.
+29Jul07: Added <a
+href="../../../classes/EventMachine/Protocols/Stomp.html">EventMachine::Protocols::Stomp</a>.
+30Jul07: Added sys/stat.h to project.h to fix compilation bug on Darwin.
+13Aug07: Added EventMachine#reactor_running? 15Aug07: Added parameters for
+<a
+href="../../../classes/EventMachine/Connection.html">EventMachine::Connection</a>:start_tls
+that can be
+</p>
+<pre>
+        used to specify client-side private keys and certificates.
+</pre>
+<p>
+17Aug07: Added <a
+href="../../../classes/EventMachine.html#M000046">EventMachine#run_block</a>,
+a sugaring for a common use case. 24Aug07: Added a preliminary keyboard
+handler. Needs docs and testing on
+</p>
+<pre>
+        windows.
+</pre>
+<p>
+26Aug07: Created EventMachine::Spawnable, an implementation of Erlang-like
+</p>
+<pre>
+        processes.
+</pre>
+<p>
+27Aug07: Silenced some -w warnings, requested by James Edward Gray II.
+30Aug07: Added cookies to EM::HttpClient#request. 04Sep07: Added an initial
+implementation of an evented SMTP client. 04Sep07: Added an initial
+implementation of an evented SMTP server. 10Sep07: Changed EM#spawn to run
+spawned blocks in the context of the
+</p>
+<pre>
+        SpawnedProcess object, not of whatever was the active object at the
+        time of the spawn.
+</pre>
+<p>
+14Sep07: Heartbeats weren&#8216;t working with EPOLL. Noticed by Brian
+Candler. 15Sep07: Added some features, tests and documents to Deferrable.
+16Sep07: Added [:content] parameter to EM::Protocols::SmtpClient#send.
+16Sep07: Bumped version to 0.9.0 in anticipation of a release. 18Sep07:
+Released version 0.9.0. 19Sep07: Added receive_reset to
+EM::Protocols::SmtpServer. 19Sep07: User overrides of
+EM::Protocols::SmtpServer#receive_recipient can now
+</p>
+<pre>
+        return a Deferrable. Also fixed bug: SmtpClient now raises a protocol
+        error if none of its RCPT TO: commands are accepted by the server.
+</pre>
+<p>
+26Sep07: Fixed missing keyboard support for Windows. 03Oct07: Added a
+default handler for RuntimeErrors emitted from user-written
+</p>
+<pre>
+        code. Suggested by Brian Candler.
+</pre>
+<p>
+19Oct07: Set the SO_BROADCAST option automatically on all UDP sockets.
+10Nov07: Forced integer conversion of send_datagram&#8216;s port parameter.
+Suggested by Matthieu Riou. 12Nov07: Added saslauth.rb, a protocol module
+to replace the Cyrus SASL daemons saslauthd and pwcheck. 15Nov07: Fixed bug
+reported by Mark Zvillius. We were failing to dispatch
+</p>
+<pre>
+        zero-length datagrams under certain conditions.
+</pre>
+<p>
+19Nov07: Added <a
+href="../../../classes/EventMachine.html#M000067">EventMachine#set_max_timers</a>.
+Requested by Matthieu Riou and
+</p>
+<pre>
+        others.
+</pre>
+<p>
+19Nov07: Fixed bug with EM::Connection#start_tls. Was not working with
+server
+</p>
+<pre>
+        connections. Reported by Michael S. Fischer.
+</pre>
+<p>
+26Nov07: Supported a hack for <a
+href="../../../classes/EventMachine.html#M000077">EventMachine#popen</a> so
+it can return an exit
+</p>
+<pre>
+        status from subprocesses. Requested by Michael S. Fischer.
+</pre>
+<p>
+30Nov07: Changed Pipe descriptors so that the child-side of the socketpair
+is
+</p>
+<pre>
+        NOT set nonblocking. Suggested by Duane Johnson.
+</pre>
+<p>
+05Dec07: Re-enabled the pure-Ruby implementation. 06Dec07: Released Version
+0.10.0. 13Dec07: Added EM::DeferrableChildProcess 24Dec07: Added a SASL
+client for simple password authentication. 27Dec07: Removed the hookable
+error handler. No one was using it and it significantly
+</p>
+<pre>
+        degraded performance.
+</pre>
+<p>
+30Dec07: Implemented Kqueue support for OSX and BSD. 04Jan08: Fixed bug in
+epoll (&quot;Bad file descriptor&quot;), patch supplied by Chris
+</p>
+<pre>
+        Heath.
+</pre>
+<p>
+04Jan08: Fixed bug reported by Michael S. Fischer. We were terminating
+</p>
+<pre>
+        SSL connections that sent data before the handshake was complete.
+</pre>
+<p>
+08Jan08: Added an OpenBSD branch for extconf.rb, contributed by Guillaume
+</p>
+<pre>
+        Sellier.
+</pre>
+<p>
+19Jan08: Added EM::Connection::get_sockname per request by Michael Fischer.
+19Jan08: Supported IPv6 addresses. 30Apr08: Set the NODELAY option on
+sockets that we connect to other servers.
+</p>
+<pre>
+        Omission noted by Roger Pack.
+</pre>
+<p>
+14May08: Generated a 0.12 release. 15May08: Supported EM#get_sockname for
+acceptors (TCP server sockets).
+</p>
+<pre>
+        Requested by Roger Pack.
+</pre>
+<p>
+15May08; Accepted a patch from Dan Aquino that allows the interval of a
+</p>
+<pre>
+        PeriodicTimer to be changed on the fly.
+</pre>
+<p>
+15Jun08: Supported nested calls to EM#run. Many people contributed ideas to
+</p>
+<pre>
+        this, notably raggi and tmm1.
+</pre>
+<p>
+20Jul08: Accepted patch from tmm1 for EM#fork_reactor. 28Jul08: Added a
+Postgres3 implementation, written by FCianfrocca. 14Aug08: Added a patch by
+Mike Murphy to support basic auth in the http client. 28Aug08: Added a
+patch by tmm1 to fix a longstanding problem with Java data-sends. 13Sep08:
+Added LineText2#set_binary_mode, a back-compatibility alias. 13Sep08:
+Modified the load order of protocol libraries in eventmachine.rb
+</p>
+<pre>
+        to permit a modification of HeaderAndContentProtocol.
+</pre>
+<p>
+13Sep08: Modified HeaderAndContent to use LineText2, which is less buggy
+</p>
+<pre>
+        than LineAndTextProtocol. This change may be reversed if we can fix
+        the bugs in buftok.
+</pre>
+<p>
+13Sep08: Improved the password handling in the Postgres protocol handler.
+15Sep08: Added attach/detach, contributed by Aman Gupta (tmm1) and Riham
+Aldakkak,
+</p>
+<pre>
+        to support working with file descriptors not created in the reactor.
+</pre>
+<p>
+16Sep08: Added an optional version string to the HTTP client. This is a
+hack
+</p>
+<pre>
+        that allows a client to specify a version 1.0 request, which
+        keeps the server from sending a chunked response. The right way to
+        solve this, of course, is to support chunked responses.
+</pre>
+<p>
+23Sep08: ChangeLog Summary for Merge of branches/raggi Most notable work
+and patches by Aman Gupta, Roger Pack, and James Tucker. Patches / Tickets
+also submitted by: Jeremy Evans, aanand, darix, mmmurf, danielaquino,
+macournoyer.
+</p>
+<pre>
+ - Moved docs into docs/ dir
+ - Major refactor of rakefile, added generic rakefile helpers in tasks
+ - Added example CPP build rakefile in tasks/cpp.rake
+ - Moved rake tests out to tasks/tests.rake
+ - Added svn ignores where appropriate
+ - Fixed jruby build on older java platforms
+ - Gem now builds from Rakefile rather than directly via extconf
+ - Gem unified for jruby, C++ and pure ruby.
+ - Correction for pure C++ build, removing ruby dependency
+ - Fix for CYGWIN builds on ipv6
+ - Major refactor for extconf.rb
+ - Working mingw builds
+ - extconf optionally uses pkg_config over manual configuration
+ - extconf builds for 1.9 on any system that has 1.9
+ - extconf no longer links pthread explicitly
+ - looks for kqueue on all *nix systems
+ - better error output on std::runtime_error, now says where it came from
+ - Fixed some tests on jruby
+ - Added test for general send_data flaw, required for a bugfix in jruby build
+ - Added timeout to epoll tests
+ - Added fixes for java reactor ruby api
+ - Small addition of some docs in httpclient.rb and httpcli2.rb
+ - Some refactor and fixes in smtpserver.rb
+ - Added parenthesis where possible to avoid excess ruby warnings
+ - Refactor of $eventmachine_library logic for accuracy and maintenance, jruby
+ - EM::start_server now supports unix sockets
+ - EM::connect now supports unix sockets
+ - EM::defer @threadqueue now handled more gracefully
+ - Added better messages on exceptions raised
+ - Fix edge case in timer fires
+ - Explicitly require buftok.rb
+ - Add protocols to autoload, rather than require them all immediately
+ - Fix a bug in pr_eventmachine for outbound_q
+ - Refactors to take some of the use of defer out of tests.
+ - Fixes in EM.defer under start/stop conditions. Reduced scope of threads.
+</pre>
+<p>
+23Sep08: Added patch from tmm1 to avoid popen errors on exit. 30Sep08:
+Added File.exists? checks in the args for start_tls, as suggested by
+</p>
+<pre>
+  Brian Lopez (brianmario).
+</pre>
+<p>
+10Nov08: ruby 1.9 compatibility enhancements 28Nov08: Allow for older ruby
+builds where RARRAY_LEN is not defined 03Dec08: allow passing arguments to
+popen handlers 13Jan09: SSL support for httpclient2 (David Smalley)
+22Jan09: Fixed errors on OSX with the kqueue reactor, fixed errors in the
+pure
+</p>
+<pre>
+  ruby reactor. Added EM.current_time. Added EM.epoll? and EM.kqueue?
+</pre>
+<p>
+27Jan09: Reactor errors are now raised as ruby RuntimeErrors. 28Jan09:
+Documentation patch from alloy 29Jan09: (Late sign-off) Use a longer
+timeout for connect_server (Ilya
+</p>
+<pre>
+  Grigorik)
+</pre>
+<p>
+07Feb09: Fix signal handling issues with threads+epoll 07Feb09: Use
+rb_thread_schedule in the epoll reactor 07Feb09: Use TRAP_BEG/END and
+rb_thread_schedule in kqueue reactor 08Feb09: Added fastfilereader from
+swiftiply 08Feb09: 1.9 fix for rb_trap_immediate 08Feb09: Enable
+rb_thread_blocking_region for 1.9.0 and 1.9.1 10Feb09: Support win32 builds
+for fastfilereader 10Feb09: Added a new event to indicate completion of SSL
+handshake on TCP
+</p>
+<pre>
+  connections
+</pre>
+<p>
+10Feb09: Working get_peer_cert method. Returns the certificate as a Ruby
+</p>
+<pre>
+  String in PEM format. (Jake Douglas)
+</pre>
+<p>
+10Feb09: Added EM.get_max_timers 11Feb09: Fix compile options for sun
+compiler (Alasdairrr) 11Feb09: get_status returns a Process::Status object
+12Feb09: Add EM::Protocols::Memcache with simple get/set functionality
+19Feb09: Add catch-all EM.error_handler 20Feb09: Support miniunit (1.9)
+20Feb09: Return success on content-length = 0 instead of start waiting
+forever
+</p>
+<pre>
+  (Ugo Riboni)
+</pre>
+<p>
+25Feb09: Allow next_tick to be used to pre-schedule reactor operations
+before
+</p>
+<pre>
+  EM.run
+</pre>
+<p>
+26Feb09: Added EM.get_connection_count 01Mar09: Switch back to extconf for
+compiling gem extensions 01Mar09: fixed a small bug with basic auth
+(mmmurf)
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

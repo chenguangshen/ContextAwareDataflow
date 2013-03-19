@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bud::PushReduce
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: flush
+- !ruby/object:RI::MethodSummary 
+  name: insert
+- !ruby/object:RI::MethodSummary 
+  name: invalidate_cache
+- !ruby/object:RI::MethodSummary 
+  name: reset_memo
+name: PushReduce
+superclass: PushStatefulElement

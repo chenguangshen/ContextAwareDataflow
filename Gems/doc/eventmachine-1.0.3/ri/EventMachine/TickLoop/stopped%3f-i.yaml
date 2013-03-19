@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Query if the loop is stopped.
+full_name: EventMachine::TickLoop#stopped?
+is_singleton: false
+name: stopped?
+params: ()
+visibility: public

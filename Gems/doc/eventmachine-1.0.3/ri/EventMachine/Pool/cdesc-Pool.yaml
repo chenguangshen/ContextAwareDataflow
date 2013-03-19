@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: EventMachine::Pool
+- !ruby/struct:SM::Flow::P 
+  body: A simple async resource pool based on a resource and work queue. Resources are enqueued and work waits for resources to become available.
+- !ruby/struct:SM::Flow::P 
+  body: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "   EM.run do\n     pool  = EM::Pool.new\n     spawn = lambda { pool.add EM::HttpRequest.new('http://example.org') }\n     10.times { spawn[] }\n     done, scheduled = 0, 0\n\n     check = lambda do\n       done += 1\n       if done &gt;= scheduled\n         EM.stop\n       end\n     end\n\n     pool.on_error { |conn| spawn[] }\n\n     100.times do\n       pool.perform do |conn|\n         req = conn.get :path =&gt; '/', :keepalive =&gt; true\n\n         req.callback do\n           p [:success, conn.object_id, i, req.response.size]\n           check[]\n         end\n\n         req.errback { check[] }\n\n         req\n       end\n     end\n   end\n"
+- !ruby/struct:SM::Flow::P 
+  body: Resources are expected to be controlled by an object responding to a deferrable/completion style API with callback and errback blocks.
+constants: []
+
+full_name: EventMachine::Pool
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add
+- !ruby/object:RI::MethodSummary 
+  name: completion
+- !ruby/object:RI::MethodSummary 
+  name: contents
+- !ruby/object:RI::MethodSummary 
+  name: failure
+- !ruby/object:RI::MethodSummary 
+  name: num_waiting
+- !ruby/object:RI::MethodSummary 
+  name: on_error
+- !ruby/object:RI::MethodSummary 
+  name: perform
+- !ruby/object:RI::MethodSummary 
+  name: process
+- !ruby/object:RI::MethodSummary 
+  name: remove
+- !ruby/object:RI::MethodSummary 
+  name: removed?
+- !ruby/object:RI::MethodSummary 
+  name: requeue
+- !ruby/object:RI::MethodSummary 
+  name: reschedule
+name: Pool
+superclass: Object

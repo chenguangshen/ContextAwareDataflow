@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Override this method so we can check if an option? method exists.
+- !ruby/struct:SM::Flow::P 
+  body: Returns true if this option key exists in our list of options.
+full_name: Slop#respond_to_missing?
+is_singleton: false
+name: respond_to_missing?
+params: (method_name, include_private = false)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Arguments: A callback (EM::Callback) to call each tick. If the call returns +:stop+ then the loop will be stopped. Any other value is ignored."
+full_name: EventMachine::TickLoop::new
+is_singleton: true
+name: new
+params: (*a, &b)
+visibility: public

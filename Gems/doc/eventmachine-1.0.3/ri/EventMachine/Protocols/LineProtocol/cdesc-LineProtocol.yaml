@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: LineProtocol will parse out newline terminated strings from a receive_data stream
+- !ruby/struct:SM::Flow::VERB 
+  body: " module Server\n   include EM::P::LineProtocol\n\n   def receive_line(line)\n     send_data(&quot;you said: #{line}&quot;)\n   end\n end\n"
+constants: []
+
+full_name: EventMachine::Protocols::LineProtocol
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: receive_data
+- !ruby/object:RI::MethodSummary 
+  name: receive_line
+name: LineProtocol
+superclass: 

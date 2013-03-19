@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create a new parallel async iterator with specified concurrency.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  i = EM::Iterator.new(1..100, 10)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "will create an iterator over the range that processes 10 items at a time. Iteration is started via #each, #map or #inject"
+full_name: EventMachine::Iterator::new
+is_singleton: true
+name: new
+params: (list, concurrency = 1)
+visibility: public

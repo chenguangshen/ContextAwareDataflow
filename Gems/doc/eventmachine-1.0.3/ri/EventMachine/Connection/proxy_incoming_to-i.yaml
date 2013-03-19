@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: EventMachine::Connection#proxy_incoming_to is called only by user code. It sets up a low-level proxy relay for all data inbound for this connection, to the connection given as the argument. This is essentially just a helper method for enable_proxy.
+- !ruby/struct:SM::Flow::P 
+  body: "@see EventMachine.enable_proxy"
+full_name: EventMachine::Connection#proxy_incoming_to
+is_singleton: false
+name: proxy_incoming_to
+params: (conn,bufsize=0)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Runs the given callback on the reactor thread, or immediately if called from the reactor thread. Accepts the same arguments as {EventMachine::Callback}
+full_name: EventMachine::schedule
+is_singleton: true
+name: schedule
+params: (*a, &b)
+visibility: public

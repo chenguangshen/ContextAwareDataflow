@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RenameRewriter#register_scratch
+is_singleton: false
+name: register_scratch
+params: (name, schemahash)
+visibility: public

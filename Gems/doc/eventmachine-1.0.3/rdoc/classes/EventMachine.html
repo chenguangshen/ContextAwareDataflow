@@ -1,0 +1,3130 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: EventMachine</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">EventMachine</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/em/callback_rb.html">
+                lib/em/callback.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/channel_rb.html">
+                lib/em/channel.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/completion_rb.html">
+                lib/em/completion.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/connection_rb.html">
+                lib/em/connection.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/deferrable_rb.html">
+                lib/em/deferrable.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/file_watch_rb.html">
+                lib/em/file_watch.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/future_rb.html">
+                lib/em/future.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/iterator_rb.html">
+                lib/em/iterator.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/pool_rb.html">
+                lib/em/pool.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/process_watch_rb.html">
+                lib/em/process_watch.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/processes_rb.html">
+                lib/em/processes.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/header_and_content_rb.html">
+                lib/em/protocols/header_and_content.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/httpclient_rb.html">
+                lib/em/protocols/httpclient.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/httpclient2_rb.html">
+                lib/em/protocols/httpclient2.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/line_and_text_rb.html">
+                lib/em/protocols/line_and_text.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/line_protocol_rb.html">
+                lib/em/protocols/line_protocol.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/linetext2_rb.html">
+                lib/em/protocols/linetext2.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/memcache_rb.html">
+                lib/em/protocols/memcache.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/object_protocol_rb.html">
+                lib/em/protocols/object_protocol.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/postgres3_rb.html">
+                lib/em/protocols/postgres3.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/saslauth_rb.html">
+                lib/em/protocols/saslauth.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/smtpclient_rb.html">
+                lib/em/protocols/smtpclient.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/smtpserver_rb.html">
+                lib/em/protocols/smtpserver.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/socks4_rb.html">
+                lib/em/protocols/socks4.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/stomp_rb.html">
+                lib/em/protocols/stomp.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols/tcptest_rb.html">
+                lib/em/protocols/tcptest.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/protocols_rb.html">
+                lib/em/protocols.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/pure_ruby_rb.html">
+                lib/em/pure_ruby.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/queue_rb.html">
+                lib/em/queue.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/resolver_rb.html">
+                lib/em/resolver.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/spawnable_rb.html">
+                lib/em/spawnable.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/streamer_rb.html">
+                lib/em/streamer.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/threaded_resource_rb.html">
+                lib/em/threaded_resource.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/tick_loop_rb.html">
+                lib/em/tick_loop.rb
+                </a>
+        <br />
+                <a href="../files/lib/em/timers_rb.html">
+                lib/em/timers.rb
+                </a>
+        <br />
+                <a href="../files/lib/eventmachine_rb.html">
+                lib/eventmachine.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Top-level <a href="EventMachine.html">EventMachine</a> namespace. If you
+are looking for <a href="EventMachine.html">EventMachine</a> examples, see
+{file:docs/GettingStarted.md <a href="EventMachine.html">EventMachine</a>
+tutorial}.
+</p>
+<p>
+## Key methods ## ### Starting and stopping the event loop ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000045">EventMachine.run</a>}
+
+</li>
+<li>{<a href="EventMachine.html#M000054">EventMachine.stop_event_loop</a>}
+
+</li>
+</ul>
+<p>
+### Implementing clients ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000058">EventMachine.connect</a>}
+
+</li>
+</ul>
+<p>
+### Implementing servers ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000055">EventMachine.start_server</a>}
+
+</li>
+</ul>
+<p>
+### Working with timers ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000051">EventMachine.add_timer</a>}
+
+</li>
+<li>{<a href="EventMachine.html#M000052">EventMachine.add_periodic_timer</a>}
+
+</li>
+<li>{<a href="EventMachine.html#M000053">EventMachine.cancel_timer</a>}
+
+</li>
+</ul>
+<p>
+### Working with blocking tasks ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000071">EventMachine.defer</a>}
+
+</li>
+<li>{<a href="EventMachine.html#M000074">EventMachine.next_tick</a>}
+
+</li>
+</ul>
+<p>
+### Efficient proxying ###
+</p>
+<ul>
+<li>{<a href="EventMachine.html#M000083">EventMachine.enable_proxy</a>}
+
+</li>
+<li>{<a href="EventMachine.html#M000084">EventMachine.disable_proxy</a>}
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000010">Callback</a>&nbsp;&nbsp;
+      <a href="#M000088">_open_file_for_writing</a>&nbsp;&nbsp;
+      <a href="#M000014">add_oneshot_timer</a>&nbsp;&nbsp;
+      <a href="#M000052">add_periodic_timer</a>&nbsp;&nbsp;
+      <a href="#M000050">add_shutdown_hook</a>&nbsp;&nbsp;
+      <a href="#M000051">add_timer</a>&nbsp;&nbsp;
+      <a href="#M000061">attach</a>&nbsp;&nbsp;
+      <a href="#M000062">attach_io</a>&nbsp;&nbsp;
+      <a href="#M000059">bind_connect</a>&nbsp;&nbsp;
+      <a href="#M000019">bind_connect_server</a>&nbsp;&nbsp;
+      <a href="#M000053">cancel_timer</a>&nbsp;&nbsp;
+      <a href="#M000021">close_connection</a>&nbsp;&nbsp;
+      <a href="#M000058">connect</a>&nbsp;&nbsp;
+      <a href="#M000018">connect_server</a>&nbsp;&nbsp;
+      <a href="#M000064">connect_unix_domain</a>&nbsp;&nbsp;
+      <a href="#M000025">connect_unix_server</a>&nbsp;&nbsp;
+      <a href="#M000069">connection_count</a>&nbsp;&nbsp;
+      <a href="#M000071">defer</a>&nbsp;&nbsp;
+      <a href="#M000073">defers_finished?</a>&nbsp;&nbsp;
+      <a href="#M000084">disable_proxy</a>&nbsp;&nbsp;
+      <a href="#M000083">enable_proxy</a>&nbsp;&nbsp;
+      <a href="#M000031">epoll</a>&nbsp;&nbsp;
+      <a href="#M000082">error_handler</a>&nbsp;&nbsp;
+      <a href="#M000087">event_callback</a>&nbsp;&nbsp;
+      <a href="#M000049">fork_reactor</a>&nbsp;&nbsp;
+      <a href="#M000068">get_max_timers</a>&nbsp;&nbsp;
+      <a href="#M000038">get_outbound_data_size</a>&nbsp;&nbsp;
+      <a href="#M000027">get_peername</a>&nbsp;&nbsp;
+      <a href="#M000035">get_sock_opt</a>&nbsp;&nbsp;
+      <a href="#M000085">heartbeat_interval</a>&nbsp;&nbsp;
+      <a href="#M000086">heartbeat_interval=</a>&nbsp;&nbsp;
+      <a href="#M000013">initialize_event_machine</a>&nbsp;&nbsp;
+      <a href="#M000089">klass_from_handler</a>&nbsp;&nbsp;
+      <a href="#M000012">library_type</a>&nbsp;&nbsp;
+      <a href="#M000074">next_tick</a>&nbsp;&nbsp;
+      <a href="#M000065">open_datagram_socket</a>&nbsp;&nbsp;
+      <a href="#M000079">open_keyboard</a>&nbsp;&nbsp;
+      <a href="#M000028">open_udp_socket</a>&nbsp;&nbsp;
+      <a href="#M000077">popen</a>&nbsp;&nbsp;
+      <a href="#M000078">reactor_running?</a>&nbsp;&nbsp;
+      <a href="#M000047">reactor_thread?</a>&nbsp;&nbsp;
+      <a href="#M000039">read_keyboard</a>&nbsp;&nbsp;
+      <a href="#M000063">reconnect</a>&nbsp;&nbsp;
+      <a href="#M000016">release_machine</a>&nbsp;&nbsp;
+      <a href="#M000045">run</a>&nbsp;&nbsp;
+      <a href="#M000046">run_block</a>&nbsp;&nbsp;
+      <a href="#M000070">run_deferred_callbacks</a>&nbsp;&nbsp;
+      <a href="#M000015">run_machine</a>&nbsp;&nbsp;
+      <a href="#M000048">schedule</a>&nbsp;&nbsp;
+      <a href="#M000020">send_data</a>&nbsp;&nbsp;
+      <a href="#M000029">send_datagram</a>&nbsp;&nbsp;
+      <a href="#M000037">send_file_data</a>&nbsp;&nbsp;
+      <a href="#M000040">set_comm_inactivity_timeout</a>&nbsp;&nbsp;
+      <a href="#M000076">set_descriptor_table_size</a>&nbsp;&nbsp;
+      <a href="#M000075">set_effective_user</a>&nbsp;&nbsp;
+      <a href="#M000034">set_max_timer_count</a>&nbsp;&nbsp;
+      <a href="#M000067">set_max_timers</a>&nbsp;&nbsp;
+      <a href="#M000066">set_quantum</a>&nbsp;&nbsp;
+      <a href="#M000033">set_rlimit_nofile</a>&nbsp;&nbsp;
+      <a href="#M000036">set_sock_opt</a>&nbsp;&nbsp;
+      <a href="#M000030">set_timer_quantum</a>&nbsp;&nbsp;
+      <a href="#M000026">signal_loopbreak</a>&nbsp;&nbsp;
+      <a href="#M000041">spawn</a>&nbsp;&nbsp;
+      <a href="#M000072">spawn_threadpool</a>&nbsp;&nbsp;
+      <a href="#M000032">ssl?</a>&nbsp;&nbsp;
+      <a href="#M000055">start_server</a>&nbsp;&nbsp;
+      <a href="#M000022">start_tcp_server</a>&nbsp;&nbsp;
+      <a href="#M000057">start_unix_domain_server</a>&nbsp;&nbsp;
+      <a href="#M000024">start_unix_server</a>&nbsp;&nbsp;
+      <a href="#M000017">stop</a>&nbsp;&nbsp;
+      <a href="#M000054">stop_event_loop</a>&nbsp;&nbsp;
+      <a href="#M000056">stop_server</a>&nbsp;&nbsp;
+      <a href="#M000023">stop_tcp_server</a>&nbsp;&nbsp;
+      <a href="#M000011">system</a>&nbsp;&nbsp;
+      <a href="#M000044">tick_loop</a>&nbsp;&nbsp;
+      <a href="#M000060">watch</a>&nbsp;&nbsp;
+      <a href="#M000080">watch_file</a>&nbsp;&nbsp;
+      <a href="#M000081">watch_process</a>&nbsp;&nbsp;
+      <a href="#M000042">yield</a>&nbsp;&nbsp;
+      <a href="#M000043">yield_and_notify</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="EventMachine/DNS.html" class="link">EventMachine::DNS</a><br />
+Module <a href="EventMachine/Deferrable.html" class="link">EventMachine::Deferrable</a><br />
+Module <a href="EventMachine/Protocols.html" class="link">EventMachine::Protocols</a><br />
+Module <a href="EventMachine/UuidGenerator.html" class="link">EventMachine::UuidGenerator</a><br />
+Class <a href="EventMachine/Channel.html" class="link">EventMachine::Channel</a><br />
+Class <a href="EventMachine/Completion.html" class="link">EventMachine::Completion</a><br />
+Class <a href="EventMachine/Connection.html" class="link">EventMachine::Connection</a><br />
+Class <a href="EventMachine/DatagramObject.html" class="link">EventMachine::DatagramObject</a><br />
+Class <a href="EventMachine/DefaultDeferrable.html" class="link">EventMachine::DefaultDeferrable</a><br />
+Class <a href="EventMachine/DeferrableChildProcess.html" class="link">EventMachine::DeferrableChildProcess</a><br />
+Class <a href="EventMachine/Error.html" class="link">EventMachine::Error</a><br />
+Class <a href="EventMachine/EvmaKeyboard.html" class="link">EventMachine::EvmaKeyboard</a><br />
+Class <a href="EventMachine/EvmaTCPClient.html" class="link">EventMachine::EvmaTCPClient</a><br />
+Class <a href="EventMachine/EvmaTCPServer.html" class="link">EventMachine::EvmaTCPServer</a><br />
+Class <a href="EventMachine/EvmaUDPSocket.html" class="link">EventMachine::EvmaUDPSocket</a><br />
+Class <a href="EventMachine/EvmaUNIXClient.html" class="link">EventMachine::EvmaUNIXClient</a><br />
+Class <a href="EventMachine/EvmaUNIXServer.html" class="link">EventMachine::EvmaUNIXServer</a><br />
+Class <a href="EventMachine/FileNotFoundException.html" class="link">EventMachine::FileNotFoundException</a><br />
+Class <a href="EventMachine/FileStreamer.html" class="link">EventMachine::FileStreamer</a><br />
+Class <a href="EventMachine/FileWatch.html" class="link">EventMachine::FileWatch</a><br />
+Class <a href="EventMachine/Iterator.html" class="link">EventMachine::Iterator</a><br />
+Class <a href="EventMachine/LoopbreakReader.html" class="link">EventMachine::LoopbreakReader</a><br />
+Class <a href="EventMachine/PeriodicTimer.html" class="link">EventMachine::PeriodicTimer</a><br />
+Class <a href="EventMachine/Pool.html" class="link">EventMachine::Pool</a><br />
+Class <a href="EventMachine/ProcessWatch.html" class="link">EventMachine::ProcessWatch</a><br />
+Class <a href="EventMachine/Queue.html" class="link">EventMachine::Queue</a><br />
+Class <a href="EventMachine/Reactor.html" class="link">EventMachine::Reactor</a><br />
+Class <a href="EventMachine/Selectable.html" class="link">EventMachine::Selectable</a><br />
+Class <a href="EventMachine/SpawnedProcess.html" class="link">EventMachine::SpawnedProcess</a><br />
+Class <a href="EventMachine/StreamObject.html" class="link">EventMachine::StreamObject</a><br />
+Class <a href="EventMachine/SystemCmd.html" class="link">EventMachine::SystemCmd</a><br />
+Class <a href="EventMachine/ThreadedResource.html" class="link">EventMachine::ThreadedResource</a><br />
+Class <a href="EventMachine/TickLoop.html" class="link">EventMachine::TickLoop</a><br />
+Class <a href="EventMachine/Timer.html" class="link">EventMachine::Timer</a><br />
+Class <a href="EventMachine/YieldBlockFromSpawnedProcess.html" class="link">EventMachine::YieldBlockFromSpawnedProcess</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">TimerFired</td>
+          <td>=</td>
+          <td class="context-item-value">100</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ConnectionData</td>
+          <td>=</td>
+          <td class="context-item-value">101</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ConnectionUnbound</td>
+          <td>=</td>
+          <td class="context-item-value">102</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ConnectionAccepted</td>
+          <td>=</td>
+          <td class="context-item-value">103</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ConnectionCompleted</td>
+          <td>=</td>
+          <td class="context-item-value">104</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">LoopbreakSignalled</td>
+          <td>=</td>
+          <td class="context-item-value">105</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ERRNOS</td>
+          <td>=</td>
+          <td class="context-item-value">Errno::constants.grep(/^E/).inject(Hash.new(:unknown)) { |hash, name|     errno = Errno.__send__(:const_get, name)</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+System errnos @private
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">reactor_thread</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Exposed to allow joining on the thread, when <a
+href="EventMachine.html#M000045">run</a> in a multithreaded environment.
+Performing other actions on the thread has undefined semantics (read: a
+dangerous endevor).
+
+<p>
+@return [Thread]
+</p>
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">threadpool</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+@private
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">threadpool_size</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Size of the <a href="EventMachine.html#M000071">EventMachine.defer</a>
+threadpool (defaults to 20) @return [Number]
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000010.html');return false;">
+          <span class="method-name">Callback</span><span class="method-args">(object = nil, method = nil, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Utility method for coercing arguments to an object that responds to :call.
+Accepts an object and a method name to send to, or a block, or an object
+that responds to :call.
+</p>
+<p>
+@example <a href="EventMachine.html#M000010">EventMachine.Callback</a> used
+with a block. Returns that block.
+</p>
+<pre>
+ cb = EventMachine.Callback do |msg|
+   puts(msg)
+ end
+ # returned object is a callable
+ cb.call('hello world')
+</pre>
+<p>
+@example <a href="EventMachine.html#M000010">EventMachine.Callback</a> used
+with an object (to be more specific, class object) and a method name,
+returns an object that responds to call
+</p>
+<pre>
+ cb = EventMachine.Callback(Object, :puts)
+ # returned object is a callable that delegates to Kernel#puts (in this case Object.puts)
+ cb.call('hello world')
+</pre>
+<p>
+@example <a href="EventMachine.html#M000010">EventMachine.Callback</a> used
+with an object that responds to call. Returns the argument.
+</p>
+<pre>
+ cb = EventMachine.Callback(proc{ |msg| puts(msg) })
+ # returned object is a callable
+ cb.call('hello world')
+</pre>
+<p>
+@overload <a href="EventMachine.html#M000010">Callback</a>(object, method)
+</p>
+<pre>
+  Wraps `method` invocation on `object` into an object that responds to #call that proxies all the arguments to that method
+  @param [Object] Object to invoke method on
+  @param [Symbol] Method name
+  @return [&lt;#call&gt;] An object that responds to #call that takes any number of arguments and invokes method on object with those arguments
+</pre>
+<p>
+@overload <a href="EventMachine.html#M000010">Callback</a>(object)
+</p>
+<pre>
+  Returns callable object as is, without any coercion
+  @param [&lt;#call&gt;] An object that responds to #call
+  @return [&lt;#call&gt;] Its argument
+</pre>
+<p>
+@overload <a href="EventMachine.html#M000010">Callback</a>(&amp;block)
+</p>
+<pre>
+  Returns block passed to it without any coercion
+  @return [&lt;#call&gt;] Block passed to this method
+</pre>
+<p>
+@raise [ArgumentError] When argument doesn&#8216;t respond to call, method
+name is missing or when invoked without arguments and block isn&#8216;t
+given
+</p>
+<p>
+@return [&lt;call&gt;]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000088.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000088.html');return false;">
+          <span class="method-name">_open_file_for_writing</span><span class="method-args">(filename, handler=nil) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000014.html');return false;">
+          <span class="method-name">add_oneshot_timer</span><span class="method-args">(interval)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Changed 04Oct06: intervals from the caller are now in milliseconds, but our
+native-ruby processor still wants them in seconds. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000052.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000052.html');return false;">
+          <span class="method-name">add_periodic_timer</span><span class="method-args">(*args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a periodic timer to the event loop. It takes the same parameters as
+the one-shot timer method, {<a
+href="EventMachine.html#M000051">EventMachine.add_timer</a>}. This method
+schedules execution of the given block repeatedly, at intervals of time *at
+least* as great as the number of seconds given in the first parameter to
+the call.
+</p>
+<p>
+@example Write a dollar-sign to stderr every five seconds, without blocking
+</p>
+<pre>
+ EventMachine.run {
+   EventMachine.add_periodic_timer( 5 ) { $stderr.write &quot;$&quot; }
+ }
+</pre>
+<p>
+@param [Integer] delay Delay in seconds
+</p>
+<p>
+@see <a
+href="EventMachine/PeriodicTimer.html">EventMachine::PeriodicTimer</a> @see
+<a href="EventMachine.html#M000051">EventMachine.add_timer</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000050.html');return false;">
+          <span class="method-name">add_shutdown_hook</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a block to call as the reactor is shutting down.
+</p>
+<p>
+These callbacks are called in the <em>reverse</em> order to which they are
+added.
+</p>
+<p>
+@example Scheduling operations to be <a
+href="EventMachine.html#M000045">run</a> when <a
+href="EventMachine.html">EventMachine</a> event loop is stopped
+</p>
+<pre>
+  EventMachine.run do
+    EventMachine.add_shutdown_hook { puts &quot;b&quot; }
+    EventMachine.add_shutdown_hook { puts &quot;a&quot; }
+    EventMachine.stop
+  end
+
+  # Outputs:
+  #   a
+  #   b
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000051.html');return false;">
+          <span class="method-name">add_timer</span><span class="method-args">(*args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a one-shot timer to the event loop. Call it with one or two
+parameters. The first parameters is a delay-time expressed in
+<b>seconds</b> (not milliseconds). The second parameter, if present, must
+be an object that responds to :call. If 2nd parameter is not given, then
+you can also simply pass a block to the method call.
+</p>
+<p>
+This method may be called from the block passed to {<a
+href="EventMachine.html#M000045">EventMachine.run</a>} or from any callback
+method. It schedules execution of the proc or block passed to it, after the
+passage of an interval of time equal to *at least* the number of seconds
+specified in the first parameter to the call.
+</p>
+<p>
+{<a href="EventMachine.html#M000051">EventMachine.add_timer</a>} is a
+non-blocking method. Callbacks can and will be called during the interval
+of time that the timer is in effect. There is no built-in limit to the
+number of timers that can be outstanding at any given time.
+</p>
+<p>
+@example Setting a one-shot timer with <a
+href="EventMachine.html">EventMachine</a>
+</p>
+<pre>
+ EventMachine.run {
+   puts &quot;Starting the run now: #{Time.now}&quot;
+   EventMachine.add_timer 5, proc { puts &quot;Executing timer event: #{Time.now}&quot; }
+   EventMachine.add_timer(10) { puts &quot;Executing timer event: #{Time.now}&quot; }
+ }
+</pre>
+<p>
+@param [Integer] delay Delay in seconds @see <a
+href="EventMachine/Timer.html">EventMachine::Timer</a> @see <a
+href="EventMachine.html#M000052">EventMachine.add_periodic_timer</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000061.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000061.html');return false;">
+          <span class="method-name">attach</span><span class="method-args">(io, handler=nil, *args, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Attaches an <a href="IO.html">IO</a> object or file descriptor to the
+eventloop as a regular connection. The file descriptor will be set as
+non-blocking, and <a href="EventMachine.html">EventMachine</a> will process
+receive_data and <a href="EventMachine.html#M000020">send_data</a> events
+on it as it would for any other connection.
+</p>
+<p>
+To <a href="EventMachine.html#M000060">watch</a> a fd instead, use {<a
+href="EventMachine.html#M000060">EventMachine.watch</a>}, which will not
+alter the state of the socket and fire notify_readable and notify_writable
+events instead.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000062.html');return false;">
+          <span class="method-name">attach_io</span><span class="method-args">(io, watch_mode, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000059.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000059.html');return false;">
+          <span class="method-name">bind_connect</span><span class="method-args">(bind_addr, bind_port, server, port=nil, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is like {<a
+href="EventMachine.html#M000058">EventMachine.connect</a>}, but allows for
+a local address/port to bind the connection to.
+</p>
+<p>
+@see <a href="EventMachine.html#M000058">EventMachine.connect</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000019.html');return false;">
+          <span class="method-name">bind_connect_server</span><span class="method-args">(bind_addr, bind_port, host, port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000053.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000053.html');return false;">
+          <span class="method-name">cancel_timer</span><span class="method-args">(timer_or_sig)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Cancel a timer (can be a callback or an {<a
+href="EventMachine/Timer.html">EventMachine::Timer</a>} instance).
+</p>
+<p>
+@param [cancel, call] timer_or_sig A timer to cancel @see <a
+href="EventMachine/Timer.html#M000274">EventMachine::Timer#cancel</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000021.html');return false;">
+          <span class="method-name">close_connection</span><span class="method-args">(target, after_writing)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The extension version does NOT raise any kind of an error if an attempt is
+made to close a non-existent connection. Not sure whether we should. For
+now, we&#8216;ll raise an error here in that case. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000058.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000058.html');return false;">
+          <span class="method-name">connect</span><span class="method-args">(server, port=nil, handler=nil, *args, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initiates a TCP connection to a remote server and sets up event handling
+for the connection. {<a
+href="EventMachine.html#M000058">EventMachine.connect</a>} requires event
+loop to be running (see {<a
+href="EventMachine.html#M000045">EventMachine.run</a>}).
+</p>
+<p>
+{<a href="EventMachine.html#M000058">EventMachine.connect</a>} takes the IP
+address (or hostname) and port of the remote server you want to <a
+href="EventMachine.html#M000058">connect</a> to. It also takes an optional
+handler (a module or a subclass of {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>}) which
+you must define, that contains the callbacks that will be invoked by the
+event loop on behalf of the connection.
+</p>
+<p>
+Learn more about connection lifecycle callbacks in the
+{file:docs/GettingStarted.md <a href="EventMachine.html">EventMachine</a>
+tutorial} and {file:docs/ConnectionLifecycleCallbacks.md <a
+href="EventMachine/Connection.html">Connection</a> lifecycle guide}.
+</p>
+<p>
+@example
+</p>
+<pre>
+ # Here's a program which connects to a web server, sends a naive
+ # request, parses the HTTP header of the response, and then
+ # (antisocially) ends the event loop, which automatically drops the connection
+ # (and incidentally calls the connection's unbind method).
+ module DumbHttpClient
+   def post_init
+     send_data &quot;GET / HTTP/1.1\r\nHost: _\r\n\r\n&quot;
+     @data = &quot;&quot;
+     @parsed = false
+   end
+
+   def receive_data data
+     @data &lt;&lt; data
+     if !@parsed and @data =~ /[\n][\r]*[\n]/m
+       @parsed = true
+       puts &quot;RECEIVED HTTP HEADER:&quot;
+       $`.each {|line| puts &quot;&gt;&gt;&gt; #{line}&quot; }
+
+       puts &quot;Now we'll terminate the loop, which will also close the connection&quot;
+       EventMachine::stop_event_loop
+     end
+   end
+
+   def unbind
+     puts &quot;A connection has terminated&quot;
+   end
+ end
+
+ EventMachine.run {
+   EventMachine.connect &quot;www.bayshorenetworks.com&quot;, 80, DumbHttpClient
+ }
+ puts &quot;The event loop has ended&quot;
+</pre>
+<p>
+@example Defining protocol handler as a class
+</p>
+<pre>
+ class MyProtocolHandler &lt; EventMachine::Connection
+   def initialize *args
+     super
+     # whatever else you want to do here
+   end
+
+   # ...
+ end
+</pre>
+<p>
+@param [String] server Host to <a
+href="EventMachine.html#M000058">connect</a> to @param [Integer] port Port
+to <a href="EventMachine.html#M000058">connect</a> to @param [Module,
+Class] handler A module or class that implements connection lifecycle
+callbacks
+</p>
+<p>
+@see <a href="EventMachine.html#M000055">EventMachine.start_server</a> @see
+file:docs/GettingStarted.md <a href="EventMachine.html">EventMachine</a>
+tutorial
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000018.html');return false;">
+          <span class="method-name">connect_server</span><span class="method-args">(host, port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000064.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000064.html');return false;">
+          <span class="method-name">connect_unix_domain</span><span class="method-args">(socketname, *args, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Make a connection to a Unix-domain socket. This method is simply an alias
+for {.<a href="EventMachine.html#M000058">connect</a>}, which can <a
+href="EventMachine.html#M000058">connect</a> to both TCP and Unix-domain
+sockets. Make sure that your process has sufficient permissions to open the
+socket it is given.
+</p>
+<p>
+@param [String] socketname Unix domain socket (local fully-qualified path)
+you want to <a href="EventMachine.html#M000058">connect</a> to.
+</p>
+<p>
+@note UNIX sockets, as the name suggests, are not available on Microsoft
+Windows.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000025.html');return false;">
+          <span class="method-name">connect_unix_server</span><span class="method-args">(chain)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000069.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000069.html');return false;">
+          <span class="method-name">connection_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the total number of connections (file descriptors) currently held
+by the reactor. Note that a tick must pass after the
+&#8216;initiation&#8217; of a connection for this number to increment.
+It&#8216;s usually accurate, but don&#8216;t rely on the exact precision of
+this number unless you really know EM internals.
+</p>
+<p>
+@example
+</p>
+<pre>
+ EventMachine.run {
+   EventMachine.connect(&quot;rubyeventmachine.com&quot;, 80)
+   # count will be 0 in this case, because connection is not
+   # established yet
+   count = EventMachine.connection_count
+ }
+</pre>
+<p>
+@example
+</p>
+<pre>
+ EventMachine.run {
+   EventMachine.connect(&quot;rubyeventmachine.com&quot;, 80)
+
+   EventMachine.next_tick {
+     # In this example, count will be 1 since the connection has been established in
+     # the next loop of the reactor.
+     count = EventMachine.connection_count
+   }
+ }
+</pre>
+<p>
+@return [Integer] Number of connections currently held by the reactor.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000071.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000071.html');return false;">
+          <span class="method-name">defer</span><span class="method-args">(op = nil, callback = nil, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="EventMachine.html#M000071">EventMachine.defer</a> is used for
+integrating blocking operations into <a
+href="EventMachine.html">EventMachine</a>&#8216;s control flow. The action
+of {.<a href="EventMachine.html#M000071">defer</a>} is to take the block
+specified in the first parameter (the &quot;operation&quot;) and <a
+href="EventMachine.html#M000048">schedule</a> it for asynchronous execution
+on an internal thread pool maintained by <a
+href="EventMachine.html">EventMachine</a>. When the operation completes, it
+will pass the result computed by the block (if any) back to the <a
+href="EventMachine.html">EventMachine</a> reactor. Then, <a
+href="EventMachine.html">EventMachine</a> calls the block specified in the
+second parameter to {.<a href="EventMachine.html#M000071">defer</a>} (the
+&quot;callback&quot;), as part of its normal event handling loop. The
+result computed by the operation block is passed as a parameter to the
+callback. You may omit the callback parameter if you don&#8216;t need to
+execute any code after the operation completes.
+</p>
+<p>
+## Caveats ##
+</p>
+<p>
+Note carefully that the code in your deferred operation will be executed on
+a separate thread from the main <a
+href="EventMachine.html">EventMachine</a> processing and all other Ruby
+threads that may exist in your program. Also, multiple deferred operations
+may be running at once! Therefore, you are responsible for ensuring that
+your operation code is threadsafe.
+</p>
+<p>
+Don&#8216;t write a deferred operation that will block forever. If so, the
+current implementation will not detect the problem, and the thread will
+never be returned to the pool. <a href="EventMachine.html">EventMachine</a>
+limits the number of threads in its pool, so if you do this enough times,
+your subsequent deferred operations won&#8216;t get a chance to <a
+href="EventMachine.html#M000045">run</a>.
+</p>
+<p>
+@example
+</p>
+<pre>
+ operation = proc {
+   # perform a long-running operation here, such as a database query.
+   &quot;result&quot; # as usual, the last expression evaluated in the block will be the return value.
+ }
+ callback = proc {|result|
+   # do something with result here, such as send it back to a network client.
+ }
+
+ EventMachine.defer(operation, callback)
+</pre>
+<p>
+@param [call] op An operation you want to offload to <a
+href="EventMachine.html">EventMachine</a> thread pool @param [call]
+callback A callback that will be <a
+href="EventMachine.html#M000045">run</a> on the event loop thread after
+`operation` finishes.
+</p>
+<p>
+@see EventMachine.threadpool_size
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000073.html');return false;">
+          <span class="method-name">defers_finished?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns <tt>true</tt> if all deferred actions are done executing and their
+callbacks have been fired.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000084.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000084.html');return false;">
+          <span class="method-name">disable_proxy</span><span class="method-args">(from)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Takes just one argument, a {<a
+href="EventMachine/Connection.html">Connection</a>} that has proxying
+enabled via {<a
+href="EventMachine.html#M000083">EventMachine.enable_proxy</a>}. Calling
+this method will remove that functionality and your connection will begin
+receiving data via {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+again.
+</p>
+<p>
+@param [<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>] from
+Source of data that is being proxied @see <a
+href="EventMachine.html#M000083">EventMachine.enable_proxy</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000083.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000083.html');return false;">
+          <span class="method-name">enable_proxy</span><span class="method-args">(from, to, bufsize=0, length=0)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method allows for direct writing of incoming data back out to another
+descriptor, at the C++ level in the reactor. This is very efficient and
+especially useful for proxies where high performance is required.
+Propogating data from a server response all the way up to Ruby, and then
+back down to the reactor to be sent back to the client, is often
+unnecessary and incurs a significant performance decrease.
+</p>
+<p>
+The two arguments are instance of {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>}
+subclasses, &#8216;from&#8217; and &#8216;to&#8217;. &#8216;from&#8217; is
+the connection whose inbound data you want relayed back out.
+&#8216;to&#8217; is the connection to write it to.
+</p>
+<p>
+Once you call this method, the &#8216;from&#8217; connection will no longer
+get receive_data callbacks from the reactor, except in the case that
+&#8216;to&#8217; connection has already closed when attempting to write to
+it. You can see in the example, that proxy_target_unbound will be called
+when this occurs. After that, further incoming data will be passed into
+receive_data as normal.
+</p>
+<p>
+Note also that this feature supports different types of descriptors: TCP,
+UDP, and pipes. You can relay data from one kind to another, for example,
+feed a pipe from a UDP stream.
+</p>
+<p>
+@example
+</p>
+<pre>
+ module ProxyConnection
+   def initialize(client, request)
+     @client, @request = client, request
+   end
+
+   def post_init
+     EM::enable_proxy(self, @client)
+   end
+
+   def connection_completed
+     send_data @request
+   end
+
+   def proxy_target_unbound
+     close_connection
+   end
+
+   def unbind
+     @client.close_connection_after_writing
+   end
+ end
+
+ module ProxyServer
+   def receive_data(data)
+     (@buf ||= &quot;&quot;) &lt;&lt; data
+     if @buf =~ /\r\n\r\n/ # all http headers received
+       EventMachine.connect(&quot;10.0.0.15&quot;, 80, ProxyConnection, self, data)
+     end
+   end
+ end
+
+ EventMachine.run {
+   EventMachine.start_server(&quot;127.0.0.1&quot;, 8080, ProxyServer)
+ }
+</pre>
+<p>
+@param [<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>] from
+Source of data to be proxies/streamed. @param [<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>] to
+Destination of data to be proxies/streamed. @param [Integer] bufsize Buffer
+size to use @param [Integer] length Maximum number of bytes to proxy.
+</p>
+<p>
+@see <a href="EventMachine.html#M000084">EventMachine.disable_proxy</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000031.html');return false;">
+          <span class="method-name">epoll</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is a harmless no-op in the pure-Ruby implementation. This is
+intended to ensure that user code behaves properly across different EM
+implementations. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000082.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000082.html');return false;">
+          <span class="method-name">error_handler</span><span class="method-args">(cb = nil, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Catch-all for errors raised during event loop callbacks.
+</p>
+<p>
+@example
+</p>
+<pre>
+  EventMachine.error_handler{ |e|
+    puts &quot;Error raised during event loop: #{e.message}&quot;
+  }
+</pre>
+<p>
+@param [call] cb Global catch-all errback
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000087.html');return false;">
+          <span class="method-name">event_callback</span><span class="method-args">(conn_binding, opcode, data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000049.html');return false;">
+          <span class="method-name">fork_reactor</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Forks a new process, properly stops the reactor and then calls {<a
+href="EventMachine.html#M000045">EventMachine.run</a>} inside of it again,
+passing your block.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000068.html');return false;">
+          <span class="method-name">get_max_timers</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets the current maximum number of allowed timers
+</p>
+<p>
+@return [Integer] Maximum number of timers that may be outstanding at any
+given time
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000038.html');return false;">
+          <span class="method-name">get_outbound_data_size</span><span class="method-args">(sig)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000027.html');return false;">
+          <span class="method-name">get_peername</span><span class="method-args">(sig)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000035.html');return false;">
+          <span class="method-name">get_sock_opt</span><span class="method-args">(signature, level, optname)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000085.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000085.html');return false;">
+          <span class="method-name">heartbeat_interval</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Retrieve the heartbeat interval. This is how often <a
+href="EventMachine.html">EventMachine</a> will check for dead connections
+that have had an inactivity timeout set via {<a
+href="EventMachine/Connection.html#M000408">Connection#set_comm_inactivity_timeout</a>}.
+Default is 2 seconds.
+</p>
+<p>
+@return [Integer] Heartbeat interval, in seconds
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000086.html');return false;">
+          <span class="method-name">heartbeat_interval=</span><span class="method-args">(time)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the heartbeat interval. This is how often <a
+href="EventMachine.html">EventMachine</a> will check for dead connections
+that have had an inactivity timeout set via {<a
+href="EventMachine/Connection.html#M000408">Connection#set_comm_inactivity_timeout</a>}.
+Takes a Numeric number of seconds. Default is 2.
+</p>
+<p>
+@param [Integer] time Heartbeat interval, in seconds
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000013.html');return false;">
+          <span class="method-name">initialize_event_machine</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000089.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000089.html');return false;">
+          <span class="method-name">klass_from_handler</span><span class="method-args">(klass = Connection, handler = nil, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000012.html');return false;">
+          <span class="method-name">library_type</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is mostly useful for automated tests. Return a distinctive symbol so
+the caller knows whether he&#8216;s dealing with an extension or with a
+pure-Ruby library. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000074.html');return false;">
+          <span class="method-name">next_tick</span><span class="method-args">(pr=nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Schedules a proc for execution immediately after the next &quot;turn&quot;
+through the reactor core. An advanced technique, this can be useful for
+improving memory management and/or application responsiveness, especially
+when scheduling large amounts of data for writing to a network connection.
+</p>
+<p>
+This method takes either a single argument (which must be a callable
+object) or a block.
+</p>
+<p>
+@param [call] pr A callable object to <a
+href="EventMachine.html#M000045">run</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000065.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000065.html');return false;">
+          <span class="method-name">open_datagram_socket</span><span class="method-args">(address, port, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Used for UDP-based protocols. Its usage is similar to that of {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>}.
+</p>
+<p>
+This method will create a new UDP (datagram) socket and bind it to the
+address and port that you specify. The normal callbacks (see {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>}) will be
+called as events of interest occur on the newly-created socket, but there
+are some differences in how they behave.
+</p>
+<p>
+{<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+will be called when a datagram packet is received on the socket, but unlike
+TCP sockets, the message boundaries of the received data will be respected.
+In other words, if the remote peer sent you a datagram of a particular
+size, you may rely on {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>} to
+give you the exact data in the packet, with the original data length. Also
+observe that <a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a> may
+be called with a *zero-length* data payload, since empty datagrams are
+permitted in UDP.
+</p>
+<p>
+{<a href="EventMachine/Connection.html#M000395">Connection#send_data</a>}
+is available with UDP packets as with TCP, but there is an important
+difference. Because UDP communications are <b>connectionless</b>, there is
+no implicit recipient for the packets you send. Ordinarily you must specify
+the recipient for each packet you send. However, <a
+href="EventMachine.html">EventMachine</a> provides for the typical pattern
+of receiving a UDP datagram from a remote peer, performing some operation,
+and then sending one or more packets in response to the same remote peer.
+To support this model easily, just use {<a
+href="EventMachine/Connection.html#M000395">Connection#send_data</a>} in
+the code that you supply for {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}.
+</p>
+<p>
+<a href="EventMachine.html">EventMachine</a> will provide an implicit
+return address for any messages sent to {<a
+href="EventMachine/Connection.html#M000395">Connection#send_data</a>}
+within the context of a {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+callback, and your response will automatically go to the correct remote
+peer.
+</p>
+<p>
+Observe that the port number that you supply to {<a
+href="EventMachine.html#M000065">EventMachine.open_datagram_socket</a>} may
+be zero. In this case, <a href="EventMachine.html">EventMachine</a> will
+create a UDP socket that is bound to an [ephemeral port](<a
+href="http://en.wikipedia.org/wiki/Ephemeral_port">en.wikipedia.org/wiki/Ephemeral_port</a>).
+This is not appropriate for servers that must publish a well-known port to
+which remote peers may send datagrams. But it can be useful for clients
+that send datagrams to other servers. If you do this, you will receive any
+responses from the remote servers through the normal {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+callback. Observe that you will probably have issues with firewalls
+blocking the ephemeral port numbers, so this technique is most appropriate
+for LANs.
+</p>
+<p>
+If you wish to send datagrams to arbitrary remote peers (not necessarily
+ones that have sent data to which you are responding), then see {<a
+href="EventMachine/Connection.html#M000400">Connection#send_datagram</a>}.
+</p>
+<p>
+DO NOT call <a href="EventMachine.html#M000020">send_data</a> from a
+datagram socket outside of a {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+method. Use {<a
+href="EventMachine/Connection.html#M000400">Connection#send_datagram</a>}.
+If you do use {<a
+href="EventMachine/Connection.html#M000395">Connection#send_data</a>}
+outside of a {<a
+href="EventMachine/Connection.html#M000381">Connection#receive_data</a>}
+method, you&#8216;ll get a confusing error because there is no
+&quot;peer,&quot; as <a href="EventMachine.html#M000020">send_data</a>
+requires (inside of {<a
+href="EventMachine/Connection.html#M000381">EventMachine::Connection#receive_data</a>},
+{<a
+href="EventMachine/Connection.html#M000395">EventMachine::Connection#send_data</a>}
+&quot;fakes&quot; the peer as described above).
+</p>
+<p>
+@param [String] address IP address @param [String] port Port @param [Class,
+Module] handler A class or a module that implements connection lifecycle
+callbacks.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000079.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000079.html');return false;">
+          <span class="method-name">open_keyboard</span><span class="method-args">(handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+(Experimental)
+</p>
+<p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000028.html');return false;">
+          <span class="method-name">open_udp_socket</span><span class="method-args">(host, port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000077.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000077.html');return false;">
+          <span class="method-name">popen</span><span class="method-args">(cmd, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Runs an external process.
+</p>
+<p>
+@example
+</p>
+<pre>
+ module RubyCounter
+   def post_init
+     # count up to 5
+     send_data &quot;5\n&quot;
+   end
+   def receive_data data
+     puts &quot;ruby sent me: #{data}&quot;
+   end
+   def unbind
+     puts &quot;ruby died with exit status: #{get_status.exitstatus}&quot;
+   end
+ end
+
+ EventMachine.run {
+   EventMachine.popen(&quot;ruby -e' $stdout.sync = true; gets.to_i.times{ |i| puts i+1; sleep 1 } '&quot;, RubyCounter)
+ }
+</pre>
+<p>
+@note This method is not supported on Microsoft Windows @see <a
+href="EventMachine/DeferrableChildProcess.html">EventMachine::DeferrableChildProcess</a>
+@see <a href="EventMachine.html#M000011">EventMachine.system</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000078.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000078.html');return false;">
+          <span class="method-name">reactor_running?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tells you whether the <a href="EventMachine.html">EventMachine</a> reactor
+loop is currently running.
+</p>
+<p>
+Useful when writing libraries that want to <a
+href="EventMachine.html#M000045">run</a> event-driven code, but may be
+running in programs that are already event-driven. In such cases, if
+{EventMachine.reactor_running?} returns false, your code can invoke {<a
+href="EventMachine.html#M000045">EventMachine.run</a>} and <a
+href="EventMachine.html#M000045">run</a> your application code inside the
+block passed to that method. If this method returns true, just execute your
+event-aware code.
+</p>
+<p>
+@return [Boolean] true if the <a href="EventMachine.html">EventMachine</a>
+reactor loop is currently running
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000047.html');return false;">
+          <span class="method-name">reactor_thread?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@return [Boolean] true if the calling thread is the same thread as the
+reactor.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000039.html');return false;">
+          <span class="method-name">read_keyboard</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000063.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000063.html');return false;">
+          <span class="method-name">reconnect</span><span class="method-args">(server, port, handler) {|handler| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Connect to a given host/port and re-use the provided {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>} instance.
+Consider also {<a
+href="EventMachine/Connection.html#M000412">EventMachine::Connection#reconnect</a>}.
+</p>
+<p>
+@see <a
+href="EventMachine/Connection.html#M000412">EventMachine::Connection#reconnect</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000016.html');return false;">
+          <span class="method-name">release_machine</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000045.html');return false;">
+          <span class="method-name">run</span><span class="method-args">(blk=nil, tail=nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initializes and runs an event loop. This method only returns if code inside
+the block passed to this method calls {<a
+href="EventMachine.html#M000054">EventMachine.stop_event_loop</a>}. The
+block is executed after initializing its internal event loop but
+<b>before</b> running the loop, therefore this block is the right place to
+call any code that needs event loop to <a
+href="EventMachine.html#M000045">run</a>, for example, {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>}, {<a
+href="EventMachine.html#M000058">EventMachine.connect</a>} or similar
+methods of libraries that use <a href="EventMachine.html">EventMachine</a>
+under the hood (like `EventMachine::HttpRequest.new` or `AMQP.start`).
+</p>
+<p>
+Programs that are <a href="EventMachine.html#M000045">run</a> for long
+periods of time (e.g. servers) usually start event loop by calling {<a
+href="EventMachine.html#M000045">EventMachine.run</a>}, and let it <a
+href="EventMachine.html#M000045">run</a> &quot;forever&quot;. It&#8216;s
+also possible to use {<a
+href="EventMachine.html#M000045">EventMachine.run</a>} to make a single
+client-connection to a remote server, process the data flow from that
+single connection, and then call {<a
+href="EventMachine.html#M000054">EventMachine.stop_event_loop</a>} to <a
+href="EventMachine.html#M000017">stop</a>, in other words, to <a
+href="EventMachine.html#M000045">run</a> event loop for a short period of
+time (necessary to complete some operation) and then shut it down.
+</p>
+<p>
+Once event loop is running, it is perfectly possible to start multiple
+servers and clients simultaneously: content-aware proxies like
+[Proxymachine](<a
+href="https://github.com/mojombo/proxymachine">github.com/mojombo/proxymachine</a>)
+do just that.
+</p>
+<p>
+## Using <a href="EventMachine.html">EventMachine</a> with Ruby on Rails
+and other Web application frameworks ##
+</p>
+<p>
+Standalone applications often <a href="EventMachine.html#M000045">run</a>
+event loop on the main thread, thus blocking for their entire lifespan. In
+case of Web applications, if you are running an <a
+href="EventMachine.html">EventMachine</a>-based app server such as
+[Thin](<a
+href="http://code.macournoyer.com/thin">code.macournoyer.com/thin</a>/) or
+[Goliath](<a
+href="https://github.com/postrank-labs/goliath">github.com/postrank-labs/goliath</a>/),
+they start event loop for you. Servers like Unicorn, Apache Passenger or
+Mongrel occupy main Ruby thread to serve HTTP(S) requests. This means that
+calling {<a href="EventMachine.html#M000045">EventMachine.run</a>} on the
+same thread is not an option (it will result in Web server never binding to
+the socket). In that case, start event loop in a separate thread as
+demonstrated below.
+</p>
+<p>
+@example Starting <a href="EventMachine.html">EventMachine</a> event loop
+in the current thread to <a href="EventMachine.html#M000045">run</a> the
+&quot;Hello, world&quot;-like Echo server example
+</p>
+<pre>
+  #!/usr/bin/env ruby
+
+  require 'rubygems' # or use Bundler.setup
+  require 'eventmachine'
+
+  class EchoServer &lt; EM::Connection
+    def receive_data(data)
+      send_data(data)
+    end
+  end
+
+  EventMachine.run do
+    EventMachine.start_server(&quot;0.0.0.0&quot;, 10000, EchoServer)
+  end
+</pre>
+<p>
+@example Starting <a href="EventMachine.html">EventMachine</a> event loop
+in a separate thread
+</p>
+<pre>
+  # doesn't block current thread, can be used with Ruby on Rails, Sinatra, Merb, Rack
+  # and any other application server that occupies main Ruby thread.
+  Thread.new { EventMachine.run }
+</pre>
+<p>
+@note This method blocks calling thread. If you need to start <a
+href="EventMachine.html">EventMachine</a> event loop from a Web app
+</p>
+<pre>
+      running on a non event-driven server (Unicorn, Apache Passenger, Mongrel), do it in a separate thread like demonstrated
+      in one of the examples.
+</pre>
+<p>
+@see file:docs/GettingStarted.md Getting started with <a
+href="EventMachine.html">EventMachine</a> @see <a
+href="EventMachine.html#M000054">EventMachine.stop_event_loop</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000046.html');return false;">
+          <span class="method-name">run_block</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sugars a common use case. Will pass the given block to <a
+href="EventMachine.html#M000045">run</a>, but will terminate the reactor
+loop and exit the function as soon as the code in the block completes.
+(Normally, {<a href="EventMachine.html#M000045">EventMachine.run</a>} keeps
+running indefinitely, even after the block supplied to it finishes running,
+until user code calls {<a
+href="EventMachine.html#M000017">EventMachine.stop</a>})
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000070.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000070.html');return false;">
+          <span class="method-name">run_deferred_callbacks</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The is the responder for the loopback-signalled event. It can be fired
+either by code running on a separate thread ({<a
+href="EventMachine.html#M000071">EventMachine.defer</a>}) or on the main
+thread ({<a href="EventMachine.html#M000074">EventMachine.next_tick</a>}).
+It will often happen that a <a
+href="EventMachine.html#M000074">next_tick</a> handler will reschedule
+itself. We consume a copy of the tick queue so that tick events scheduled
+by tick events have to wait for the next pass through the reactor core.
+</p>
+<p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000015.html');return false;">
+          <span class="method-name">run_machine</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000048.html');return false;">
+          <span class="method-name">schedule</span><span class="method-args">(*a, &amp;b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Runs the given callback on the reactor thread, or immediately if called
+from the reactor thread. Accepts the same arguments as
+{EventMachine::Callback}
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000020.html');return false;">
+          <span class="method-name">send_data</span><span class="method-args">(target, data, datalength)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000029.html');return false;">
+          <span class="method-name">send_datagram</span><span class="method-args">(target, data, datalength, host, port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is currently only for UDP! We need to make it work with unix-domain
+sockets as well. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000037.html');return false;">
+          <span class="method-name">send_file_data</span><span class="method-args">(sig, filename)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000040.html');return false;">
+          <span class="method-name">set_comm_inactivity_timeout</span><span class="method-args">(sig, tm)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000076.html');return false;">
+          <span class="method-name">set_descriptor_table_size</span><span class="method-args">(n_descriptors=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the maximum number of file or socket descriptors that your process may
+open. If you call this method with no arguments, it will simply return the
+current size of the descriptor table without attempting to change it.
+</p>
+<p>
+The new limit on open descriptors *<b>only</b>* applies to sockets and
+other descriptors that belong to <a
+href="EventMachine.html">EventMachine</a>. It has **no effect** on the
+number of descriptors you can create in ordinary Ruby code.
+</p>
+<p>
+Not available on all platforms. Increasing the number of descriptors beyond
+its default limit usually requires superuser privileges. (See {.<a
+href="EventMachine.html#M000075">set_effective_user</a>} for a way to drop
+superuser privileges while your program is running.)
+</p>
+<p>
+@param [Integer] n_descriptors The maximum number of file or socket
+descriptors that your process may open @return [Integer] The new descriptor
+table size.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000075.html');return false;">
+          <span class="method-name">set_effective_user</span><span class="method-args">(username)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+A wrapper over the setuid <a href="EventMachine.html#M000011">system</a>
+call. Particularly useful when opening a network server on a privileged
+port because you can use this call to drop privileges after opening the
+port. Also very useful after a call to {.<a
+href="EventMachine.html#M000076">set_descriptor_table_size</a>}, which
+generally requires that you start your process with root privileges.
+</p>
+<p>
+This method is intended for use in enforcing security requirements,
+consequently it will throw a fatal error and end your program if it fails.
+</p>
+<p>
+@param [String] username The effective name of the user whose
+privilege-level your process should attain.
+</p>
+<p>
+@note This method has no effective implementation on Windows or in the
+pure-Ruby
+</p>
+<pre>
+      implementation of EventMachine
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000034.html');return false;">
+          <span class="method-name">set_max_timer_count</span><span class="method-args">(n)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is a harmless no-op in pure Ruby, which doesn&#8216;t have a
+built-in limit on the number of available timers. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000067.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000067.html');return false;">
+          <span class="method-name">set_max_timers</span><span class="method-args">(ct)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the maximum number of timers and periodic timers that may be
+outstanding at any given time. You only need to call {.<a
+href="EventMachine.html#M000067">set_max_timers</a>} if you need more than
+the default number of timers, which on most platforms is 1000.
+</p>
+<p>
+@note This method has to be used <b>before</b> event loop is started.
+</p>
+<p>
+@param [Integer] ct Maximum number of timers that may be outstanding at any
+given time
+</p>
+<p>
+@see <a href="EventMachine.html#M000051">EventMachine.add_timer</a> @see <a
+href="EventMachine.html#M000052">EventMachine.add_periodic_timer</a> @see
+<a href="EventMachine/Timer.html">EventMachine::Timer</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000066.html');return false;">
+          <span class="method-name">set_quantum</span><span class="method-args">(mills)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+For advanced users. This function sets the default timer granularity, which
+by default is slightly smaller than 100 milliseconds. Call this function to
+set a higher or lower granularity. The function affects the behavior of {<a
+href="EventMachine.html#M000051">EventMachine.add_timer</a>} and {<a
+href="EventMachine.html#M000052">EventMachine.add_periodic_timer</a>}. Most
+applications will not need to call this function.
+</p>
+<p>
+Avoid setting the quantum to very low values because that may reduce
+performance under some extreme conditions. We recommend that you not use
+values lower than 10.
+</p>
+<p>
+This method only can be used if event loop is running.
+</p>
+<p>
+@param [Integer] mills New timer granularity, in milliseconds
+</p>
+<p>
+@see <a href="EventMachine.html#M000051">EventMachine.add_timer</a> @see <a
+href="EventMachine.html#M000052">EventMachine.add_periodic_timer</a> @see
+<a href="EventMachine/Timer.html">EventMachine::Timer</a> @see <a
+href="EventMachine.html#M000045">EventMachine.run</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000033.html');return false;">
+          <span class="method-name">set_rlimit_nofile</span><span class="method-args">(n)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is a no-op in the pure-Ruby implementation. We simply return
+Ruby&#8216;s built-in per-process file-descriptor limit. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000036.html');return false;">
+          <span class="method-name">set_sock_opt</span><span class="method-args">(signature, level, optname, optval)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000030.html');return false;">
+          <span class="method-name">set_timer_quantum</span><span class="method-args">(interval)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets reactor quantum in milliseconds. The underlying <a
+href="EventMachine/Reactor.html">Reactor</a> function wants a (possibly
+fractional) number of seconds. @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000026.html');return false;">
+          <span class="method-name">signal_loopbreak</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000041.html');return false;">
+          <span class="method-name">spawn</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Spawn an erlang-style process
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000072.html');return false;">
+          <span class="method-name">spawn_threadpool</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000032.html');return false;">
+          <span class="method-name">ssl?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is not implemented for pure-Ruby implementation @private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000055.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000055.html');return false;">
+          <span class="method-name">start_server</span><span class="method-args">(server, port=nil, handler=nil, *args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initiates a TCP server (socket acceptor) on the specified IP address and
+port.
+</p>
+<p>
+The IP address must be valid on the machine where the program runs, and the
+process must be privileged enough to listen on the specified port (on
+Unix-like systems, superuser privileges are usually required to listen on
+any port lower than 1024). Only one listener may be running on any given
+address/port combination. <a
+href="EventMachine.html#M000055">start_server</a> will fail if the given
+address and port are already listening on the machine, either because of a
+prior call to {.<a href="EventMachine.html#M000055">start_server</a>} or
+some unrelated process running on the machine. If {.<a
+href="EventMachine.html#M000055">start_server</a>} succeeds, the new
+network listener becomes active immediately and starts accepting
+connections from remote peers, and these connections generate callback
+events that are processed by the code specified in the handler parameter to
+{.<a href="EventMachine.html#M000055">start_server</a>}.
+</p>
+<p>
+The optional handler which is passed to this method is the key to <a
+href="EventMachine.html">EventMachine</a>&#8216;s ability to handle
+particular network protocols. The handler parameter passed to <a
+href="EventMachine.html#M000055">start_server</a> must be a Ruby Module
+that you must define. When the network server that is started by <a
+href="EventMachine.html#M000055">start_server</a> accepts a new connection,
+it instantiates a new object of an anonymous class that is inherited from
+{<a href="EventMachine/Connection.html">EventMachine::Connection</a>},
+*into which your handler module have been included*. Arguments passed into
+<a href="EventMachine.html#M000055">start_server</a> after the class name
+are passed into the constructor during the instantiation.
+</p>
+<p>
+Your handler module may override any of the methods in {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>}, such as
+{<a
+href="EventMachine/Connection.html#M000381">EventMachine::Connection#receive_data</a>},
+in order to implement the specific behavior of the network protocol.
+</p>
+<p>
+Callbacks invoked in response to network events <b>always</b> take place
+within the execution context of the object derived from {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>} extended
+by your handler module. There is one object per connection, and all of the
+callbacks invoked for a particular connection take the form of instance
+methods called against the corresponding {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>} object.
+Therefore, you are free to define whatever instance variables you wish, in
+order to contain the per-connection state required by the network protocol
+you are implementing.
+</p>
+<p>
+{<a href="EventMachine.html#M000055">EventMachine.start_server</a>} is
+usually called inside the block passed to {<a
+href="EventMachine.html#M000045">EventMachine.run</a>}, but it can be
+called from any <a href="EventMachine.html">EventMachine</a> callback. {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>} will fail
+unless the <a href="EventMachine.html">EventMachine</a> event loop is
+currently running (which is why it&#8216;s often called in the block
+suppled to {<a href="EventMachine.html#M000045">EventMachine.run</a>}).
+</p>
+<p>
+You may call <a href="EventMachine.html#M000055">start_server</a> any
+number of times to start up network listeners on different address/port
+combinations. The servers will all <a
+href="EventMachine.html#M000045">run</a> simultaneously. More
+interestingly, each individual call to <a
+href="EventMachine.html#M000055">start_server</a> can specify a different
+handler module and thus implement a different network protocol from all the
+others.
+</p>
+<p>
+@example
+</p>
+<pre>
+ require 'rubygems'
+ require 'eventmachine'
+
+ # Here is an example of a server that counts lines of input from the remote
+ # peer and sends back the total number of lines received, after each line.
+ # Try the example with more than one client connection opened via telnet,
+ # and you will see that the line count increments independently on each
+ # of the client connections. Also very important to note, is that the
+ # handler for the receive_data function, which our handler redefines, may
+ # not assume that the data it receives observes any kind of message boundaries.
+ # Also, to use this example, be sure to change the server and port parameters
+ # to the start_server call to values appropriate for your environment.
+ module LineCounter
+   MaxLinesPerConnection = 10
+
+   def post_init
+     puts &quot;Received a new connection&quot;
+     @data_received = &quot;&quot;
+     @line_count = 0
+   end
+
+   def receive_data data
+     @data_received &lt;&lt; data
+     while @data_received.slice!( /^[^\n]*[\n]/m )
+       @line_count += 1
+       send_data &quot;received #{@line_count} lines so far\r\n&quot;
+       @line_count == MaxLinesPerConnection and close_connection_after_writing
+     end
+   end
+ end
+
+ EventMachine.run {
+   host, port = &quot;192.168.0.100&quot;, 8090
+   EventMachine.start_server host, port, LineCounter
+   puts &quot;Now accepting connections on address #{host}, port #{port}...&quot;
+   EventMachine.add_periodic_timer(10) { $stderr.write &quot;*&quot; }
+ }
+</pre>
+<p>
+@param [String] server Host to bind to. @param [Integer] port Port to bind
+to. @param [Module, Class] handler A module or class that implements
+connection callbacks
+</p>
+<p>
+@note Don&#8216;t forget that in order to bind to ports &lt; 1024 on Linux,
+*BSD and Mac OS X your process must have superuser privileges.
+</p>
+<p>
+@see file:docs/GettingStarted.md <a
+href="EventMachine.html">EventMachine</a> tutorial @see <a
+href="EventMachine.html#M000056">EventMachine.stop_server</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000022.html');return false;">
+          <span class="method-name">start_tcp_server</span><span class="method-args">(host, port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000057.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000057.html');return false;">
+          <span class="method-name">start_unix_domain_server</span><span class="method-args">(filename, *args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start a Unix-domain server.
+</p>
+<p>
+Note that this is an alias for {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>}, which can
+be used to start both TCP and Unix-domain servers.
+</p>
+<p>
+@see <a href="EventMachine.html#M000055">EventMachine.start_server</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000024.html');return false;">
+          <span class="method-name">start_unix_server</span><span class="method-args">(chain)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000017.html');return false;">
+          <span class="method-name">stop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000054.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000054.html');return false;">
+          <span class="method-name">stop_event_loop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Causes the processing loop to <a href="EventMachine.html#M000017">stop</a>
+executing, which will cause all open connections and accepting servers to
+be <a href="EventMachine.html#M000045">run</a> down and closed. <a
+href="EventMachine/Connection.html">Connection</a> termination callbacks
+added using {<a
+href="EventMachine.html#M000050">EventMachine.add_shutdown_hook</a>} will
+be called as part of running this method.
+</p>
+<p>
+When all of this processing is complete, the call to {<a
+href="EventMachine.html#M000045">EventMachine.run</a>} which started the
+processing loop will return and program flow will resume from the statement
+following {<a href="EventMachine.html#M000045">EventMachine.run</a>} call.
+</p>
+<p>
+@example Stopping a running <a href="EventMachine.html">EventMachine</a>
+event loop
+</p>
+<pre>
+ require 'rubygems'
+ require 'eventmachine'
+
+ module Redmond
+   def post_init
+     puts &quot;We're sending a dumb HTTP request to the remote peer.&quot;
+     send_data &quot;GET / HTTP/1.1\r\nHost: www.microsoft.com\r\n\r\n&quot;
+   end
+
+   def receive_data data
+     puts &quot;We received #{data.length} bytes from the remote peer.&quot;
+     puts &quot;We're going to stop the event loop now.&quot;
+     EventMachine::stop_event_loop
+   end
+
+   def unbind
+     puts &quot;A connection has terminated.&quot;
+   end
+ end
+
+ puts &quot;We're starting the event loop now.&quot;
+ EventMachine.run {
+   EventMachine.connect &quot;www.microsoft.com&quot;, 80, Redmond
+ }
+ puts &quot;The event loop has stopped.&quot;
+
+ # This program will produce approximately the following output:
+ #
+ # We're starting the event loop now.
+ # We're sending a dumb HTTP request to the remote peer.
+ # We received 1440 bytes from the remote peer.
+ # We're going to stop the event loop now.
+ # A connection has terminated.
+ # The event loop has stopped.
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000056.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000056.html');return false;">
+          <span class="method-name">stop_server</span><span class="method-args">(signature)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Stop a TCP server socket that was started with {<a
+href="EventMachine.html#M000055">EventMachine.start_server</a>}. @see <a
+href="EventMachine.html#M000055">EventMachine.start_server</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000023.html');return false;">
+          <span class="method-name">stop_tcp_server</span><span class="method-args">(sig)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000011.html');return false;">
+          <span class="method-name">system</span><span class="method-args">(cmd, *args, &amp;cb)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+EM::system is a simple wrapper for EM::popen. It is similar to
+Kernel::system, but requires a single string argument for the command and
+performs no shell expansion.
+</p>
+<p>
+The block or proc passed to EM::system is called with two arguments: the
+output generated by the command, and a Process::Status that contains
+information about the command&#8216;s execution.
+</p>
+<pre>
+ EM.run{
+   EM.system('ls'){ |output,status| puts output if status.exitstatus == 0 }
+ }
+</pre>
+<p>
+You can also supply an additional proc to send some data to the process:
+</p>
+<pre>
+ EM.run{
+   EM.system('sh', proc{ |process|
+     process.send_data(&quot;echo hello\n&quot;)
+     process.send_data(&quot;exit\n&quot;)
+   }, proc{ |out,status|
+     puts(out)
+   })
+ }
+</pre>
+<p>
+Like <a href="EventMachine.html#M000077">EventMachine.popen</a>, <a
+href="EventMachine.html#M000011">EventMachine.system</a> currently does not
+work on windows. It returns the pid of the spawned process.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000044.html');return false;">
+          <span class="method-name">tick_loop</span><span class="method-args">(*a, &amp;b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates and immediately starts an <a
+href="EventMachine/TickLoop.html">EventMachine::TickLoop</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000060.html');return false;">
+          <span class="method-name">watch</span><span class="method-args">(io, handler=nil, *args, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+{<a href="EventMachine.html#M000060">EventMachine.watch</a>} registers a
+given file descriptor or <a href="IO.html">IO</a> object with the
+eventloop. The file descriptor will not be modified (it will remain
+blocking or non-blocking).
+</p>
+<p>
+The eventloop can be used to process readable and writable events on the
+file descriptor, using {EventMachine::Connection#notify_readable=} and
+{EventMachine::Connection#notify_writable=}
+</p>
+<p>
+{EventMachine::Connection#notify_readable?} and
+{EventMachine::Connection#notify_writable?} can be used to check what
+events are enabled on the connection.
+</p>
+<p>
+To detach the file descriptor, use {<a
+href="EventMachine/Connection.html#M000391">EventMachine::Connection#detach</a>}
+</p>
+<p>
+@example
+</p>
+<pre>
+ module SimpleHttpClient
+   def notify_readable
+     header = @io.readline
+
+     if header == &quot;\r\n&quot;
+       # detach returns the file descriptor number (fd == @io.fileno)
+       fd = detach
+     end
+   rescue EOFError
+     detach
+   end
+
+   def unbind
+     EM.next_tick do
+       # socket is detached from the eventloop, but still open
+       data = @io.read
+     end
+   end
+ end
+
+ EventMachine.run {
+   sock = TCPSocket.new('site.com', 80)
+   sock.write(&quot;GET / HTTP/1.0\r\n\r\n&quot;)
+   conn = EventMachine.watch(sock, SimpleHttpClient)
+   conn.notify_readable = true
+ }
+</pre>
+<p>
+@author Riham Aldakkak (eSpace Technologies)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000080.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000080.html');return false;">
+          <span class="method-name">watch_file</span><span class="method-args">(filename, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="EventMachine.html">EventMachine</a>&#8216;s file monitoring API.
+Currently supported are the following events on individual files, using
+inotify on Linux systems, and kqueue for *BSD and Mac OS X:
+</p>
+<ul>
+<li>File modified (written to)
+
+</li>
+<li>File moved/renamed
+
+</li>
+<li>File deleted
+
+</li>
+</ul>
+<p>
+EventMachine::watch_file takes a filename and a handler Module containing
+your custom callback methods. This will setup the low level monitoring on
+the specified file, and create a new <a
+href="EventMachine/FileWatch.html">EventMachine::FileWatch</a> object with
+your Module mixed in. <a href="EventMachine/FileWatch.html">FileWatch</a>
+is a subclass of {<a
+href="EventMachine/Connection.html">EventMachine::Connection</a>}, so
+callbacks on this object work in the familiar way. The callbacks that will
+be fired by <a href="EventMachine.html">EventMachine</a> are:
+</p>
+<ul>
+<li>file_modified
+
+</li>
+<li>file_moved
+
+</li>
+<li>file_deleted
+
+</li>
+</ul>
+<p>
+You can access the filename being monitored from within this object using
+{<a href="EventMachine/FileWatch.html#M000458">FileWatch#path</a>}.
+</p>
+<p>
+When a file is deleted, {<a
+href="EventMachine/FileWatch.html#M000462">FileWatch#stop_watching</a>}
+will be called after your file_deleted callback, to clean up the underlying
+monitoring and remove <a href="EventMachine.html">EventMachine</a>&#8216;s
+reference to the now-useless {<a
+href="EventMachine/FileWatch.html">FileWatch</a>} instance. This will in
+turn call unbind, if you wish to use it.
+</p>
+<p>
+The corresponding <a href="EventMachine.html#M000011">system</a>-level
+Errno will be raised when attempting to monitor non-existent files, files
+with wrong permissions, or if an error occurs dealing with inotify/kqueue.
+</p>
+<p>
+@example
+</p>
+<pre>
+ # Before running this example, make sure we have a file to monitor:
+ # $ echo &quot;bar&quot; &gt; /tmp/foo
+
+ module Handler
+   def file_modified
+     puts &quot;#{path} modified&quot;
+   end
+
+   def file_moved
+     puts &quot;#{path} moved&quot;
+   end
+
+   def file_deleted
+     puts &quot;#{path} deleted&quot;
+   end
+
+   def unbind
+     puts &quot;#{path} monitoring ceased&quot;
+   end
+ end
+
+ # for efficient file watching, use kqueue on Mac OS X
+ EventMachine.kqueue = true if EventMachine.kqueue?
+
+ EventMachine.run {
+   EventMachine.watch_file(&quot;/tmp/foo&quot;, Handler)
+ }
+
+ # $ echo &quot;baz&quot; &gt;&gt; /tmp/foo    =&gt;    &quot;/tmp/foo modified&quot;
+ # $ mv /tmp/foo /tmp/oof      =&gt;    &quot;/tmp/foo moved&quot;
+ # $ rm /tmp/oof               =&gt;    &quot;/tmp/foo deleted&quot;
+</pre>
+<p>
+@note The ability to pick up on the new filename after a rename is not yet
+supported.
+</p>
+<pre>
+      Calling #path will always return the filename you originally used.
+</pre>
+<p>
+@param [String] filename Local path to the file to <a
+href="EventMachine.html#M000060">watch</a>. @param [Class, Module] handler
+A class or module that implements event handlers associated with the file.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000081.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000081.html');return false;">
+          <span class="method-name">watch_process</span><span class="method-args">(pid, handler=nil, *args) {|c| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="EventMachine.html">EventMachine</a>&#8216;s process monitoring
+API. On Mac OS X and *BSD this method is implemented using kqueue.
+</p>
+<p>
+@example
+</p>
+<pre>
+ module ProcessWatcher
+   def process_exited
+     put 'the forked child died!'
+   end
+ end
+
+ pid = fork{ sleep }
+
+ EventMachine.run {
+   EventMachine.watch_process(pid, ProcessWatcher)
+   EventMachine.add_timer(1){ Process.kill('TERM', pid) }
+ }
+</pre>
+<p>
+@param [Integer] pid PID of the process to <a
+href="EventMachine.html#M000060">watch</a>. @param [Class, Module] handler
+A class or module that implements event handlers associated with the file.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000042.html');return false;">
+          <span class="method-name">yield</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="EventMachine.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('EventMachine.src/M000043.html');return false;">
+          <span class="method-name">yield_and_notify</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@private
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

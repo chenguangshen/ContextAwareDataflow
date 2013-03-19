@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushElement#argmax
+is_singleton: false
+name: argmax
+params: (gbcols, col, &blk)
+visibility: public

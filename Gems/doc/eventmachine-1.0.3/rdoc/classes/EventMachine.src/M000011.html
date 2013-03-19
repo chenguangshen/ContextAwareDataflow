@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>system (EventMachine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/em/processes.rb, line 112</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">EventMachine</span><span class="ruby-operator">::</span><span class="ruby-identifier">system</span> <span class="ruby-identifier">cmd</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">cb</span>
+    <span class="ruby-identifier">cb</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Proc</span>
+    <span class="ruby-identifier">init</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Proc</span>
+
+    <span class="ruby-comment cmt"># merge remaining arguments into the command</span>
+    <span class="ruby-identifier">cmd</span> = [<span class="ruby-identifier">cmd</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">any?</span>
+
+    <span class="ruby-constant">EM</span>.<span class="ruby-identifier">get_subprocess_pid</span>(<span class="ruby-constant">EM</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-identifier">cmd</span>, <span class="ruby-constant">SystemCmd</span>, <span class="ruby-identifier">cb</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">init</span>[<span class="ruby-identifier">c</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">init</span>
+    <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">signature</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

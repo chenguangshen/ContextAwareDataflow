@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@private"
+full_name: EventMachine::spawn_threadpool
+is_singleton: true
+name: spawn_threadpool
+params: ()
+visibility: public

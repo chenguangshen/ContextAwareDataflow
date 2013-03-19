@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Rewrite references to lattice identifiers that appear in rule bodies. A reference to a lattice identifier returns the associated lattice wrapper. When the identifier appears at the top-level of the rule RHS, that is fine (since we want the wrapper to do wiring). But for references that appear inside rule bodies, we want to instead fetch the current value associated with the lattice wrapper.
+constants: []
+
+full_name: LatticeRefRewriter
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: is_lattice?
+- !ruby/object:RI::MethodSummary 
+  name: process_array
+- !ruby/object:RI::MethodSummary 
+  name: process_call
+- !ruby/object:RI::MethodSummary 
+  name: process_hash
+- !ruby/object:RI::MethodSummary 
+  name: process_iter
+- !ruby/object:RI::MethodSummary 
+  name: push_and_process
+name: LatticeRefRewriter
+superclass: SexpProcessor

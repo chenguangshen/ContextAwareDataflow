@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reads permanent history from @@histfile. This code is pretty much the same as irb's code.
+full_name: ReblShell::setup_history
+is_singleton: true
+name: setup_history
+params: ()
+visibility: public

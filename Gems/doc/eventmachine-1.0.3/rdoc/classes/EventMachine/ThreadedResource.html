@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: EventMachine::ThreadedResource</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">EventMachine::ThreadedResource</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/em/threaded_resource_rb.html">
+                lib/em/threaded_resource.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="ThreadedResource.html">EventMachine::ThreadedResource</a></h1>
+<p>
+A threaded resource is a &quot;quick and dirty&quot; wrapper around the
+concept of wiring up synchronous code into a standard EM::Pool. This is
+useful to keep interfaces coherent and provide a simple approach at
+&quot;making an interface async-ish&quot;.
+</p>
+<p>
+General usage is to wrap libraries that do not support <a
+href="../EventMachine.html">EventMachine</a>, or to have a specific number
+of dedicated high-cpu worker resources.
+</p>
+<h2>Basic Usage example</h2>
+<p>
+This example requires the cassandra gem. The cassandra gem contains an <a
+href="../EventMachine.html">EventMachine</a> interface, but it&#8216;s
+sadly Fiber based and thus only works on 1.9. It also requires
+(potentially) complex stack switching logic to reach completion of nested
+operations. By contrast this approach provides a block in which normal
+synchronous code can occur, but makes no attempt to wire the <a
+href="../IO.html">IO</a> into EventMachines C++ <a href="../IO.html">IO</a>
+implementations, instead relying on the reactor pattern in
+rb_thread_select.
+</p>
+<pre>
+   cassandra_dispatcher = ThreadedResource.new do
+     Cassandra.new('allthethings', '127.0.0.1:9160')
+   end
+
+   pool = EM::Pool.new
+
+   pool.add cassandra_dispatcher
+
+   # If we don't care about the result:
+   pool.perform do |dispatcher|
+     # The following block executes inside a dedicated thread, and should not
+     # access EventMachine things:
+     dispatcher.dispatch do |cassandra|
+       cassandra.insert(:Things, '10', 'stuff' =&gt; 'things')
+     end
+   end
+
+   # Example where we care about the result:
+   pool.perform do |dispatcher|
+     # The dispatch block is executed in the resources thread.
+     completion = dispatcher.dispatch do |cassandra|
+       cassandra.get(:Things, '10', 'stuff')
+     end
+
+     # This block will be yielded on the EM thread:
+     completion.callback do |result|
+       EM.do_something_with(result)
+     end
+
+     completion
+   end
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000311">dispatch</a>&nbsp;&nbsp;
+      <a href="#M000310">new</a>&nbsp;&nbsp;
+      <a href="#M000312">shutdown</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000310" class="method-detail">
+        <a name="M000310"></a>
+
+        <div class="method-heading">
+          <a href="ThreadedResource.src/M000310.html" target="Code" class="method-signature"
+            onclick="popupCode('ThreadedResource.src/M000310.html');return false;">
+          <span class="method-name">new</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The block should return the resource that will be yielded in a <a
+href="ThreadedResource.html#M000311">dispatch</a>.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000311" class="method-detail">
+        <a name="M000311"></a>
+
+        <div class="method-heading">
+          <a href="ThreadedResource.src/M000311.html" target="Code" class="method-signature"
+            onclick="popupCode('ThreadedResource.src/M000311.html');return false;">
+          <span class="method-name">dispatch</span><span class="method-args">() {|@resource| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Called on the EM thread, generally in a perform block to return a
+completion for the work.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000312" class="method-detail">
+        <a name="M000312"></a>
+
+        <div class="method-heading">
+          <a href="ThreadedResource.src/M000312.html" target="Code" class="method-signature"
+            onclick="popupCode('ThreadedResource.src/M000312.html');return false;">
+          <span class="method-name">shutdown</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Kill the internal thread. should only be used to cleanup - generally only
+required for tests.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

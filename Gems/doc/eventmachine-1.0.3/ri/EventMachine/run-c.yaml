@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initializes and runs an event loop. This method only returns if code inside the block passed to this method calls {EventMachine.stop_event_loop}. The block is executed after initializing its internal event loop but <b>before</b> running the loop, therefore this block is the right place to call any code that needs event loop to run, for example, {EventMachine.start_server}, {EventMachine.connect} or similar methods of libraries that use EventMachine under the hood (like `EventMachine::HttpRequest.new` or `AMQP.start`).
+- !ruby/struct:SM::Flow::P 
+  body: Programs that are run for long periods of time (e.g. servers) usually start event loop by calling {EventMachine.run}, and let it run &quot;forever&quot;. It's also possible to use {EventMachine.run} to make a single client-connection to a remote server, process the data flow from that single connection, and then call {EventMachine.stop_event_loop} to stop, in other words, to run event loop for a short period of time (necessary to complete some operation) and then shut it down.
+- !ruby/struct:SM::Flow::P 
+  body: "Once event loop is running, it is perfectly possible to start multiple servers and clients simultaneously: content-aware proxies like [Proxymachine](https://github.com/mojombo/proxymachine) do just that."
+- !ruby/struct:SM::Flow::P 
+  body: "## Using EventMachine with Ruby on Rails and other Web application frameworks ##"
+- !ruby/struct:SM::Flow::P 
+  body: Standalone applications often run event loop on the main thread, thus blocking for their entire lifespan. In case of Web applications, if you are running an EventMachine-based app server such as [Thin](http://code.macournoyer.com/thin/) or [Goliath](https://github.com/postrank-labs/goliath/), they start event loop for you. Servers like Unicorn, Apache Passenger or Mongrel occupy main Ruby thread to serve HTTP(S) requests. This means that calling {EventMachine.run} on the same thread is not an option (it will result in Web server never binding to the socket). In that case, start event loop in a separate thread as demonstrated below.
+- !ruby/struct:SM::Flow::P 
+  body: "@example Starting EventMachine event loop in the current thread to run the &quot;Hello, world&quot;-like Echo server example"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  #!/usr/bin/env ruby\n\n  require 'rubygems' # or use Bundler.setup\n  require 'eventmachine'\n\n  class EchoServer &lt; EM::Connection\n    def receive_data(data)\n      send_data(data)\n    end\n  end\n\n  EventMachine.run do\n    EventMachine.start_server(&quot;0.0.0.0&quot;, 10000, EchoServer)\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@example Starting EventMachine event loop in a separate thread"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # doesn't block current thread, can be used with Ruby on Rails, Sinatra, Merb, Rack\n  # and any other application server that occupies main Ruby thread.\n  Thread.new { EventMachine.run }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@note This method blocks calling thread. If you need to start EventMachine event loop from a Web app"
+- !ruby/struct:SM::Flow::VERB 
+  body: "      running on a non event-driven server (Unicorn, Apache Passenger, Mongrel), do it in a separate thread like demonstrated\n      in one of the examples.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@see file:docs/GettingStarted.md Getting started with EventMachine @see EventMachine.stop_event_loop"
+full_name: EventMachine::run
+is_singleton: true
+name: run
+params: (blk=nil, tail=nil, &block)
+visibility: public

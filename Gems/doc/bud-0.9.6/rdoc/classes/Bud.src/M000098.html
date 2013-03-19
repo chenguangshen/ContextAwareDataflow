@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>module_wrapper_class (Bud)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud.rb, line 176</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">module_wrapper_class</span>(<span class="ruby-identifier">mod</span>)
+    <span class="ruby-identifier">class_name</span> = <span class="ruby-node">&quot;#{mod}__wrap&quot;</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">klass</span> = <span class="ruby-constant">Module</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">class_name</span>.<span class="ruby-identifier">to_sym</span>)
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Class</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;internal error: #{class_name} is in use&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> <span class="ruby-comment cmt"># exception if class class_name doesn't exist</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">klass</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;class #{class_name}; include Bud; include #{mod}; end&quot;</span>
+    <span class="ruby-identifier">klass</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

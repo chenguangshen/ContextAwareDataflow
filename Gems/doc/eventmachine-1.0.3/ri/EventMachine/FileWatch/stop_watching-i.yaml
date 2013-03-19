@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Discontinue monitoring of the file.
+- !ruby/struct:SM::Flow::P 
+  body: This involves cleaning up the underlying monitoring details with kqueue/inotify, and in turn firing {EventMachine::Connection#unbind}. This will be called automatically when a file is deleted. User code may call it as well.
+full_name: EventMachine::FileWatch#stop_watching
+is_singleton: false
+name: stop_watching
+params: ()
+visibility: public

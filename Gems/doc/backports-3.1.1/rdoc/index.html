@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>backports-3.1.1 Documentation</title>
+
+  <link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+
+  <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="indexpage">
+
+  
+  <h1>backports-3.1.1 Documentation</h1>
+
+  
+  <p>This is the API documentation for 'backports-3.1.1 Documentation'.</p>
+  
+
+  
+  
+
+  <h2 id="classes">Classes/Modules</h2>
+  <ul>
+    
+    <li class="class"><a href="Prime.html">Prime</a></li>
+    
+    <li class="class"><a href="Prime/EratosthenesGenerator.html">Prime::EratosthenesGenerator</a></li>
+    
+    <li class="class"><a href="Prime/EratosthenesSieve.html">Prime::EratosthenesSieve</a></li>
+    
+    <li class="class"><a href="Prime/Generator23.html">Prime::Generator23</a></li>
+    
+    <li class="module"><a href="Prime/OldCompatibility.html">Prime::OldCompatibility</a></li>
+    
+    <li class="class"><a href="Prime/PseudoPrimeGenerator.html">Prime::PseudoPrimeGenerator</a></li>
+    
+    <li class="class"><a href="Prime/TrialDivision.html">Prime::TrialDivision</a></li>
+    
+    <li class="class"><a href="Prime/TrialDivisionGenerator.html">Prime::TrialDivisionGenerator</a></li>
+    
+    <li class="module"><a href="Backports.html">Backports</a></li>
+    
+    <li class="module"><a href="Backports/MOST_EXTREME_OBJECT_EVER.html">Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+    
+    <li class="module"><a href="Backports/StdLib.html">Backports::StdLib</a></li>
+    
+    <li class="class"><a href="Backports/StdLib/LoadedFeatures.html">Backports::StdLib::LoadedFeatures</a></li>
+    
+    <li class="class"><a href="Enumerator.html">Enumerator</a></li>
+    
+    <li class="class"><a href="Enumerator/GeneratorBP.html">Enumerator::GeneratorBP</a></li>
+    
+    <li class="class"><a href="Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+    
+    <li class="class"><a href="Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+    
+    <li class="class"><a href="Matrix.html">Matrix</a></li>
+    
+    <li class="class"><a href="Matrix/EigenvalueDecomposition.html">Matrix::EigenvalueDecomposition</a></li>
+    
+    <li class="class"><a href="Matrix/LUPDecomposition.html">Matrix::LUPDecomposition</a></li>
+    
+    <li class="class"><a href="Random.html">Random</a></li>
+    
+    <li class="module"><a href="Random/Implementation.html">Random::Implementation</a></li>
+    
+    <li class="class"><a href="Random/MT19937.html">Random::MT19937</a></li>
+    
+    <li class="module"><a href="Enumerable.html">Enumerable</a></li>
+    
+    <li class="class"><a href="Enumerable/Enumerator.html">Enumerable::Enumerator</a></li>
+    
+    <li class="class"><a href="File.html">File</a></li>
+    
+    <li class="module"><a href="File/Constants.html">File::Constants</a></li>
+    
+    <li class="class"><a href="Vector.html">Vector</a></li>
+    
+    <li class="class"><a href="Vector/ZeroVectorError.html">Vector::ZeroVectorError</a></li>
+    
+    <li class="module"><a href="ARGF.html">ARGF</a></li>
+    
+    <li class="class"><a href="Array.html">Array</a></li>
+    
+    <li class="class"><a href="BasicObject.html">BasicObject</a></li>
+    
+    <li class="class"><a href="Binding.html">Binding</a></li>
+    
+    <li class="class"><a href="Complex.html">Complex</a></li>
+    
+    <li class="class"><a href="Dir.html">Dir</a></li>
+    
+    <li class="module"><a href="ENV.html">ENV</a></li>
+    
+    <li class="class"><a href="Fixnum.html">Fixnum</a></li>
+    
+    <li class="class"><a href="Float.html">Float</a></li>
+    
+    <li class="module"><a href="GC.html">GC</a></li>
+    
+    <li class="class"><a href="Hash.html">Hash</a></li>
+    
+    <li class="class"><a href="IO.html">IO</a></li>
+    
+    <li class="class"><a href="Integer.html">Integer</a></li>
+    
+    <li class="module"><a href="Kernel.html">Kernel</a></li>
+    
+    <li class="module"><a href="Math.html">Math</a></li>
+    
+    <li class="class"><a href="Method.html">Method</a></li>
+    
+    <li class="class"><a href="Module.html">Module</a></li>
+    
+    <li class="class"><a href="NilClass.html">NilClass</a></li>
+    
+    <li class="class"><a href="Numeric.html">Numeric</a></li>
+    
+    <li class="class"><a href="Object.html">Object</a></li>
+    
+    <li class="module"><a href="ObjectSpace.html">ObjectSpace</a></li>
+    
+    <li class="class"><a href="OpenStruct.html">OpenStruct</a></li>
+    
+    <li class="class"><a href="Proc.html">Proc</a></li>
+    
+    <li class="module"><a href="Process.html">Process</a></li>
+    
+    <li class="class"><a href="Range.html">Range</a></li>
+    
+    <li class="module"><a href="Regexp.html">Regexp</a></li>
+    
+    <li class="class"><a href="Set.html">Set</a></li>
+    
+    <li class="class"><a href="StopIteration.html">StopIteration</a></li>
+    
+    <li class="class"><a href="String.html">String</a></li>
+    
+    <li class="class"><a href="Struct.html">Struct</a></li>
+    
+    <li class="class"><a href="Symbol.html">Symbol</a></li>
+    
+    <li class="class"><a href="UnboundMethod.html">UnboundMethod</a></li>
+    
+  </ul>
+
+  <h2 id="methods">Methods</h2>
+  <ul>
+    
+      <li><a href="Backports/MOST_EXTREME_OBJECT_EVER.html#method-c-3C">::< &mdash; Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+    
+      <li><a href="BasicObject.html#method-c-3D-3D-3D">::=== &mdash; BasicObject</a></li>
+    
+      <li><a href="Backports/MOST_EXTREME_OBJECT_EVER.html#method-c-3E">::> &mdash; Backports::MOST_EXTREME_OBJECT_EVER</a></li>
+    
+      <li><a href="Matrix.html#method-c-I">::I &mdash; Matrix</a></li>
+    
+      <li><a href="Random/MT19937.html#method-c-5B-5D">::[] &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Matrix.html#method-c-5B-5D">::[] &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-c-5B-5D">::[] &mdash; Vector</a></li>
+    
+      <li><a href="Hash.html#method-c-5B-5D">::[] &mdash; Hash</a></li>
+    
+      <li><a href="Backports.html#method-c-alias_method">::alias_method &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-alias_method_chain">::alias_method_chain &mdash; Backports</a></li>
+    
+      <li><a href="IO.html#method-c-binread">::binread &mdash; IO</a></li>
+    
+      <li><a href="IO.html#method-c-binwrite">::binwrite &mdash; IO</a></li>
+    
+      <li><a href="Matrix.html#method-c-build">::build &mdash; Matrix</a></li>
+    
+      <li><a href="Backports.html#method-c-coerce_to">::coerce_to &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-coerce_to_ary">::coerce_to_ary &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-coerce_to_comparison">::coerce_to_comparison &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-coerce_to_int">::coerce_to_int &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-coerce_to_str">::coerce_to_str &mdash; Backports</a></li>
+    
+      <li><a href="Matrix.html#method-c-column_vector">::column_vector &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-c-columns">::columns &mdash; Matrix</a></li>
+    
+      <li><a href="Backports.html#method-c-combine_mode_and_option">::combine_mode_and_option &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-combine_mode_perm_and_option">::combine_mode_perm_and_option &mdash; Backports</a></li>
+    
+      <li><a href="Hash.html#method-c-constructor_without_key_value_pair_form">::constructor_without_key_value_pair_form &mdash; Hash</a></li>
+    
+      <li><a href="Backports.html#method-c-convert_all_arguments_to_path">::convert_all_arguments_to_path &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-convert_first_argument_to_path">::convert_first_argument_to_path &mdash; Backports</a></li>
+    
+      <li><a href="Backports.html#method-c-convert_path">::convert_path &mdash; Backports</a></li>
+    
+      <li><a href="Random/MT19937.html#method-c-convert_seed">::convert_seed &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Matrix.html#method-c-diagonal">::diagonal &mdash; Matrix</a></li>
+    
+      <li><a href="ARGF.html#method-c-each_char">::each_char &mdash; ARGF</a></li>
+    
+      <li><a href="Integer.html#method-c-each_prime">::each_prime &mdash; Integer</a></li>
+    
+      <li><a href="Vector.html#method-c-elements">::elements &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-c-empty">::empty &mdash; Matrix</a></li>
+    
+      <li><a href="File.html#method-c-expand_path_with_potential_to_path">::expand_path_with_potential_to_path &mdash; File</a></li>
+    
+      <li><a href="Backports/StdLib.html#method-c-extend_relative">::extend_relative &mdash; Backports::StdLib</a></li>
+    
+      <li><a href="Integer.html#method-c-from_prime_division">::from_prime_division &mdash; Integer</a></li>
+    
+      <li><a href="Dir.html#method-c-home">::home &mdash; Dir</a></li>
+    
+      <li><a href="Matrix.html#method-c-identity">::identity &mdash; Matrix</a></li>
+    
+      <li><a href="BasicObject.html#method-c-inherited">::inherited &mdash; BasicObject</a></li>
+    
+      <li><a href="Prime.html#method-c-instance">::instance &mdash; Prime</a></li>
+    
+      <li><a href="Backports.html#method-c-is_array-3F">::is_array? &mdash; Backports</a></li>
+    
+      <li><a href="Math.html#method-c-log2">::log2 &mdash; Math</a></li>
+    
+      <li><a href="Math.html#method-c-log_with_optional_base">::log_with_optional_base &mdash; Math</a></li>
+    
+      <li><a href="Backports.html#method-c-make_block_optional">::make_block_optional &mdash; Backports</a></li>
+    
+      <li><a href="Backports/StdLib/LoadedFeatures.html#method-c-mark_as_loaded">::mark_as_loaded &mdash; Backports::StdLib::LoadedFeatures</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-c-new">::new &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Matrix.html#method-c-new">::new &mdash; Matrix</a></li>
+    
+      <li><a href="Prime.html#method-c-new">::new &mdash; Prime</a></li>
+    
+      <li><a href="Prime/EratosthenesGenerator.html#method-c-new">::new &mdash; Prime::EratosthenesGenerator</a></li>
+    
+      <li><a href="Random/Implementation.html#method-c-new">::new &mdash; Random::Implementation</a></li>
+    
+      <li><a href="Random/MT19937.html#method-c-new">::new &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Vector.html#method-c-new">::new &mdash; Vector</a></li>
+    
+      <li><a href="Prime/Generator23.html#method-c-new">::new &mdash; Prime::Generator23</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-c-new">::new &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Enumerator/GeneratorBP.html#method-c-new">::new &mdash; Enumerator::GeneratorBP</a></li>
+    
+      <li><a href="Enumerator/Yielder.html#method-c-new">::new &mdash; Enumerator::Yielder</a></li>
+    
+      <li><a href="Prime/TrialDivisionGenerator.html#method-c-new">::new &mdash; Prime::TrialDivisionGenerator</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-c-new">::new &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-c-new">::new &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Random.html#method-c-new_seed">::new_seed &mdash; Random</a></li>
+    
+      <li><a href="IO.html#method-c-open_with_options_hash">::open_with_options_hash &mdash; IO</a></li>
+    
+      <li><a href="Backports.html#method-c-require_relative_dir">::require_relative_dir &mdash; Backports</a></li>
+    
+      <li><a href="Matrix.html#method-c-row_vector">::row_vector &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-c-rows">::rows &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-c-scalar">::scalar &mdash; Matrix</a></li>
+    
+      <li><a href="GC.html#method-c-stress">::stress &mdash; GC</a></li>
+    
+      <li><a href="GC.html#method-c-stress-3D">::stress= &mdash; GC</a></li>
+    
+      <li><a href="Backports.html#method-c-suppress_verbose_warnings">::suppress_verbose_warnings &mdash; Backports</a></li>
+    
+      <li><a href="Regexp.html#method-c-try_convert">::try_convert &mdash; Regexp</a></li>
+    
+      <li><a href="Array.html#method-c-try_convert">::try_convert &mdash; Array</a></li>
+    
+      <li><a href="Backports.html#method-c-try_convert">::try_convert &mdash; Backports</a></li>
+    
+      <li><a href="IO.html#method-c-try_convert">::try_convert &mdash; IO</a></li>
+    
+      <li><a href="Hash.html#method-c-try_convert">::try_convert &mdash; Hash</a></li>
+    
+      <li><a href="String.html#method-c-try_convert">::try_convert &mdash; String</a></li>
+    
+      <li><a href="Regexp.html#method-c-union_with_array_argument">::union_with_array_argument &mdash; Regexp</a></li>
+    
+      <li><a href="Matrix.html#method-c-unit">::unit &mdash; Matrix</a></li>
+    
+      <li><a href="IO.html#method-c-write">::write &mdash; IO</a></li>
+    
+      <li><a href="Backports.html#method-c-write">::write &mdash; Backports</a></li>
+    
+      <li><a href="Matrix.html#method-c-zero">::zero &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-2A">#* &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-2A">#* &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-2A-2A">#** &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-2B">#+ &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-2B">#+ &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-2D">#- &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-2D">#- &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-2F">#/ &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-2F">#/ &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/Yielder.html#method-i-3C-3C">#<< &mdash; Enumerator::Yielder</a></li>
+    
+      <li><a href="Symbol.html#method-i-3C-3D-3E">#<=> &mdash; Symbol</a></li>
+    
+      <li><a href="Matrix.html#method-i-3D-3D">#== &mdash; Matrix</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-3D-3D">#== &mdash; Random::Implementation</a></li>
+    
+      <li><a href="Vector.html#method-i-3D-3D">#== &mdash; Vector</a></li>
+    
+      <li><a href="Symbol.html#method-i-3D-7E">#=~ &mdash; Symbol</a></li>
+    
+      <li><a href="Symbol.html#method-i-5B-5D">#[] &mdash; Symbol</a></li>
+    
+      <li><a href="Matrix.html#method-i-5B-5D">#[] &mdash; Matrix</a></li>
+    
+      <li><a href="Prime/TrialDivision.html#method-i-5B-5D">#[] &mdash; Prime::TrialDivision</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-5B-5D">#[] &mdash; OpenStruct</a></li>
+    
+      <li><a href="Vector.html#method-i-5B-5D">#[] &mdash; Vector</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-5B-5D-3D">#[]= &mdash; OpenStruct</a></li>
+    
+      <li><a href="Kernel.html#method-i-__callee__">#__callee__ &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#method-i-__method__">#__method__ &mdash; Kernel</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-__set_inspect">#__set_inspect &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="IO.html#method-i-advise">#advise &mdash; IO</a></li>
+    
+      <li><a href="Module.html#method-i-alias_method_chain">#alias_method_chain &mdash; Module</a></li>
+    
+      <li><a href="String.html#method-i-ascii_only-3F">#ascii_only? &mdash; String</a></li>
+    
+      <li><a href="Hash.html#method-i-assoc">#assoc &mdash; Hash</a></li>
+    
+      <li><a href="UnboundMethod.html#method-i-bind_with_additional_info">#bind_with_additional_info &mdash; UnboundMethod</a></li>
+    
+      <li><a href="Array.html#method-i-bsearch">#bsearch &mdash; Array</a></li>
+    
+      <li><a href="Range.html#method-i-bsearch">#bsearch &mdash; Range</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-bytes">#bytes &mdash; Random::Implementation</a></li>
+    
+      <li><a href="String.html#method-i-byteslice">#byteslice &mdash; String</a></li>
+    
+      <li><a href="Prime/TrialDivision.html#method-i-cache">#cache &mdash; Prime::TrialDivision</a></li>
+    
+      <li><a href="String.html#method-i-camelize">#camelize &mdash; String</a></li>
+    
+      <li><a href="Symbol.html#method-i-capitalize">#capitalize &mdash; Symbol</a></li>
+    
+      <li><a href="Symbol.html#method-i-casecmp">#casecmp &mdash; Symbol</a></li>
+    
+      <li><a href="IO.html#method-i-chars">#chars &mdash; IO</a></li>
+    
+      <li><a href="String.html#method-i-chr">#chr &mdash; String</a></li>
+    
+      <li><a href="Enumerable.html#method-i-chunk">#chunk &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-chunk">#chunk &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="String.html#method-i-clear">#clear &mdash; String</a></li>
+    
+      <li><a href="Vector.html#method-i-clone">#clone &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-clone">#clone &mdash; Matrix</a></li>
+    
+      <li><a href="String.html#method-i-codepoints">#codepoints &mdash; String</a></li>
+    
+      <li><a href="Matrix.html#method-i-coerce">#coerce &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-coerce">#coerce &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-collect">#collect &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Matrix.html#method-i-collect">#collect &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-collect">#collect &mdash; Vector</a></li>
+    
+      <li><a href="Vector.html#method-i-collect2">#collect2 &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-collect_concat">#collect_concat &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Enumerable.html#method-i-collect_concat">#collect_concat &mdash; Enumerable</a></li>
+    
+      <li><a href="Matrix.html#method-i-column">#column &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-column_vectors">#column_vectors &mdash; Matrix</a></li>
+    
+      <li><a href="Array.html#method-i-combination">#combination &mdash; Array</a></li>
+    
+      <li><a href="Matrix.html#method-i-component">#component &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-component">#component &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-conj">#conj &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-conjugate">#conjugate &mdash; Matrix</a></li>
+    
+      <li><a href="String.html#method-i-constantize">#constantize &mdash; String</a></li>
+    
+      <li><a href="Enumerable.html#method-i-count">#count &mdash; Enumerable</a></li>
+    
+      <li><a href="Vector.html#method-i-covector">#covector &mdash; Vector</a></li>
+    
+      <li><a href="Proc.html#method-i-curry">#curry &mdash; Proc</a></li>
+    
+      <li><a href="Enumerable.html#method-i-cycle">#cycle &mdash; Enumerable</a></li>
+    
+      <li><a href="Array.html#method-i-cycle">#cycle &mdash; Array</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-d">#d &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="String.html#method-i-dasherize">#dasherize &mdash; String</a></li>
+    
+      <li><a href="Hash.html#method-i-default_proc-3D">#default_proc= &mdash; Hash</a></li>
+    
+      <li><a href="Hash.html#method-i-default_proc_with_nil-3D">#default_proc_with_nil= &mdash; Hash</a></li>
+    
+      <li><a href="Kernel.html#method-i-define_singleton_method">#define_singleton_method &mdash; Kernel</a></li>
+    
+      <li><a href="Set.html#method-i-delete_if">#delete_if &mdash; Set</a></li>
+    
+      <li><a href="String.html#method-i-demodulize">#demodulize &mdash; String</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-det">#det &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Matrix.html#method-i-det">#det &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-det_e">#det_e &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-determinant">#determinant &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-determinant">#determinant &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Matrix.html#method-i-determinant_e">#determinant_e &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-diagonal-3F">#diagonal? &mdash; Matrix</a></li>
+    
+      <li><a href="Fixnum.html#method-i-div">#div &mdash; Fixnum</a></li>
+    
+      <li><a href="Symbol.html#method-i-downcase">#downcase &mdash; Symbol</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-drop">#drop &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Enumerable.html#method-i-drop">#drop &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-drop_while">#drop_while &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Enumerable.html#method-i-drop_while">#drop_while &mdash; Enumerable</a></li>
+    
+      <li><a href="Prime/OldCompatibility.html#method-i-each">#each &mdash; Prime::OldCompatibility</a></li>
+    
+      <li><a href="Prime.html#method-i-each">#each &mdash; Prime</a></li>
+    
+      <li><a href="Vector.html#method-i-each">#each &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/GeneratorBP.html#method-i-each">#each &mdash; Enumerator::GeneratorBP</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-each">#each &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Matrix.html#method-i-each">#each &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-each2">#each2 &mdash; Vector</a></li>
+    
+      <li><a href="String.html#method-i-each_char">#each_char &mdash; String</a></li>
+    
+      <li><a href="IO.html#method-i-each_char">#each_char &mdash; IO</a></li>
+    
+      <li><a href="Enumerable.html#method-i-each_entry">#each_entry &mdash; Enumerable</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-each_pair">#each_pair &mdash; OpenStruct</a></li>
+    
+      <li><a href="Matrix.html#method-i-each_with_index">#each_with_index &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerable.html#method-i-each_with_index_with_optional_args_and_block">#each_with_index_with_optional_args_and_block &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-each_with_object">#each_with_object &mdash; Enumerable</a></li>
+    
+      <li><a href="Matrix.html#method-i-eigen">#eigen &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-eigensystem">#eigensystem &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-eigenvalue_matrix">#eigenvalue_matrix &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-eigenvalues">#eigenvalues &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-eigenvector_matrix">#eigenvector_matrix &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-eigenvector_matrix_inv">#eigenvector_matrix_inv &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-eigenvectors">#eigenvectors &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Vector.html#method-i-element">#element &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-element">#element &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-elements_to_f">#elements_to_f &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-elements_to_f">#elements_to_f &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-elements_to_i">#elements_to_i &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-elements_to_i">#elements_to_i &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-elements_to_r">#elements_to_r &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-elements_to_r">#elements_to_r &mdash; Matrix</a></li>
+    
+      <li><a href="Symbol.html#method-i-empty-3F">#empty? &mdash; Symbol</a></li>
+    
+      <li><a href="Matrix.html#method-i-empty-3F">#empty? &mdash; Matrix</a></li>
+    
+      <li><a href="String.html#method-i-end_with-3F">#end_with? &mdash; String</a></li>
+    
+      <li><a href="Enumerable.html#method-i-entries_with_optional_arguments">#entries_with_optional_arguments &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-enum_for">#enum_for &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Matrix.html#method-i-eql-3F">#eql? &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-eql-3F">#eql? &mdash; Vector</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-eql-3F">#eql? &mdash; OpenStruct</a></li>
+    
+      <li><a href="Hash.html#method-i-eql-3F">#eql? &mdash; Hash</a></li>
+    
+      <li><a href="Binding.html#method-i-eval">#eval &mdash; Binding</a></li>
+    
+      <li><a href="Integer.html#method-i-even-3F">#even? &mdash; Integer</a></li>
+    
+      <li><a href="Array.html#method-i-extract_options-21">#extract_options! &mdash; Array</a></li>
+    
+      <li><a href="Fixnum.html#method-i-fdiv">#fdiv &mdash; Fixnum</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-find_all">#find_all &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Matrix.html#method-i-find_index">#find_index &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerable.html#method-i-find_index">#find_index &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-first">#first &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-flat_map">#flat_map &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-flat_map">#flat_map &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Array.html#method-i-flatten_with_optional_argument">#flatten_with_optional_argument &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-flatten_with_optional_argument-21">#flatten_with_optional_argument! &mdash; Array</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-grep">#grep &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Enumerable.html#method-i-group_by">#group_by &mdash; Enumerable</a></li>
+    
+      <li><a href="Hash.html#method-i-hash">#hash &mdash; Hash</a></li>
+    
+      <li><a href="Matrix.html#method-i-hash">#hash &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-hash">#hash &mdash; Vector</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-hash">#hash &mdash; OpenStruct</a></li>
+    
+      <li><a href="Matrix.html#method-i-hermitian-3F">#hermitian? &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-imag">#imag &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-imaginary">#imaginary &mdash; Matrix</a></li>
+    
+      <li><a href="Backports/StdLib/LoadedFeatures.html#method-i-include-3F">#include? &mdash; Backports::StdLib::LoadedFeatures</a></li>
+    
+      <li><a href="Matrix.html#method-i-index">#index &mdash; Matrix</a></li>
+    
+      <li><a href="Array.html#method-i-index_with_block">#index_with_block &mdash; Array</a></li>
+    
+      <li><a href="Enumerator.html#method-i-initialize_with_optional_block">#initialize_with_optional_block &mdash; Enumerator</a></li>
+    
+      <li><a href="Enumerable.html#method-i-inject_with_symbol">#inject_with_symbol &mdash; Enumerable</a></li>
+    
+      <li><a href="Vector.html#method-i-inner_product">#inner_product &mdash; Vector</a></li>
+    
+      <li><a href="Random.html#method-i-inspect">#inspect &mdash; Random</a></li>
+    
+      <li><a href="Matrix.html#method-i-inspect">#inspect &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-inspect">#inspect &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-inspect">#inspect &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Kernel.html#method-i-instance_exec">#instance_exec &mdash; Kernel</a></li>
+    
+      <li><a href="Module.html#method-i-instance_method_with_additional_info">#instance_method_with_additional_info &mdash; Module</a></li>
+    
+      <li><a href="Prime.html#method-i-int_from_prime_division">#int_from_prime_division &mdash; Prime</a></li>
+    
+      <li><a href="Matrix.html#method-i-inv">#inv &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-inverse">#inverse &mdash; Matrix</a></li>
+    
+      <li><a href="Hash.html#method-i-keep_if">#keep_if &mdash; Hash</a></li>
+    
+      <li><a href="Array.html#method-i-keep_if">#keep_if &mdash; Array</a></li>
+    
+      <li><a href="Set.html#method-i-keep_if">#keep_if &mdash; Set</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-l">#l &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Proc.html#method-i-lambda-3F">#lambda? &mdash; Proc</a></li>
+    
+      <li><a href="Kernel.html#method-i-lambda_with_lambda_tracking">#lambda_with_lambda_tracking &mdash; Kernel</a></li>
+    
+      <li><a href="Enumerable.html#method-i-lazy">#lazy &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-lazy">#lazy &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-left">#left &mdash; Random::MT19937</a></li>
+    
+      <li><a href="String.html#method-i-length">#length &mdash; String</a></li>
+    
+      <li><a href="Symbol.html#method-i-length">#length &mdash; Symbol</a></li>
+    
+      <li><a href="Kernel.html#method-i-loop_with_stop_iteration">#loop_with_stop_iteration &mdash; Kernel</a></li>
+    
+      <li><a href="Matrix.html#method-i-lower_triangular-3F">#lower_triangular? &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-lup">#lup &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-lup_decomposition">#lup_decomposition &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-magnitude">#magnitude &mdash; Vector</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-map">#map &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Vector.html#method-i-map">#map &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-map">#map &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-map2">#map2 &mdash; Vector</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-marshal_dump">#marshal_dump &mdash; Random::Implementation</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-marshal_dump">#marshal_dump &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-marshal_load">#marshal_load &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-marshal_load">#marshal_load &mdash; Random::Implementation</a></li>
+    
+      <li><a href="Symbol.html#method-i-match">#match &mdash; Symbol</a></li>
+    
+      <li><a href="Enumerable.html#method-i-max_by">#max_by &mdash; Enumerable</a></li>
+    
+      <li><a href="Kernel.html#method-i-method_with_additional_info">#method_with_additional_info &mdash; Kernel</a></li>
+    
+      <li><a href="Enumerable.html#method-i-min_by">#min_by &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-minmax">#minmax &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-minmax_by">#minmax_by &mdash; Enumerable</a></li>
+    
+      <li><a href="Matrix.html#method-i-minor">#minor &mdash; Matrix</a></li>
+    
+      <li><a href="Dir.html#method-i-mktmpdir">#mktmpdir &mdash; Dir</a></li>
+    
+      <li><a href="Module.html#method-i-module_exec">#module_exec &mdash; Module</a></li>
+    
+      <li><a href="Symbol.html#method-i-next">#next &mdash; Symbol</a></li>
+    
+      <li><a href="Prime/EratosthenesGenerator.html#method-i-next">#next &mdash; Prime::EratosthenesGenerator</a></li>
+    
+      <li><a href="Prime/TrialDivisionGenerator.html#method-i-next">#next &mdash; Prime::TrialDivisionGenerator</a></li>
+    
+      <li><a href="Prime/OldCompatibility.html#method-i-next">#next &mdash; Prime::OldCompatibility</a></li>
+    
+      <li><a href="Prime/Generator23.html#method-i-next">#next &mdash; Prime::Generator23</a></li>
+    
+      <li><a href="Enumerable/Enumerator.html#method-i-next">#next &mdash; Enumerable::Enumerator</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-next">#next &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-next_state">#next_state &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Prime/EratosthenesSieve.html#method-i-next_to">#next_to &mdash; Prime::EratosthenesSieve</a></li>
+    
+      <li><a href="Enumerable.html#method-i-none-3F">#none? &mdash; Enumerable</a></li>
+    
+      <li><a href="Vector.html#method-i-norm">#norm &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-normal-3F">#normal? &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-normalize">#normalize &mdash; Vector</a></li>
+    
+      <li><a href="Integer.html#method-i-odd-3F">#odd? &mdash; Integer</a></li>
+    
+      <li><a href="Enumerable.html#method-i-one-3F">#one? &mdash; Enumerable</a></li>
+    
+      <li><a href="Object.html#method-i-open_with_options_hash">#open_with_options_hash &mdash; Object</a></li>
+    
+      <li><a href="String.html#method-i-ord">#ord &mdash; String</a></li>
+    
+      <li><a href="Integer.html#method-i-ord">#ord &mdash; Integer</a></li>
+    
+      <li><a href="Matrix.html#method-i-orthogonal-3F">#orthogonal? &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-p">#p &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="String.html#method-i-partition_with_new_meaning">#partition_with_new_meaning &mdash; String</a></li>
+    
+      <li><a href="Array.html#method-i-permutation">#permutation &mdash; Array</a></li>
+    
+      <li><a href="Matrix.html#method-i-permutation-3F">#permutation? &mdash; Matrix</a></li>
+    
+      <li><a href="Array.html#method-i-pop_with_optional_argument">#pop_with_optional_argument &mdash; Array</a></li>
+    
+      <li><a href="Integer.html#method-i-pred">#pred &mdash; Integer</a></li>
+    
+      <li><a href="String.html#method-i-prepend">#prepend &mdash; String</a></li>
+    
+      <li><a href="Prime.html#method-i-prime-3F">#prime? &mdash; Prime</a></li>
+    
+      <li><a href="Integer.html#method-i-prime-3F">#prime? &mdash; Integer</a></li>
+    
+      <li><a href="Integer.html#method-i-prime_division">#prime_division &mdash; Integer</a></li>
+    
+      <li><a href="Prime.html#method-i-prime_division">#prime_division &mdash; Prime</a></li>
+    
+      <li><a href="Prime/TrialDivision.html#method-i-primes">#primes &mdash; Prime::TrialDivision</a></li>
+    
+      <li><a href="Prime/TrialDivision.html#method-i-primes_so_far">#primes_so_far &mdash; Prime::TrialDivision</a></li>
+    
+      <li><a href="Kernel.html#method-i-proc_with_lambda_tracking">#proc_with_lambda_tracking &mdash; Kernel</a></li>
+    
+      <li><a href="Array.html#method-i-product">#product &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-product_with_block">#product_with_block &mdash; Array</a></li>
+    
+      <li><a href="Kernel.html#method-i-public_method">#public_method &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#method-i-public_send">#public_send &mdash; Kernel</a></li>
+    
+      <li><a href="Vector.html#method-i-r">#r &mdash; Vector</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-rand">#rand &mdash; Random::Implementation</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-random_32_bits">#random_32_bits &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-random_bytes">#random_bytes &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-random_float">#random_float &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-random_integer">#random_integer &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Matrix.html#method-i-rank">#rank &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-rank_e">#rank_e &mdash; Matrix</a></li>
+    
+      <li><a href="Hash.html#method-i-rassoc">#rassoc &mdash; Hash</a></li>
+    
+      <li><a href="Matrix.html#method-i-real">#real &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-real-3F">#real? &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-rect">#rect &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-rectangular">#rectangular &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-regular-3F">#regular? &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-reject">#reject &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Array.html#method-i-repeated_combination">#repeated_combination &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-repeated_permutation">#repeated_permutation &mdash; Array</a></li>
+    
+      <li><a href="Kernel.html#method-i-require_with_backports">#require_with_backports &mdash; Kernel</a></li>
+    
+      <li><a href="Kernel.html#method-i-returning">#returning &mdash; Kernel</a></li>
+    
+      <li><a href="Enumerable.html#method-i-reverse_each">#reverse_each &mdash; Enumerable</a></li>
+    
+      <li><a href="Hash.html#method-i-reverse_merge">#reverse_merge &mdash; Hash</a></li>
+    
+      <li><a href="Hash.html#method-i-reverse_merge-21">#reverse_merge! &mdash; Hash</a></li>
+    
+      <li><a href="Prime/TrialDivisionGenerator.html#method-i-rewind">#rewind &mdash; Prime::TrialDivisionGenerator</a></li>
+    
+      <li><a href="Prime/Generator23.html#method-i-rewind">#rewind &mdash; Prime::Generator23</a></li>
+    
+      <li><a href="Enumerable/Enumerator.html#method-i-rewind">#rewind &mdash; Enumerable::Enumerator</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-rewind">#rewind &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Prime/EratosthenesGenerator.html#method-i-rewind">#rewind &mdash; Prime::EratosthenesGenerator</a></li>
+    
+      <li><a href="Array.html#method-i-rindex_with_block">#rindex_with_block &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-rotate">#rotate &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-rotate-21">#rotate! &mdash; Array</a></li>
+    
+      <li><a href="Matrix.html#method-i-round">#round &mdash; Matrix</a></li>
+    
+      <li><a href="Numeric.html#method-i-round_with_digits">#round_with_digits &mdash; Numeric</a></li>
+    
+      <li><a href="Integer.html#method-i-round_with_digits">#round_with_digits &mdash; Integer</a></li>
+    
+      <li><a href="Float.html#method-i-round_with_digits">#round_with_digits &mdash; Float</a></li>
+    
+      <li><a href="Matrix.html#method-i-row">#row &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-row_size">#row_size &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-row_vectors">#row_vectors &mdash; Matrix</a></li>
+    
+      <li><a href="String.html#method-i-rpartition">#rpartition &mdash; String</a></li>
+    
+      <li><a href="Array.html#method-i-sample">#sample &mdash; Array</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-seed-3D">#seed= &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-select">#select &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Hash.html#method-i-select-21">#select! &mdash; Hash</a></li>
+    
+      <li><a href="Array.html#method-i-select-21">#select! &mdash; Array</a></li>
+    
+      <li><a href="Hash.html#method-i-select_with_hash_return">#select_with_hash_return &mdash; Hash</a></li>
+    
+      <li><a href="Array.html#method-i-shift_with_optional_argument">#shift_with_optional_argument &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-shuffle">#shuffle &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-shuffle-21">#shuffle! &mdash; Array</a></li>
+    
+      <li><a href="Kernel.html#method-i-singleton_class">#singleton_class &mdash; Kernel</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-singular-3F">#singular? &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Matrix.html#method-i-singular-3F">#singular? &mdash; Matrix</a></li>
+    
+      <li><a href="File.html#method-i-size">#size &mdash; File</a></li>
+    
+      <li><a href="Symbol.html#method-i-size">#size &mdash; Symbol</a></li>
+    
+      <li><a href="Vector.html#method-i-size">#size &mdash; Vector</a></li>
+    
+      <li><a href="Enumerable.html#method-i-slice_before">#slice_before &mdash; Enumerable</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-solve">#solve &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Array.html#method-i-sort_by-21">#sort_by! &mdash; Array</a></li>
+    
+      <li><a href="Matrix.html#method-i-square-3F">#square? &mdash; Matrix</a></li>
+    
+      <li><a href="Random/Implementation.html#method-i-srand">#srand &mdash; Random::Implementation</a></li>
+    
+      <li><a href="String.html#method-i-start_with-3F">#start_with? &mdash; String</a></li>
+    
+      <li><a href="Random/MT19937.html#method-i-state_as_bignum">#state_as_bignum &mdash; Random::MT19937</a></li>
+    
+      <li><a href="Hash.html#method-i-stringify_keys">#stringify_keys &mdash; Hash</a></li>
+    
+      <li><a href="Hash.html#method-i-stringify_keys-21">#stringify_keys! &mdash; Hash</a></li>
+    
+      <li><a href="Prime/OldCompatibility.html#method-i-succ">#succ &mdash; Prime::OldCompatibility</a></li>
+    
+      <li><a href="Prime/Generator23.html#method-i-succ">#succ &mdash; Prime::Generator23</a></li>
+    
+      <li><a href="Prime/TrialDivisionGenerator.html#method-i-succ">#succ &mdash; Prime::TrialDivisionGenerator</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-succ">#succ &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Prime/EratosthenesGenerator.html#method-i-succ">#succ &mdash; Prime::EratosthenesGenerator</a></li>
+    
+      <li><a href="Symbol.html#method-i-succ">#succ &mdash; Symbol</a></li>
+    
+      <li><a href="Enumerable.html#method-i-sum">#sum &mdash; Enumerable</a></li>
+    
+      <li><a href="Symbol.html#method-i-swapcase">#swapcase &mdash; Symbol</a></li>
+    
+      <li><a href="Hash.html#method-i-symbolize_keys">#symbolize_keys &mdash; Hash</a></li>
+    
+      <li><a href="Hash.html#method-i-symbolize_keys-21">#symbolize_keys! &mdash; Hash</a></li>
+    
+      <li><a href="Matrix.html#method-i-symmetric-3F">#symmetric? &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-t">#t &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-take">#take &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Enumerable.html#method-i-take">#take &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerable.html#method-i-take_while">#take_while &mdash; Enumerable</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-take_while">#take_while &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="Kernel.html#method-i-tap">#tap &mdash; Kernel</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-to_a">#to_a &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Vector.html#method-i-to_a">#to_a &mdash; Vector</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-to_a">#to_a &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix.html#method-i-to_a">#to_a &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerable.html#method-i-to_a_with_optional_arguments">#to_a_with_optional_arguments &mdash; Enumerable</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-to_ary">#to_ary &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-to_ary">#to_ary &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-to_enum">#to_enum &mdash; Enumerator::Lazy</a></li>
+    
+      <li><a href="NilClass.html#method-i-to_h">#to_h &mdash; NilClass</a></li>
+    
+      <li><a href="Hash.html#method-i-to_h">#to_h &mdash; Hash</a></li>
+    
+      <li><a href="Struct.html#method-i-to_h">#to_h &mdash; Struct</a></li>
+    
+      <li><a href="OpenStruct.html#method-i-to_h">#to_h &mdash; OpenStruct</a></li>
+    
+      <li><a href="Symbol.html#method-i-to_proc">#to_proc &mdash; Symbol</a></li>
+    
+      <li><a href="Method.html#method-i-to_proc_with_lambda_tracking">#to_proc_with_lambda_tracking &mdash; Method</a></li>
+    
+      <li><a href="Complex.html#method-i-to_r">#to_r &mdash; Complex</a></li>
+    
+      <li><a href="Matrix.html#method-i-to_s">#to_s &mdash; Matrix</a></li>
+    
+      <li><a href="Vector.html#method-i-to_s">#to_s &mdash; Vector</a></li>
+    
+      <li><a href="Matrix.html#method-i-tr">#tr &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-trace">#trace &mdash; Matrix</a></li>
+    
+      <li><a href="Matrix.html#method-i-transpose">#transpose &mdash; Matrix</a></li>
+    
+      <li><a href="Kernel.html#method-i-try">#try &mdash; Kernel</a></li>
+    
+      <li><a href="Matrix/LUPDecomposition.html#method-i-u">#u &mdash; Matrix::LUPDecomposition</a></li>
+    
+      <li><a href="Method.html#method-i-unbind_with_additional_info">#unbind_with_additional_info &mdash; Method</a></li>
+    
+      <li><a href="String.html#method-i-underscore">#underscore &mdash; String</a></li>
+    
+      <li><a href="Array.html#method-i-uniq_with_block">#uniq_with_block &mdash; Array</a></li>
+    
+      <li><a href="Array.html#method-i-uniq_with_block-21">#uniq_with_block! &mdash; Array</a></li>
+    
+      <li><a href="Matrix.html#method-i-unitary-3F">#unitary? &mdash; Matrix</a></li>
+    
+      <li><a href="Symbol.html#method-i-upcase">#upcase &mdash; Symbol</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-upper_bound">#upper_bound &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-upper_bound-3D">#upper_bound= &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Matrix.html#method-i-upper_triangular-3F">#upper_triangular? &mdash; Matrix</a></li>
+    
+      <li><a href="String.html#method-i-upto_with_exclusive">#upto_with_exclusive &mdash; String</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-v">#v &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Matrix/EigenvalueDecomposition.html#method-i-v_inv">#v_inv &mdash; Matrix::EigenvalueDecomposition</a></li>
+    
+      <li><a href="Enumerable/Enumerator.html#method-i-with_index">#with_index &mdash; Enumerable::Enumerator</a></li>
+    
+      <li><a href="Prime/PseudoPrimeGenerator.html#method-i-with_object">#with_object &mdash; Prime::PseudoPrimeGenerator</a></li>
+    
+      <li><a href="Enumerator/Yielder.html#method-i-yield">#yield &mdash; Enumerator::Yielder</a></li>
+    
+      <li><a href="Matrix.html#method-i-zero-3F">#zero? &mdash; Matrix</a></li>
+    
+      <li><a href="Enumerator/Lazy.html#method-i-zip">#zip &mdash; Enumerator::Lazy</a></li>
+    
+  </ul>
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+</body>
+</html>

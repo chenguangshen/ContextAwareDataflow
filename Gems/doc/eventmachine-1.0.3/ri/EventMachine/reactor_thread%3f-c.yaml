@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Boolean] true if the calling thread is the same thread as the reactor."
+full_name: EventMachine::reactor_thread?
+is_singleton: true
+name: reactor_thread?
+params: ()
+visibility: public

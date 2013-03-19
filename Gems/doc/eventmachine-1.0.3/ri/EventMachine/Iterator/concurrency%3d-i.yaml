@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Change the concurrency of this iterator. Workers will automatically be spawned or destroyed to accomodate the new concurrency level.
+full_name: EventMachine::Iterator#concurrency=
+is_singleton: false
+name: concurrency=
+params: (val)
+visibility: public

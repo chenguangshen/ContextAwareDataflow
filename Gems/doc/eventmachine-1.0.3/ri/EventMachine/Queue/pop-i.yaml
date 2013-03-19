@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Pop items off the queue, running the block on the reactor thread. The pop will not happen immediately, but at some point in the future, either in the next tick, if the queue has data, or when the queue is populated.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [NilClass] nil"
+full_name: EventMachine::Queue#pop
+is_singleton: false
+name: pop
+params: (*a, &b)
+visibility: public

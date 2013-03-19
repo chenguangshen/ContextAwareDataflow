@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Watches connection for readability. Only possible if the connection was created using {EventMachine.attach} and had {EventMachine.notify_readable}/{EventMachine.notify_writable} defined on the handler.
+- !ruby/struct:SM::Flow::P 
+  body: "@see #notify_readable?"
+full_name: EventMachine::Connection#notify_readable=
+is_singleton: false
+name: notify_readable=
+params: (mode)
+visibility: public

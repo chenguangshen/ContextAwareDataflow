@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Dumps the contents of a table at the current time.
+full_name: LibRebl#dump
+is_singleton: false
+name: dump
+params: (c)
+visibility: public

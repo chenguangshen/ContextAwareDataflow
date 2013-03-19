@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __bloom_asts__
+comment: 
+constants: []
+
+full_name: Module
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: bloom
+- !ruby/object:RI::MethodSummary 
+  name: bootstrap
+- !ruby/object:RI::MethodSummary 
+  name: import
+- !ruby/object:RI::MethodSummary 
+  name: modules
+- !ruby/object:RI::MethodSummary 
+  name: state
+name: Module
+superclass: Object

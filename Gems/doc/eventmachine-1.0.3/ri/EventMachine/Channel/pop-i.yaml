@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Fetches one message from the channel.
+full_name: EventMachine::Channel#pop
+is_singleton: false
+name: pop
+params: (*a, &b)
+visibility: public

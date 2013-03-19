@@ -1,0 +1,41 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: args
+  rw: W
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: send
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Simple SMTP client
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  email = EM::Protocols::SmtpClient.send(\n    :domain=&gt;&quot;example.com&quot;,\n    :host=&gt;'localhost',\n    :port=&gt;25, # optional, defaults 25\n    :starttls=&gt;true, # use ssl\n    :from=&gt;&quot;sender@example.com&quot;,\n    :to=&gt; [&quot;to_1@example.com&quot;, &quot;to_2@example.com&quot;],\n    :header=&gt; {&quot;Subject&quot; =&gt; &quot;This is a subject line&quot;},\n    :body=&gt; &quot;This is the body of the email&quot;\n  )\n  email.callback{\n    puts 'Email sent!'\n  }\n  email.errback{ |e|\n    puts 'Email failed!'\n  }\n"
+- !ruby/struct:SM::Flow::P 
+  body: Sending generated emails (using mailfactory)
+- !ruby/struct:SM::Flow::VERB 
+  body: "  mail = MailFactory.new\n  mail.to = 'someone@site.co'\n  mail.from = 'me@site.com'\n  mail.subject = 'hi!'\n  mail.text = 'hello world'\n  mail.html = '&lt;h1&gt;hello world&lt;/h1&gt;'\n\n  email = EM::P::SmtpClient.send(\n    :domain=&gt;'site.com',\n    :from=&gt;mail.from,\n    :to=&gt;mail.to,\n    :content=&gt;&quot;#{mail.to_s}\\r\\n.\\r\\n&quot;\n  )\n"
+constants: []
+
+full_name: EventMachine::Protocols::SmtpClient
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: EventMachine::Deferrable
+- !ruby/object:RI::IncludedModule 
+  name: EventMachine::Protocols::LineText2
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: connection_completed
+- !ruby/object:RI::MethodSummary 
+  name: post_init
+- !ruby/object:RI::MethodSummary 
+  name: receive_line
+- !ruby/object:RI::MethodSummary 
+  name: unbind
+name: SmtpClient
+superclass: Connection

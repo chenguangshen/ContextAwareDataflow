@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bud::PushNotIn#invalidate_cache
+is_singleton: false
+name: invalidate_cache
+params: ()
+visibility: public

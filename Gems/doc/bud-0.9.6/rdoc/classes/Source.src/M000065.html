@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>cache (Source)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/source.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Source</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">num</span>)  <span class="ruby-comment cmt"># returns array of lines</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">curr_file</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">filename</span>
+      <span class="ruby-identifier">retval</span> = <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">lines</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">last_state_bloom_line</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">num</span>
+        <span class="ruby-comment cmt"># have no use for the cached info any more. reset it.</span>
+        <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">lines</span> = []
+        <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">curr_file</span> = <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">last_state_bloom_line</span> = <span class="ruby-value">-1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">last_state_bloom_line</span> = <span class="ruby-value">-1</span>
+      <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">curr_file</span> = <span class="ruby-identifier">filename</span>
+      <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">lines</span> = []
+      <span class="ruby-identifier">retval</span> = []
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-value str">&quot;r&quot;</span>).<span class="ruby-identifier">each_with_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">retval</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^ *(bloom|state)/</span>
+          <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">last_state_bloom_line</span> = <span class="ruby-identifier">i</span>
+        <span class="ruby-keyword kw">end</span>
+      }
+      <span class="ruby-identifier">$cached_file_info</span>.<span class="ruby-identifier">lines</span> = <span class="ruby-identifier">retval</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">retval</span> <span class="ruby-comment cmt"># array of lines</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>read_block (Source)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/source.rb, line 8</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Source</span>.<span class="ruby-identifier">read_block</span>(<span class="ruby-identifier">location</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-value str">'('</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">IllegalSourceError</span>, <span class="ruby-value str">&quot;source must be present in a file; cannot read interactive shell or eval block&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">location</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^(.*):(\d+)/</span>
+    <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">num</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bud</span><span class="ruby-operator">::</span><span class="ruby-constant">IllegalSourceError</span>, <span class="ruby-value str">&quot;couldn't determine filename from backtrace&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">cache</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">num</span>)
+    <span class="ruby-comment cmt"># Note: num is 1-based.</span>
+
+    <span class="ruby-identifier">parser</span> = <span class="ruby-constant">RubyParser</span>.<span class="ruby-identifier">for_current_ruby</span>
+    <span class="ruby-identifier">stmt</span> = <span class="ruby-value str">&quot;&quot;</span>       <span class="ruby-comment cmt"># collection of lines that form one complete Ruby statement</span>
+    <span class="ruby-identifier">ast</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">lines</span>[<span class="ruby-identifier">num</span> <span class="ruby-operator">..</span> <span class="ruby-value">-1</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*#/</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*([}]|end)/</span>
+        <span class="ruby-comment cmt"># We found some syntax that looks like it might terminate the Ruby</span>
+        <span class="ruby-comment cmt"># statement. Hence, try to parse it; if we don't find a syntax error,</span>
+        <span class="ruby-comment cmt"># we're done.</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">ast</span> = <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">stmt</span>
+          <span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">rescue</span>
+          <span class="ruby-identifier">ast</span> = <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">stmt</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">ast</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: lookup full command from abbreviation
+full_name: ReblShell::command
+is_singleton: true
+name: command
+params: (c)
+visibility: public

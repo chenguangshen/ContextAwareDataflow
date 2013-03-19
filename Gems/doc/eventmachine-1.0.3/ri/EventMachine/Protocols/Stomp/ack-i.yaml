@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: ACK command, for acknowledging receipt of messages
+- !ruby/struct:SM::Flow::VERB 
+  body: " module StompClient\n   include EM::P::Stomp\n\n   def connection_completed\n     connect :login =&gt; 'guest', :passcode =&gt; 'guest'\n     # subscribe with ack mode\n     subscribe '/some/topic', true\n   end\n\n   def receive_msg msg\n     if msg.command == &quot;MESSAGE&quot;\n       ack msg.headers['message-id']\n       puts msg.body\n     end\n   end\n end\n"
+full_name: EventMachine::Protocols::Stomp#ack
+is_singleton: false
+name: ack
+params: (msgid)
+visibility: public

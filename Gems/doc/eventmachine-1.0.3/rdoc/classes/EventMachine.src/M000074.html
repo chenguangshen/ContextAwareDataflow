@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>next_tick (EventMachine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/eventmachine.rb, line 1077</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">next_tick</span> <span class="ruby-identifier">pr</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+    <span class="ruby-comment cmt"># This works by adding to the @resultqueue that's used for #defer.</span>
+    <span class="ruby-comment cmt"># The general idea is that next_tick is used when we want to give the reactor a chance</span>
+    <span class="ruby-comment cmt"># to let other operations run, either to balance the load out more evenly, or to let</span>
+    <span class="ruby-comment cmt"># outbound network buffers drain, or both. So we probably do NOT want to block, and</span>
+    <span class="ruby-comment cmt"># we probably do NOT want to be spinning any threads. A program that uses next_tick</span>
+    <span class="ruby-comment cmt"># but not #defer shouldn't suffer the penalty of having Ruby threads running. They're</span>
+    <span class="ruby-comment cmt"># extremely expensive even if they're just sleeping.</span>
+
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;no proc or block given&quot;</span> <span class="ruby-keyword kw">unless</span> ((<span class="ruby-identifier">pr</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pr</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:call</span>)) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">block</span>)
+    <span class="ruby-ivar">@next_tick_mutex</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-ivar">@next_tick_queue</span> <span class="ruby-operator">&lt;&lt;</span> ( <span class="ruby-identifier">pr</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span> )
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">signal_loopbreak</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">reactor_running?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

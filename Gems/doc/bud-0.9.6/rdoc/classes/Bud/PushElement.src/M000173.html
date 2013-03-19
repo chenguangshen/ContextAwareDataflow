@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>add_rescan_invalidate (Bud::PushElement)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bud/executor/elements.rb, line 153</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_rescan_invalidate</span>(<span class="ruby-identifier">rescan</span>, <span class="ruby-identifier">invalidate</span>)
+      <span class="ruby-comment cmt"># if any of the source elements are in rescan mode, then put this node in</span>
+      <span class="ruby-comment cmt"># rescan.</span>
+      <span class="ruby-identifier">srcs</span> = <span class="ruby-identifier">non_temporal_predecessors</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">srcs</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">rescan</span>.<span class="ruby-identifier">member?</span> <span class="ruby-identifier">p</span>}
+        <span class="ruby-identifier">rescan</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># pass the current state to the non-element outputs, and see if they end</span>
+      <span class="ruby-comment cmt"># up marking this node for rescan</span>
+      <span class="ruby-identifier">invalidate_tables</span>(<span class="ruby-identifier">rescan</span>, <span class="ruby-identifier">invalidate</span>)
+
+      <span class="ruby-comment cmt"># finally, if this node is in rescan, pass the request on to all source</span>
+      <span class="ruby-comment cmt"># elements</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rescan</span>.<span class="ruby-identifier">member?</span> <span class="ruby-keyword kw">self</span>
+        <span class="ruby-identifier">rescan</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">srcs</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

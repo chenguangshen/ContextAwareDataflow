@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #pending_connect_timeout="
+full_name: EventMachine::Connection#set_pending_connect_timeout
+is_singleton: false
+name: set_pending_connect_timeout
+params: (value)
+visibility: public

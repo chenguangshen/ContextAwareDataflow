@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: declare a collection to be auto-populated every <tt>period</tt> seconds. schema <tt>[:key] =&gt; [:val]</tt>. rhs of statements only.
+full_name: Bud#periodic
+is_singleton: false
+name: periodic
+params: (name, period=1)
+visibility: public

@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: For advanced users. This function sets the default timer granularity, which by default is slightly smaller than 100 milliseconds. Call this function to set a higher or lower granularity. The function affects the behavior of {EventMachine.add_timer} and {EventMachine.add_periodic_timer}. Most applications will not need to call this function.
+- !ruby/struct:SM::Flow::P 
+  body: Avoid setting the quantum to very low values because that may reduce performance under some extreme conditions. We recommend that you not use values lower than 10.
+- !ruby/struct:SM::Flow::P 
+  body: This method only can be used if event loop is running.
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Integer] mills New timer granularity, in milliseconds"
+- !ruby/struct:SM::Flow::P 
+  body: "@see EventMachine.add_timer @see EventMachine.add_periodic_timer @see EventMachine::Timer @see EventMachine.run"
+full_name: EventMachine::set_quantum
+is_singleton: true
+name: set_quantum
+params: (mills)
+visibility: public

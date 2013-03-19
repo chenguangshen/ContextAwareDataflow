@@ -1,0 +1,84 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Implements the Memcache protocol (http://code.sixapart.com/svn/memcached/trunk/server/doc/protocol.txt). Requires memcached &gt;= 1.2.4 w/ noreply support
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  EM.run{\n    cache = EM::P::Memcache.connect 'localhost', 11211\n\n    cache.set :a, 'hello'\n    cache.set :b, 'hi'\n    cache.set :c, 'how are you?'\n    cache.set :d, ''\n\n    cache.get(:a){ |v| p v }\n    cache.get_hash(:a, :b, :c, :d){ |v| p v }\n    cache.get(:a,:b,:c,:d){ |a,b,c,d| p [a,b,c,d] }\n\n    cache.get(:a,:z,:b,:y,:d){ |a,z,b,y,d| p [a,z,b,y,d] }\n\n    cache.get(:missing){ |m| p [:missing=, m] }\n    cache.set(:missing, 'abc'){ p :stored }\n    cache.get(:missing){ |m| p [:missing=, m] }\n    cache.del(:missing){ p :deleted }\n    cache.get(:missing){ |m| p [:missing=, m] }\n  }\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cstored
+  value: "'STORED'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cend
+  value: "'END'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cdeleted
+  value: "'DELETED'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cunknown
+  value: "'NOT_FOUND'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cerror
+  value: "'ERROR'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cempty
+  value: "''.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@private"
+  name: Cdelimiter
+  value: "\"\\r\\n\".freeze"
+full_name: EventMachine::Protocols::Memcache
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: EM::Deferrable
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: connection_completed
+- !ruby/object:RI::MethodSummary 
+  name: del
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: get
+- !ruby/object:RI::MethodSummary 
+  name: get_hash
+- !ruby/object:RI::MethodSummary 
+  name: process_cmd
+- !ruby/object:RI::MethodSummary 
+  name: receive_data
+- !ruby/object:RI::MethodSummary 
+  name: set
+- !ruby/object:RI::MethodSummary 
+  name: unbind
+name: Memcache
+superclass: 

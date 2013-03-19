@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Label#internal_tabs
+is_singleton: false
+name: internal_tabs
+params: ()
+visibility: public
