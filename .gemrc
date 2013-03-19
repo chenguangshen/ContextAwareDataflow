@@ -1,4 +1,4 @@
-gemhome: /path/to/the/gems/folder/Gems  @path to our Gems folder
+gemhome: /path/to/the/gems/folder/Gems  #path to our Gems folder
 gempath:
  - /path/to/the/gems/folder/Gems        # path to our Gems folder
  - /Library/Ruby/Gems/1.8               # path to your systems's original ruby gem library path

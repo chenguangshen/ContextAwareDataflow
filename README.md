@@ -20,12 +20,16 @@ ensure the code will work under other versions of Ruby.
 You could generally follow these steps to used the ContextAwareDataflow
 library:
 
-1. Install dependency libraries:
+## Install dependency libraries:
 	
 	% gem install backports
+
 	% gem install docile
+	
 	% gem install eventmachine
+	
 	% gem install msgpack
+	
 	% gem install slop
 
-2. Modify Ruby gem path
+## Modify Ruby's gem path
