@@ -49,11 +49,17 @@ Next, you need to also include GEM_HOME and GEM_PATH as environment
 variables (assume you are using bash). Remember to keep the original
 gem path in GEM_PATH so that you can still use other Ruby gems.
 
-	% echo export GEM_HOME=/path/to/our/gems/Gems >> ~/.bashrc
+	% echo export GEM_HOME=/path/to/our/lib/Gems >> ~/.bashrc
 
-	% echo export GEM_PATH=/path/to/our/gems/Gems:/path/to/your/original/gem/lib >> ~/.bashrc
+	% echo export GEM_PATH=/path/to/our/lib/Gems:/path/to/your/original/gem/folder >> ~/.bashrc
 
 	% source ~/.bashrc
+
+If you run
+	
+	% gem env
+
+you should be able to see our Gems/ folder included in both gemhome and gempath.
 
 # Run Test Code
 
