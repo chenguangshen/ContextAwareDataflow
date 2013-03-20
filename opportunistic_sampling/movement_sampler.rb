@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'backports'
-require 'bud'
 require 'narray'
+require 'bud'
 
 require_relative 'sampler'
 
