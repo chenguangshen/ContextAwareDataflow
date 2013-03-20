@@ -62,4 +62,5 @@ If you run
 you should be able to see our Gems/ folder included in both gemhome and gempath.
 
 # Run Test Code
-
+All test codes are in the example/ folder. The examples are explained in
+our report paper. Feel free to report bugs and possible improvements to us!
